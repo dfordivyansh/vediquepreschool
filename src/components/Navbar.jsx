@@ -14,19 +14,44 @@ export default function Navbar() {
 
   const NAV_HEIGHT = 96;
 
+  /* ===== IMMEDIATE + SLOW SMOOTH SCROLL ===== */
+  const smoothScrollTo = (targetY, duration = 1700) => {
+    const startY = window.scrollY;
+    const distance = targetY - startY;
+    let startTime = null;
+
+    // ✅ Instant start, slow finish (NO GAP)
+    const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+
+    const animate = (time) => {
+      if (!startTime) startTime = time;
+      const elapsed = time - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      window.scrollTo(0, startY + distance * easeOut(progress));
+
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+
+    requestAnimationFrame(animate); // 🚀 starts immediately
+  };
+
+  /* ===== SCROLL SHADOW ===== */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  /* ===== BODY LOCK FOR MOBILE MENU ===== */
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "auto";
     return () => (document.body.style.overflow = "auto");
   }, [open]);
 
+  /* ===== HANDLERS ===== */
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    smoothScrollTo(0, 1500);
     setActive("Home");
     setOpen(false);
   };
@@ -36,9 +61,11 @@ export default function Navbar() {
     if (!el) return;
 
     const y =
-      el.getBoundingClientRect().top + window.pageYOffset - NAV_HEIGHT;
+      el.getBoundingClientRect().top +
+      window.pageYOffset -
+      NAV_HEIGHT;
 
-    window.scrollTo({ top: y, behavior: "smooth" });
+    smoothScrollTo(y, 1800); // slower but instant
     setActive(label);
     setOpen(false);
   };
@@ -66,21 +93,9 @@ export default function Navbar() {
             onClick={() => setOpen(!open)}
             className="md:hidden flex flex-col gap-2 cursor-pointer"
           >
-            <span
-              className={`h-[3px] w-8 bg-[#5E4B8B] rounded transition-all ${
-                open ? "rotate-45 translate-y-2" : ""
-              }`}
-            />
-            <span
-              className={`h-[3px] w-8 bg-[#5E4B8B] rounded transition-all ${
-                open ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`h-[3px] w-8 bg-[#5E4B8B] rounded transition-all ${
-                open ? "-rotate-45 -translate-y-2" : ""
-              }`}
-            />
+            <span className={`h-[3px] w-8 bg-[#5E4B8B] rounded transition-all ${open ? "rotate-45 translate-y-2" : ""}`} />
+            <span className={`h-[3px] w-8 bg-[#5E4B8B] rounded transition-all ${open ? "opacity-0" : ""}`} />
+            <span className={`h-[3px] w-8 bg-[#5E4B8B] rounded transition-all ${open ? "-rotate-45 -translate-y-2" : ""}`} />
           </button>
 
           <img
@@ -91,7 +106,7 @@ export default function Navbar() {
           />
         </div>
 
-        {/* CENTER - DESKTOP MENU */}
+        {/* DESKTOP MENU */}
         <ul className="hidden md:flex items-center gap-14 font-semibold text-lg text-[#5E4B8B]">
           {navItems.map((item) => (
             <li key={item.label}>
@@ -113,7 +128,6 @@ export default function Navbar() {
 
         {/* RIGHT */}
         <div className="flex items-center gap-3">
-          {/* CONTACT NUMBER (Responsive Size) */}
           <a href="tel:+919030802211">
             <button className="flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border border-[#4B3C78] text-[#4B3C78] shadow-sm hover:shadow-md transition">
               <FaPhoneAlt className="animate-phone text-sm md:text-lg" />
@@ -123,7 +137,6 @@ export default function Navbar() {
             </button>
           </a>
 
-          {/* ENQUIRY – DESKTOP ONLY */}
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSfbPNn-JeJn3qJRY5bMVg7luMmDG_ztUE-qcGxy6sJyLRjwOg/viewform"
             target="_blank"
@@ -164,17 +177,6 @@ export default function Navbar() {
                 )}
               </div>
             ))}
-
-            {/* MOBILE ENQUIRY BUTTON */}
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSfbPNn-JeJn3qJRY5bMVg7luMmDG_ztUE-qcGxy6sJyLRjwOg/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <button className="w-full mt-6 py-4 text-lg font-semibold rounded-xl bg-[#4B3C78] text-white shadow-md">
-                Enquiry
-              </button>
-            </a>
           </div>
         </div>
       )}

@@ -1,6 +1,14 @@
+
+
+html, body {
+  font-style: normal !important;
+  font-synthesis: none;
+}
+
 html {
   scroll-behavior: smooth;
 }
+
 
 #root {
   max-width: 1280px;
@@ -46,4 +54,16 @@ html {
 }
 
 
+* {
+  font-family: "Comic Sans MS", "Comic Sans", cursive, sans-serif !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+}
 
+@media (max-width: 768px) {
+  * {
+    font-family: "Comic Sans MS", "Comic Sans", cursive, sans-serif !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+  }
+}
