@@ -60,10 +60,7 @@ export default function Navbar() {
     const el = document.getElementById(id);
     if (!el) return;
 
-    const y =
-      el.getBoundingClientRect().top +
-      window.pageYOffset -
-      NAV_HEIGHT;
+    const y = el.getBoundingClientRect().top + window.pageYOffset - NAV_HEIGHT;
 
     smoothScrollTo(y, 1800); // slower but instant
     setActive(label);
@@ -83,19 +80,23 @@ export default function Navbar() {
         scrolled
           ? "bg-gradient-to-b from-[#F3ECFB] to-[#F8F4FD] shadow-lg"
           : "bg-transparent"
-      }`}
-    >
+      }`}>
       {/* HEADER */}
       <div className="max-w-screen-xl mx-auto px-4 py-4 h-[96px] flex items-center justify-between">
         {/* LEFT */}
         <div className="flex items-center gap-4">
           <button
             onClick={() => setOpen(!open)}
-            className="md:hidden flex flex-col gap-2 cursor-pointer"
-          >
-            <span className={`h-[3px] w-8 bg-[#5E4B8B] rounded transition-all ${open ? "rotate-45 translate-y-2" : ""}`} />
-            <span className={`h-[3px] w-8 bg-[#5E4B8B] rounded transition-all ${open ? "opacity-0" : ""}`} />
-            <span className={`h-[3px] w-8 bg-[#5E4B8B] rounded transition-all ${open ? "-rotate-45 -translate-y-2" : ""}`} />
+            className="md:hidden flex flex-col gap-2 cursor-pointer">
+            <span
+              className={`h-[3px] w-8 bg-[#5E4B8B] rounded transition-all ${open ? "rotate-45 translate-y-2" : ""}`}
+            />
+            <span
+              className={`h-[3px] w-8 bg-[#5E4B8B] rounded transition-all ${open ? "opacity-0" : ""}`}
+            />
+            <span
+              className={`h-[3px] w-8 bg-[#5E4B8B] rounded transition-all ${open ? "-rotate-45 -translate-y-2" : ""}`}
+            />
           </button>
 
           <img
@@ -112,12 +113,9 @@ export default function Navbar() {
             <li key={item.label}>
               <button
                 onClick={() =>
-                  item.id
-                    ? scrollToSection(item.id, item.label)
-                    : item.action()
+                  item.id ? scrollToSection(item.id, item.label) : item.action()
                 }
-                className="flex items-center gap-2 relative group hover:text-[#4B3C78] cursor-pointer"
-              >
+                className="flex items-center gap-2 relative group hover:text-[#4B3C78] cursor-pointer">
                 <span className="text-xl">{item.icon}</span>
                 {item.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#4B3C78] group-hover:w-full transition-all"></span>
@@ -141,8 +139,7 @@ export default function Navbar() {
             href="https://docs.google.com/forms/d/e/1FAIpQLSfbPNn-JeJn3qJRY5bMVg7luMmDG_ztUE-qcGxy6sJyLRjwOg/viewform"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:block"
-          >
+            className="hidden md:block">
             <button className="bg-[#4B3C78] text-white px-6 py-3 text-base font-semibold rounded-lg shadow-sm hover:shadow-md transition cursor-pointer">
               Enquiry
             </button>
@@ -166,8 +163,7 @@ export default function Navbar() {
                     active === item.label
                       ? "text-[#4B3C78] bg-white/70 rounded-lg px-3"
                       : "text-[#5E4B8B]"
-                  }`}
-                >
+                  }`}>
                   <span className="text-xl">{item.icon}</span>
                   {item.label}
                 </button>
@@ -177,6 +173,18 @@ export default function Navbar() {
                 )}
               </div>
             ))}
+
+            {/* ✅ MOBILE ENQUIRY BUTTON */}
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfbPNn-JeJn3qJRY5bMVg7luMmDG_ztUE-qcGxy6sJyLRjwOg/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block mt-6"
+              onClick={() => setOpen(false)}>
+              <button className="w-full bg-[#4B3C78] text-white py-4 text-lg font-semibold rounded-xl shadow-md hover:shadow-lg transition">
+                Enquiry Now
+              </button>
+            </a>
           </div>
         </div>
       )}

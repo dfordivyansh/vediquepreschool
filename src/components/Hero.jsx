@@ -108,12 +108,14 @@ html, body {
 
 /* ========== TEXT ========== */
 .hero-description {
-  font-size: 20px;
+  font-size: 22px;
   color: #3A216A;
   line-height: 1.9;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-family: 'Comic Neue', 'Quicksand', 'Nunito', sans-serif;
+  font-style: normal; /* 🔒 force non-italic */
   margin-bottom: 20px;
 }
+
 
 @media (max-width: 640px) {
   .hero-description {
