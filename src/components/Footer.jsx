@@ -1,15 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
-
-/* X (Twitter) Icon */
-const XIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-    <path
-      d="M18.9 2H22L14.9 10.1L23.3 22H16.8L11.7 14.9L5.7 22H2.6L10.2 13.2L2.1 2H8.8L13.4 8.3L18.9 2Z"
-      fill="currentColor"
-    />
-  </svg>
-);
+import { Facebook, Instagram } from "lucide-react";
 
 const Footer = () => {
   const footerRef = useRef(null);
@@ -51,25 +41,25 @@ const Footer = () => {
         className={`bg-gradient-to-t from-[#1B0F2D] via-[#2A1950] to-[#3A2470]
         text-white footer-reveal ${visible ? "show" : ""}`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-16">
 
           {/* ================= MAIN GRID ================= */}
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+          <div className="grid grid-cols-1 gap-14 lg:grid-cols-4">
 
             {/* ================= BRAND ================= */}
-            <div className="space-y-6 lg:col-span-2 text-center lg:text-left">
+            <div className="space-y-6 text-center lg:text-left lg:col-span-2">
               <img
                 src="/assets/logo.png"
                 alt="Vedique Preschool Logo"
-                className="h-14 mx-auto lg:mx-0"
+                className="h-16 sm:h-20 lg:h-24 mx-auto lg:mx-0"
                 style={{ filter: "brightness(0) invert(1)" }}
               />
 
-              <h2 className="text-2xl font-bold tracking-wide">
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-wide">
                 Vedique Preschool
               </h2>
 
-              <p className="text-white/80 leading-relaxed max-w-md mx-auto lg:mx-0">
+              <p className="text-white/85 leading-relaxed max-w-lg mx-auto lg:mx-0 text-base sm:text-lg">
                 A mindful learning space where children grow with confidence,
                 compassion, creativity, and strong values — prepared for life,
                 not just school.
@@ -78,18 +68,17 @@ const Footer = () => {
 
             {/* ================= LOCATION ================= */}
             <div className="space-y-4 text-center lg:text-left">
-              <h3 className="text-lg font-semibold text-[#D6C7F2]">
+              <h3 className="text-lg sm:text-xl font-semibold text-[#D6C7F2]">
                 Our Location
               </h3>
 
-              <p className="text-sm text-white/80 leading-relaxed">
+              <p className="text-base sm:text-lg text-white/85 leading-relaxed">
                 VEDIQUE PRESCHOOL <br />
                 Plot 52, Gandham Sri Nilayam <br />
                 Prashant Nagar Colony <br />
                 Behind Sai Veda Hospital <br />
                 Bandlaguda Jagir <br />
-                Hyderabad, Telangana – 500086 <br />
-                India
+                Hyderabad, Telangana – 500086
               </p>
             </div>
 
@@ -97,21 +86,21 @@ const Footer = () => {
             <div className="space-y-6 text-center lg:text-left">
 
               <div>
-                <h3 className="text-lg font-semibold text-[#D6C7F2] mb-1">
+                <h3 className="text-lg sm:text-xl font-semibold text-[#D6C7F2] mb-1">
                   Call Us
                 </h3>
-                <p className="text-white/80">
+                <p className="text-white/85 text-base sm:text-lg font-medium">
                   +91 90308 02211
                 </p>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-[#D6C7F2] mb-1">
+                <h3 className="text-lg sm:text-xl font-semibold text-[#D6C7F2] mb-1">
                   Email Us
                 </h3>
                 <a
                   href="mailto:vediquepreschool@gmail.com"
-                  className="text-white/80 hover:text-white transition"
+                  className="text-white/85 hover:text-white transition text-base sm:text-lg font-medium"
                 >
                   vediquepreschool@gmail.com
                 </a>
@@ -119,24 +108,21 @@ const Footer = () => {
 
               {/* ================= SOCIAL ================= */}
               <div>
-                <h3 className="text-lg font-semibold text-[#D6C7F2] mb-4">
+                <h3 className="text-lg sm:text-xl font-semibold text-[#D6C7F2] mb-4">
                   Follow Us
                 </h3>
 
-                <div className="flex justify-center lg:justify-start gap-4">
-                  {[Facebook, XIcon, Instagram, Linkedin].map((Icon, i) => (
+                <div className="flex justify-center lg:justify-start gap-5">
+                  {[Facebook, Instagram].map((Icon, i) => (
                     <a
                       key={i}
                       href="#"
-                      className="w-11 h-11 flex items-center justify-center rounded-xl
+                      aria-label="Social link"
+                      className="w-12 h-12 flex items-center justify-center rounded-xl
                       bg-white/10 border border-white/20
                       hover:bg-white/20 transition"
                     >
-                      {typeof Icon === "function" ? (
-                        <Icon className="text-white" />
-                      ) : (
-                        <Icon className="w-5 h-5 text-white" />
-                      )}
+                      <Icon className="w-6 h-6 text-white" />
                     </a>
                   ))}
                 </div>
@@ -146,10 +132,10 @@ const Footer = () => {
           </div>
 
           {/* ================= DIVIDER ================= */}
-          <hr className="my-12 h-px border-0 bg-white/20" />
+          <hr className="my-12 h-px border-0 bg-white/25" />
 
           {/* ================= COPYRIGHT ================= */}
-          <div className="text-center text-sm text-white/70">
+          <div className="text-center text-sm sm:text-base text-white/75 font-medium">
             © {new Date().getFullYear()} Vedique Preschool. All Rights Reserved.
           </div>
 

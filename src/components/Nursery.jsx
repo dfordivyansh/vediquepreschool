@@ -126,7 +126,7 @@ export default function Nursery() {
             onClick={() => navigate("/")}
             className="absolute top-6 left-6 z-20 bg-white/90 backdrop-blur-md
             px-6 py-2 rounded-full font-semibold text-[#2E1A47]
-            shadow-lg hover:scale-105 transition"
+            shadow-lg hover:scale-105 transition cursor-pointer"
           >
             ← Back to Home
           </button>
@@ -171,7 +171,7 @@ export default function Nursery() {
                 key={title}
                 className="group rounded-[32px] p-8 text-center shadow-xl
                 transition-all duration-500 hover:-translate-y-3
-                hover:shadow-[#6B5FA7]/40"
+                hover:shadow-[#6B5FA7]/40 cursor-pointer"
                 style={{
                   background:
                     "radial-gradient(circle at center, #E9DCFF 0%, #F7F2FF 55%, #FFFFFF 100%)",
