@@ -212,14 +212,19 @@ const Highlights = () => {
 
       {/* ===== HEADER ===== */}
       <div className="text-center max-w-4xl mx-auto mb-24">
-        <p className="inline-block mb-4 px-6 py-2 rounded-full text-base font-bold border border-[#6B4FA3]/40 text-[#6B4FA3] bg-white shadow-sm">
-          Highlights
-        </p>
+            <p
+              className="inline-block mb-6 px-6 py-2 rounded-full
+                          text-xl font-bold border border-[#E38342]
+                          text-[#E38342] bg-gradient-to-b from-[#3493C5]/50 to-white
+
+ shadow-sm">
+              Highlights
+            </p>
         <h2 className="text-4xl md:text-5xl font-extrabold text-[#2E1A47]">
           Thoughtfully Designed for
           <br />
           <span
-            className="italic font-light text-2xl sm:text-3xl md:text-4xl text-[#6B4FA3]"
+            className="italic font-light text-2xl sm:text-3xl md:text-4xl text-[#E38342]"
             style={{ fontFamily: "Instrument Serif, serif" }}>
             Happy, Confident Childhoods
           </span>

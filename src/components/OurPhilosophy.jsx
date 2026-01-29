@@ -158,8 +158,10 @@ const OurPhilosophy = () => {
           <div className={`text-center mb-20 reveal ${visible ? "show" : ""}`}>
             <p
               className="inline-block mb-6 px-6 py-2 rounded-full
-                          text-base font-bold border border-[#6B4FA3]/40
-                          text-[#6B4FA3] bg-white shadow-sm">
+                          text-xl font-bold border border-[#E38342]
+                          text-[#E38342] bg-gradient-to-b from-[#3493C5]/50 to-white
+
+ shadow-sm">
               Our Philosophy
             </p>
 
@@ -172,7 +174,7 @@ const OurPhilosophy = () => {
               <span
                 className="block mt-3
                            text-2xl sm:text-3xl md:text-4xl
-                           font-light italic text-[#6B4FA3]"
+                           font-light italic text-[#E38342]"
                 style={{ fontFamily: "'Instrument Serif', serif" }}>
                 For Life, Not Just School
               </span>
@@ -183,7 +185,7 @@ const OurPhilosophy = () => {
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <div className={`reveal ${visible ? "show" : ""}`}>
               <p
-                className="text-[#3A216A] text-lg sm:text-xl
+                className="text-[#3A216A] text-xl sm:text-2xl
                            leading-relaxed mb-10"
                 style={{
                   fontFamily: "'Comic Neue', 'Nunito', sans-serif",
@@ -239,14 +241,15 @@ const OurPhilosophy = () => {
                   className="flex items-center justify-center gap-3
              w-[280px] shrink-0
              px-6 py-3 rounded-full
-             bg-white border border-[#6B4FA3]/25
-             text-base text-[#3A216A]
+             bg-gradient-to-b from-white via-[#E38342]/70 to-white
+ border border-[#E38342]/25
+             text-xl text-[#2E1A47]
              shadow-sm"
                   style={{
                     fontFamily: "'Comic Neue', 'Nunito', sans-serif",
                     fontStyle: "normal",
                   }}>
-                  <item.icon size={18} className="text-[#6B4FA3]" />
+                  <item.icon size={25} className="text-[#2E1A47]" />
                   <span className="font-bold whitespace-nowrap">
                     {item.label}
                   </span>

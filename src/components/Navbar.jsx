@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import {
   FaPhoneAlt,
   FaEnvelope,
@@ -11,6 +13,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("Home");
+  const navigate = useNavigate();
 
   const NAV_HEIGHT = 96;
 
@@ -74,6 +77,11 @@ export default function Navbar() {
     { label: "Contact", icon: <FaEnvelope />, id: "contact" },
   ];
 
+  const goToEnquiry = () => {
+    navigate("/enquiry");
+    window.scrollTo({ top: 0, behavior: "instant" });
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
@@ -101,7 +109,7 @@ export default function Navbar() {
 
           <img
             src="/assets/logo.png"
-            alt="Aikyam Logo"
+            alt="Vedique Logo"
             onClick={scrollToTop}
             className="h-16 md:h-20 cursor-pointer hover:scale-105 transition"
           />
@@ -127,23 +135,21 @@ export default function Navbar() {
         {/* RIGHT */}
         <div className="flex items-center gap-3">
           <a href="tel:+919030802211">
-            <button className="flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border border-[#4B3C78] text-[#4B3C78] shadow-sm hover:shadow-md transition">
+            <button
+              className="flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 rounded-full bg-gradient-to-br from-[#3493C5] to-white
+ border border-[#E38342] text-[#4B3C78] shadow-sm hover:shadow-md transition">
               <FaPhoneAlt className="animate-phone text-sm md:text-lg" />
-              <span className="text-sm md:text-base font-semibold cursor-pointer">
+              <span className="text-sm md:text-xl font-semibold cursor-pointer">
                 90308 02211
               </span>
             </button>
           </a>
 
-          <a
-            href="/enquiry"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden md:block">
-            <button className="bg-[#4B3C78] text-white px-6 py-3 text-base font-semibold rounded-lg shadow-sm hover:shadow-md transition cursor-pointer">
-              Enquiry
-            </button>
-          </a>
+          <button
+            onClick={goToEnquiry}
+            className="hidden md:block bg-[#E38342] text-white px-6 py-3 text-xl font-semibold rounded-lg shadow-sm hover:shadow-md transition cursor-pointer">
+            Enquiry
+          </button>
         </div>
       </div>
 
@@ -175,16 +181,14 @@ export default function Navbar() {
             ))}
 
             {/* ✅ MOBILE ENQUIRY BUTTON */}
-            <a
-              href="/enquiry"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block mt-6"
-              onClick={() => setOpen(false)}>
-              <button className="w-full bg-[#4B3C78] text-white py-4 text-lg font-semibold rounded-xl shadow-md hover:shadow-lg transition">
-                Enquiry
-              </button>
-            </a>
+            <button
+              onClick={() => {
+                goToEnquiry();
+                setOpen(false);
+              }}
+              className="w-full bg-[#E38342] text-white py-4 text-xl font-semibold rounded-xl shadow-md hover:shadow-lg transition mt-6">
+              Enquiry
+            </button>
           </div>
         </div>
       )}

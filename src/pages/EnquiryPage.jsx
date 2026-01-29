@@ -55,6 +55,32 @@ export default function EnquiryPage() {
           display: none;
         }
       `}</style>
+      <style>{`
+  .animate-logo {
+    animation: logoReveal 0.9s ease-out forwards,
+               logoFloat 4s ease-in-out infinite;
+  }
+
+  @keyframes logoReveal {
+    from {
+      opacity: 0;
+      transform: scale(0.92) translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  @keyframes logoFloat {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+`}</style>
 
       <div
         className="min-h-screen w-full relative overflow-hidden"
@@ -93,52 +119,72 @@ export default function EnquiryPage() {
           px-6 sm:px-10 md:px-16 lg:px-24
           pt-28 pb-16 text-center">
           <div className="flex justify-center items-center gap-3 mb-6">
-            <MessageSquare className="text-[#6B4FA3]" />
             <p
-              className="inline-block px-6 py-2 rounded-full
-              text-xl font-bold border border-[#6B4FA3]/40
-              text-[#6B4FA3] bg-white shadow-sm">
+              className="inline-block mb-6 px-6 py-2 rounded-full
+                          text-2xl font-extrabold  border border-[#E38342]
+                          text-[#E38342] bg-gradient-to-b from-[#3493C5]/50 to-white
+
+ shadow-sm">
               Enquiry Form
             </p>
-            <PhoneCall className="text-[#6B4FA3]" />
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-extrabold text-[#2E1A47] mb-4">
-            We’d Love to Hear From You
-          </h1>
+          <div className="flex justify-center mb-6">
+            <img
+              src="/assets/logo.png"
+              alt="Vedique Preschool"
+              className="h-24 md:h-28 animate-logo"
+            />
+          </div>
 
-          <p
-            className="text-2xl text-[#6B4FA3]"
-            style={{ fontFamily: "'Instrument Serif', serif" }}>
-            Wisdom, Uniquely Nurtured
-          </p>
-
-          <p className="mt-6 text-lg text-[#3A216A] max-w-3xl mx-auto leading-relaxed">
-            Please fill in the enquiry form below and our admissions team will
-            connect with you shortly to assist you with programs, admissions,
-            and any questions you may have.
+          <p className="mt-6 text-xl text-[#3A216A] max-w-3xl mx-auto leading-relaxed">
+            Please fill in the <b>enquiry form</b> below and our{" "}
+            <b>admissions team</b> will connect with you shortly to assist you
+            with <b>programs, admissions, and any questions you may have.</b>
           </p>
         </div>
 
         {/* ===== FORM ===== */}
         <div
           className="
-            relative z-10
-            px-8 sm:px-14 md:px-20 lg:px-36
-            pb-14
-          ">
-          <iframe
-            src="https://tally.so/embed/0QeNPB?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-            width="100%"
-            frameBorder="0"
-            title="Vedique Enquiry Form"
-            scrolling="no"
-            style={{
-              border: "none",
-              height: formHeight,
-              transition: "height 0.9s ease",
-            }}
-          />
+    relative z-10
+    px-8 sm:px-14 md:px-20 lg:px-36
+    pb-14
+  ">
+          <div
+            className="
+      w-full
+      max-w-4xl
+      mx-auto
+      bg-white
+      rounded-3xl
+      shadow-xl
+      border border-[#E6DDF5]
+      overflow-hidden
+    ">
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLSfbPNn-JeJn3qJRY5bMVg7luMmDG_ztUE-qcGxy6sJyLRjwOg/viewform?embedded=true"
+              title="Vedique Enquiry Form"
+              width="100%"
+              height="620"
+              frameBorder="0"
+              marginHeight="0"
+              marginWidth="0"
+              onLoad={() => {
+                if (formLoadedOnce) {
+                  // ✅ Scroll to top AFTER submit
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                  });
+                } else {
+                  setFormLoadedOnce(true);
+                }
+              }}
+              style={{ border: "none" }}>
+              Loading…
+            </iframe>
+          </div>
         </div>
       </div>
 

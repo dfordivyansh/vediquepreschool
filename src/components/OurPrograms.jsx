@@ -154,8 +154,11 @@ const OurPrograms = () => {
           <div
             className={`text-center mb-12 fade-soft ${visible ? "show" : ""}`}>
             <p
-              className="inline-block mb-4 px-6 py-2 rounded-full text-base font-bold
-              border border-[#6B4FA3]/40 text-[#6B4FA3] bg-white shadow-sm">
+              className="inline-block mb-6 px-6 py-2 rounded-full
+                          text-xl font-bold border border-[#E38342]
+                          text-[#E38342] bg-gradient-to-b from-[#3493C5]/50 to-white
+
+ shadow-sm">
               Our Programs
             </p>
 
@@ -165,7 +168,7 @@ const OurPrograms = () => {
               Learning Pathways
               <br />
               <span
-                className="font-light italic text-2xl sm:text-3xl md:text-4xl text-[#6B4FA3]"
+                className="font-light italic text-2xl sm:text-3xl md:text-4xl text-[#E38342]"
                 style={{ fontFamily: "'Instrument Serif', serif" }}>
                 For Every Stage of Growth
               </span>
@@ -211,7 +214,7 @@ const OurPrograms = () => {
                   </p>
                 </div>
 
-                <div className="explore-btn mt-6 text-[#6B4FA3] text-xl font-bold">
+                <div className="explore-btn mt-6 text-[#E38342] text-xl font-bold">
                   Explore
                   <ArrowRight size={16} />
                 </div>

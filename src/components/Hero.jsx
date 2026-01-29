@@ -13,8 +13,9 @@ import {
 const NAV_HEIGHT = 80;
 const currentYear = new Date().getFullYear();
 
+/* ====================== STYLES ====================== */
 const styleSheet = `
-/* ========== GLOBAL SAFETY ========== */
+/* ===== GLOBAL ===== */
 *,
 *::before,
 *::after {
@@ -26,7 +27,7 @@ html, body {
   overflow-x: hidden;
 }
 
-/* ========== HERO ========== */
+/* ===== HERO ===== */
 .hero-banner {
   background: radial-gradient(circle at top left, #E6E0F8, #D7C7F2);
   min-height: 100svh;
@@ -37,7 +38,7 @@ html, body {
 
 @media (max-width: 640px) {
   .hero-banner {
-    padding: 160px 20px 80px;
+    padding: 140px 20px 80px;
   }
 }
 
@@ -59,35 +60,99 @@ html, body {
   }
 }
 
-/* ========== HEADING ========== */
+/* ===== FLOATING ICONS (IMPROVED) ===== */
+.floating-icon {
+  position: absolute;
+  font-size: 92px;
+  fill: none;
+  stroke: #9B8BCB; /* matches hero gradient */
+  stroke-width: 26px; /* solid thick stroke */
+  opacity: 0.35;
+  animation: floatIcon 8s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+@media (max-width: 640px) {
+  .floating-icon {
+    font-size: 64px;
+    opacity: 0.28;
+  }
+}
+
+@keyframes floatIcon {
+  from { transform: translateY(0); }
+  to { transform: translateY(-14px); }
+}
+
+/* ===== MOBILE MARQUEE (DESKTOP-LIKE) ===== */
+.mobile-admission-strip {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .mobile-admission-strip {
+    display: block;
+    width: 100%;
+    margin-bottom: 26px;
+    padding: 8px 0;
+    border-radius: 999px;
+    background: linear-gradient(135deg,#ff9f1c,#ffb703,#ffd166);
+    box-shadow: 0 12px 30px rgba(255,159,28,0.45);
+    overflow: hidden;
+  }
+
+  .mobile-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marqueeMobile 18s linear infinite;
+  }
+
+  .mobile-admission-text {
+    white-space: nowrap;
+    padding-right: 80px;
+    font-family: 'Inter', 'SF Pro', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #3b1d00;
+    text-transform: uppercase;
+  }
+}
+
+@keyframes marqueeMobile {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ===== HEADING ===== */
 .hero-heading {
   font-family: 'SF Pro', 'Inter', sans-serif;
   font-weight: 900;
-  font-size: 90px;
-  line-height: 98px;
+  font-size: 94px;
+  line-height: 102px;
   color: #2E1A47;
   margin-bottom: 20px;
 }
 
 @media (max-width: 640px) {
   .hero-heading {
-    font-size: 56px;
-    line-height: 62px;
+    font-size: 60px;
+    line-height: 66px;
   }
 }
 
-/* ========== TAGLINE ========== */
+/* ===== TAGLINE ===== */
 .hero-tagline-wrapper {
   min-height: 56px;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
   overflow: hidden;
 }
 
 .hero-tagline {
   font-family: 'Instrument Serif', serif;
-  font-weight: 600;
-  font-size: 36px;
-  color: #4B2E83;
+  font-weight: 900;
+  font-size: 38px;
+  color: #E38342;
   font-style: italic;
   opacity: 0;
   animation: taglineFade 3.5s ease-in-out forwards;
@@ -95,7 +160,7 @@ html, body {
 
 @media (max-width: 640px) {
   .hero-tagline {
-    font-size: 24px;
+    font-size: 28px;
   }
 }
 
@@ -106,24 +171,33 @@ html, body {
   100% { opacity: 0; transform: translateY(-12px); }
 }
 
-/* ========== TEXT ========== */
+/* ===== TEXT ===== */
 .hero-description {
-  font-size: 22px;
+  font-size: 24px;
+  font-weight: 600;
   color: #3A216A;
   line-height: 1.9;
   font-family: 'Comic Neue', 'Quicksand', 'Nunito', sans-serif;
-  font-style: normal; /* 🔒 force non-italic */
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
-
 
 @media (max-width: 640px) {
   .hero-description {
-    font-size: 18px;
+    font-size: 19px;
   }
 }
 
-/* ========== IMAGE ========== */
+.highlight-orange {
+  color: #E38342;
+  font-weight: 700;
+}
+
+.highlight-orange-dark {
+  color: #FF9F1C;
+  font-weight: 700;
+}
+
+/* ===== IMAGE ===== */
 .hero-image-container {
   position: relative;
   max-width: 500px;
@@ -137,76 +211,56 @@ html, body {
   border-radius: 32px;
 }
 
-/* ========== ADMISSION STRIP ========== */
+/* ===== DESKTOP MARQUEE ===== */
 .admission-strip {
   width: 100%;
-  max-width: 520px;
-  margin: 24px auto 16px;
-  padding: 10px 0;
+  max-width: 620px;
+  margin: 28px auto 18px;
+  padding: 14px 0;
   border-radius: 999px;
-  border: 1px solid rgba(107,79,163,0.5);
-  background: #ffffff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  background: linear-gradient(135deg,#ff9f1c,#ffb703,#ffd166);
+  box-shadow: 0 12px 30px rgba(255,159,28,0.45);
   overflow: hidden;
 }
 
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marqueeLoop 22s linear infinite;
+  animation: marqueeDesktop 20s linear infinite;
 }
 
 .admission-text {
   white-space: nowrap;
-  padding-right: 64px;
-  font-family: 'Instrument Serif', serif;
-  font-weight: 800;
-  font-size: 18px;
-  letter-spacing: 1.4px;
-  color: #6B4FA3;
+  padding-right: 80px;
+  font-family: 'Inter', 'SF Pro', sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  letter-spacing: 2px;
+  color: #3b1d00;
+  text-transform: uppercase;
 }
 
-@keyframes marqueeLoop {
+@keyframes marqueeDesktop {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 
-/* MOBILE */
 @media (max-width: 640px) {
-  .admission-strip {
-    max-width: 90%;
-  }
-
-  .marquee-track {
-    width: 100%;
-    animation: marqueeMobile 14s linear infinite;
-  }
-
-  .admission-text {
-    font-size: 17px;
-    padding-right: 0;
-  }
-
-  .admission-text:nth-child(2) {
+  .hero-image-container .admission-strip {
     display: none;
   }
 }
 
-@keyframes marqueeMobile {
-  from { transform: translateX(100%); }
-  to { transform: translateX(-100%); }
-}
-
-/* ========== CTA ========== */
+/* ===== CTA ===== */
 .hero-cta {
-  margin-top: 20px;
+  margin-top: 24px;
 }
 
 .hero-cta button {
   padding: 18px 52px;
   font-size: 20px;
   border-radius: 24px;
-  font-weight: 600;
+  font-weight: 700;
   background: linear-gradient(to bottom, #FFE082, #FFC107);
   color: #2E1A47;
   border: none;
@@ -218,32 +272,9 @@ html, body {
 .hero-cta button:hover {
   transform: scale(1.05);
 }
-
-/* ========== FLOATING ICONS ========== */
-.floating-icon {
-  position: absolute;
-  font-size: 88px;
-  fill: none;
-  stroke: rgba(107,79,163,0.45);
-  stroke-width: 5.2px;
-  animation: floatIcon 8s ease-in-out infinite alternate;
-  z-index: 1;
-}
-
-@media (max-width: 640px) {
-  .floating-icon {
-    font-size: 64px;
-    opacity: 0.5;
-  }
-}
-
-@keyframes floatIcon {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-16px); }
-  100% { transform: translateY(10px); }
-}
 `;
 
+/* ====================== DATA ====================== */
 const taglines = [
   "Wisdom, Uniquely Nurtured",
   "Little Steps to Big Wisdom",
@@ -261,31 +292,32 @@ const icons = [
   FaAtom,
 ];
 
+/* ====================== COMPONENT ====================== */
 const Hero = ({ setActive, setOpen }) => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(() => {
-      setIndex((p) => (p + 1) % taglines.length);
-    }, 3500);
+    const t = setInterval(
+      () => setIndex((p) => (p + 1) % taglines.length),
+      3500,
+    );
     return () => clearInterval(t);
   }, []);
 
   const scrollToSection = (id, label) => {
     const el = document.getElementById(id);
     if (!el) return;
-
-    const y =
-      el.getBoundingClientRect().top + window.pageYOffset - NAV_HEIGHT;
-
+    const y = el.getBoundingClientRect().top + window.pageYOffset - NAV_HEIGHT;
     window.scrollTo({ top: y, behavior: "smooth" });
     setActive?.(label);
     setOpen?.(false);
   };
 
-  const marqueeText = `Admission Open ${currentYear}-${String(
-    currentYear + 1
-  ).slice(-2)} | Vedique Preschool`;
+  const marqueeText = `ADMISSION OPEN ${currentYear}-${String(
+    currentYear + 1,
+  ).slice(
+    -2,
+  )} • PLAYGROUP • NURSERY • LKG • UKG • PARENT TODDLER • DAYCARE • ENRICHMENT`;
 
   const floatingIcons = useMemo(
     () =>
@@ -297,7 +329,7 @@ const Hero = ({ setActive, setOpen }) => {
           animationDelay: `${i * 0.7}s`,
         },
       })),
-    []
+    [],
   );
 
   return (
@@ -310,6 +342,14 @@ const Hero = ({ setActive, setOpen }) => {
         ))}
 
         <div className="hero-content">
+          {/* MOBILE MARQUEE */}
+          <div className="mobile-admission-strip">
+            <div className="mobile-marquee-track">
+              <span className="mobile-admission-text">{marqueeText}</span>
+              <span className="mobile-admission-text">{marqueeText}</span>
+            </div>
+          </div>
+
           <div>
             <h1 className="hero-heading">Vedique</h1>
 
@@ -320,13 +360,25 @@ const Hero = ({ setActive, setOpen }) => {
             </div>
 
             <p className="hero-description">
-              <b>Vedique</b> is born from the union of two powerful ideas—<b>‘Vedic’</b> and <b>‘Unique’</b> - symbolising wisdom imparted in a distinctive and meaningful way.
+              <b className="text-amber-900">Vedique</b> is born from the union
+              of two powerful ideas—<b className="text-amber-900">‘Vedic’</b>{" "}
+              and <b className="text-amber-900">‘Unique’</b> - symbolising
+              wisdom imparted in a distinctive and meaningful way.
             </p>
+
             <p className="hero-description">
-              Choosing a pre-school for your little one is about so much more than alphabets, numbers, songs, and colours. It’s about laying the very first foundation of <b>lifelong learning</b> and shaping a <b>confident, compassionate</b> human being.
+              Choosing a pre-school for your little one is about so much more
+              than alphabets, numbers, songs, and colours. It’s about laying the
+              very first foundation of{" "}
+              <b className="text-amber-900">lifelong learning</b> and shaping a{" "}
+              <b className="text-amber-900">confident, compassionate</b> human
+              being.
             </p>
+
             <p className="hero-description">
-              That foundation—your child’s stepping stone into the world—must be <b>strong, nurturing, and inspiring</b>.
+              That foundation—your child’s stepping stone into the world—must be{" "}
+              <b className="text-amber-900">strong, nurturing, and inspiring</b>
+              .
             </p>
           </div>
 

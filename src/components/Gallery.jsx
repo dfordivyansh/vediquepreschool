@@ -99,15 +99,20 @@ const Gallery = () => {
           {/* ===== HEADER ===== */}
           <div
             className={`text-center mb-14 transition-all duration-700 ${visible ? "opacity-100" : "opacity-0 translate-y-6"}`}>
-            <span className="inline-block px-6 py-2 rounded-full bg-white border border-[#6B4FA3]/40 text-base font-bold text-[#6B4FA3] mb-5">
+            <p
+              className="inline-block mb-6 px-6 py-2 rounded-full
+                          text-xl font-bold border border-[#E38342]
+                          text-[#E38342] bg-gradient-to-b from-[#3493C5]/50 to-white
+
+ shadow-sm">
               Our Gallery
-            </span>
+            </p>
 
             <h2 className="text-4xl sm:text-5xl font-extrabold text-[#2E1A47] mb-3">
               Moments at Vedique School
               <br />
               <span
-                className="font-light italic text-[#6B4FA3] text-2xl sm:text-3xl md:text-4xl"
+                className="font-light italic text-[#E38342] text-2xl sm:text-3xl md:text-4xl"
                 style={{ fontFamily: "Instrument Serif, serif" }}>
                 Where Learning Comes Alive
               </span>
