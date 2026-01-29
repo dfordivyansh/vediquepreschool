@@ -216,7 +216,7 @@ html, body {
   width: 100%;
   max-width: 620px;
   margin: 28px auto 18px;
-  padding: 14px 0;
+  padding: 10px 0;
   border-radius: 999px;
   background: linear-gradient(135deg,#ff9f1c,#ffb703,#ffd166);
   box-shadow: 0 12px 30px rgba(255,159,28,0.45);
