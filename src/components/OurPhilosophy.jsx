@@ -6,15 +6,21 @@ import {
   Users,
   Sparkles,
   Star,
-  Flower
+  Flower,
 } from "lucide-react";
 
 /* External font */
 const FontLoader = () => (
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&display=swap"
-  />
+  <>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Nunito:wght@400;600&display=swap"
+    />
+  </>
 );
 
 const OurPhilosophy = () => {
@@ -29,25 +35,24 @@ const OurPhilosophy = () => {
           observer.disconnect();
         }
       },
-      { threshold: 0.25 }
+      { threshold: 0.25 },
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-
   const bgIcons = [
-  { Icon: Sparkles, top: "6%", left: "6%" },
-  { Icon: Star, top: "16%", right: "10%" },
-  { Icon: Flower, top: "30%", left: "14%" },
-  { Icon: HeartHandshake, top: "42%", right: "18%" },
+    { Icon: Sparkles, top: "6%", left: "6%" },
+    { Icon: Star, top: "16%", right: "10%" },
+    { Icon: Flower, top: "30%", left: "14%" },
+    { Icon: HeartHandshake, top: "42%", right: "18%" },
 
-  { Icon: Brain, bottom: "28%", left: "10%" },
-  { Icon: Leaf, bottom: "22%", right: "14%" },
-  { Icon: Users, bottom: "12%", left: "20%" },
-  { Icon: Sparkles, bottom: "8%", right: "6%" },
-];
+    { Icon: Brain, bottom: "28%", left: "10%" },
+    { Icon: Leaf, bottom: "22%", right: "14%" },
+    { Icon: Users, bottom: "12%", left: "20%" },
+    { Icon: Sparkles, bottom: "8%", right: "6%" },
+  ];
 
   return (
     <>
@@ -135,32 +140,31 @@ const OurPhilosophy = () => {
           paddingBottom: "5.5rem",
           fontFamily: "Inter, sans-serif",
           overflow: "hidden",
-        }}
-      >
+        }}>
         {bgIcons.map(({ Icon, ...pos }, i) => (
-  <Icon
-    key={i}
-    size={72}
-    className="bg-icon"
-    style={{
-      ...pos,
-      animationDelay: `${i * 0.6}s`,
-    }}
-  />
-))}
-
+          <Icon
+            key={i}
+            size={72}
+            className="bg-icon"
+            style={{
+              ...pos,
+              animationDelay: `${i * 0.6}s`,
+            }}
+          />
+        ))}
 
         <div className="max-w-6xl mx-auto relative z-10">
-
           {/* ===== Header ===== */}
           <div className={`text-center mb-20 reveal ${visible ? "show" : ""}`}>
-            <p className="inline-block mb-6 px-6 py-2 rounded-full
+            <p
+              className="inline-block mb-6 px-6 py-2 rounded-full
                           text-base font-bold border border-[#6B4FA3]/40
                           text-[#6B4FA3] bg-white shadow-sm">
               Our Philosophy
             </p>
 
-            <h2 className="text-[#2E1A47]
+            <h2
+              className="text-[#2E1A47]
                            text-3xl sm:text-4xl md:text-5xl
                            font-extrabold leading-tight">
               Preparing Children
@@ -169,8 +173,7 @@ const OurPhilosophy = () => {
                 className="block mt-3
                            text-2xl sm:text-3xl md:text-4xl
                            font-light italic text-[#6B4FA3]"
-                style={{ fontFamily: "'Instrument Serif', serif" }}
-              >
+                style={{ fontFamily: "'Instrument Serif', serif" }}>
                 For Life, Not Just School
               </span>
             </h2>
@@ -182,28 +185,33 @@ const OurPhilosophy = () => {
               <p
                 className="text-[#3A216A] text-lg sm:text-xl
                            leading-relaxed mb-10"
-                style={{ fontFamily: "'Comic Sans MS', cursive" }}
-              >
+                style={{
+                  fontFamily: "'Comic Neue', 'Nunito', sans-serif",
+                  fontStyle: "normal",
+                }}>
                 At <b>Vedique</b>, we believe that <b>healthy habits</b> and
                 <b> emotional intelligence</b> should be cultivated from the
                 earliest years. Our thoughtfully designed experiential learning
                 curriculum draws the best from <b>Waldorf</b> and
                 <b> Montessori philosophies</b>, blending structure with
                 creativity.
-                <br /><br />
-                Beyond academics, we focus on <b>holistic development</b>—helping
-                children learn <b>table manners</b>, <b>civic sense</b>,
-                <b> healthy eating habits</b>, and the joy of meaningful
+                <br />
+                <br />
+                Beyond academics, we focus on <b>holistic development</b>
+                —helping children learn <b>table manners</b>, <b>civic sense</b>
+                ,<b> healthy eating habits</b>, and the joy of meaningful
                 <b> social interaction</b>.
-                <br /><br />
+                <br />
+                <br />
                 <span className="font-bold text-[#2E1A47]">
-                  Because at Vedique, we don’t just prepare children for school—we
-                  prepare them for life.
+                  Because at Vedique, we don’t just prepare children for
+                  school—we prepare them for life.
                 </span>
               </p>
             </div>
 
-            <div className={`relative glow-wrap reveal ${visible ? "show" : ""}`}>
+            <div
+              className={`relative glow-wrap reveal ${visible ? "show" : ""}`}>
               <img
                 src="/assets/philosophy.png"
                 alt="Vedique Philosophy"
@@ -229,22 +237,23 @@ const OurPhilosophy = () => {
                 <div
                   key={i}
                   className="flex items-center justify-center gap-3
-                             w-[280px] shrink-0
-                             px-6 py-3 rounded-full
-                             bg-white border border-[#6B4FA3]/25
-                             text-base text-[#3A216A]
-                             shadow-sm"
-                  style={{ fontFamily: "'Comic Sans MS', cursive" }}
-                >
+             w-[280px] shrink-0
+             px-6 py-3 rounded-full
+             bg-white border border-[#6B4FA3]/25
+             text-base text-[#3A216A]
+             shadow-sm"
+                  style={{
+                    fontFamily: "'Comic Neue', 'Nunito', sans-serif",
+                    fontStyle: "normal",
+                  }}>
                   <item.icon size={18} className="text-[#6B4FA3]" />
-                  <span className="font-semibold whitespace-nowrap">
+                  <span className="font-bold whitespace-nowrap">
                     {item.label}
                   </span>
                 </div>
               ))}
             </div>
           </div>
-
         </div>
       </section>
     </>
