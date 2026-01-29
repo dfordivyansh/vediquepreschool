@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MessageSquare, PhoneCall } from "lucide-react";
 import Footer from "../components/Footer";
@@ -20,19 +20,39 @@ const FontLoader = () => (
 export default function EnquiryPage() {
   const navigate = useNavigate();
 
+  /* ===== FORM HEIGHT CONTROL ===== */
+  const [formHeight, setFormHeight] = useState(
+    window.innerWidth < 768 ? "220vh" : "180vh",
+  );
+
+  /* ===== HANDLE TALLY SUBMISSION ===== */
+  useEffect(() => {
+    const handleMessage = (event) => {
+      if (
+        typeof event.data === "string" &&
+        event.data.includes("tally.formSubmitted")
+      ) {
+        // Reduce form height after submission
+        setFormHeight("100vh");
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, []);
+
   return (
     <>
       <FontLoader />
 
-      {/* ===== GLOBAL SCROLLBAR HIDE ===== */}
+      {/* ===== GLOBAL SCROLLBAR HIDE (PAGE ONLY) ===== */}
       <style>{`
-        /* Hide scrollbar but keep scroll */
         body {
-          scrollbar-width: none;       /* Firefox */
-          -ms-overflow-style: none;    /* IE/Edge */
+          scrollbar-width: none;
+          -ms-overflow-style: none;
         }
         body::-webkit-scrollbar {
-          display: none;               /* Chrome/Safari */
+          display: none;
         }
       `}</style>
 
@@ -46,13 +66,13 @@ export default function EnquiryPage() {
         {/* ===== BACKGROUND ICONS ===== */}
         <MessageSquare
           className="absolute text-[#6B4FA3]/10 pointer-events-none
-                     w-56 h-56 md:w-96 md:h-96"
+                     w-48 h-48 md:w-96 md:h-96"
           style={{ top: "20%", left: "4%" }}
         />
 
         <PhoneCall
           className="absolute text-[#6B4FA3]/10 pointer-events-none
-                     w-48 h-48 md:w-80 md:h-80"
+                     w-44 h-44 md:w-80 md:h-80"
           style={{ bottom: "18%", right: "5%" }}
         />
 
@@ -70,8 +90,8 @@ export default function EnquiryPage() {
         {/* ===== HEADER ===== */}
         <div
           className="relative z-10 max-w-6xl mx-auto
-                        px-6 sm:px-10 md:px-16 lg:px-24
-                        pt-28 pb-16 text-center">
+          px-6 sm:px-10 md:px-16 lg:px-24
+          pt-28 pb-16 text-center">
           <div className="flex justify-center items-center gap-3 mb-6">
             <MessageSquare className="text-[#6B4FA3]" />
             <p
@@ -104,7 +124,7 @@ export default function EnquiryPage() {
         <div
           className="
             relative z-10
-            px-10 sm:px-16 md:px-20 lg:px-50
+            px-8 sm:px-14 md:px-20 lg:px-36
             pb-14
           ">
           <iframe
@@ -112,15 +132,16 @@ export default function EnquiryPage() {
             width="100%"
             frameBorder="0"
             title="Vedique Enquiry Form"
-            scrolling="yes"
+            scrolling="no"
             style={{
               border: "none",
-              minHeight: "180vh",
-              overflow: "auto",
+              height: formHeight,
+              transition: "height 0.9s ease",
             }}
           />
         </div>
       </div>
+
       <Footer />
     </>
   );
