@@ -17,6 +17,18 @@ import {
 } from "lucide-react";
 
 /* ================= IMPORTANT TERMS ================= */
+const FontLoader = () => (
+  <>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Nunito:wght@400;600&display=swap"
+    />
+  </>
+);
 
 const importantTerms = [
   "Vedique",
@@ -128,8 +140,6 @@ const highlights = [
   },
 ];
 
-
-
 /* ================= UTILS ================= */
 
 const applyBold = (text) => {
@@ -146,7 +156,7 @@ const Highlights = () => {
   const [active, setActive] = useState(null);
   const [open, setOpen] = useState(false);
 
-   const scrollYRef = useRef(0);
+  const scrollYRef = useRef(0);
 
   useEffect(() => {
     if (open) {
@@ -183,21 +193,22 @@ const Highlights = () => {
         background:
           "radial-gradient(circle at top left, #E7DBFA 0%, #F1E6FF 45%, #FAF7FE 80%)",
       }}>
-      {/* ===== BACKGROUND ICONS ===== */}
-{[BookOpen, Mic, Leaf, GraduationCap, Apple, ShieldCheck].map(
-  (Icon, i) => (
-    <Icon
-      key={i}
-      className="absolute text-[#6B4FA3]/15"
-      style={{
-        top: `${10 + i * 12}%`,
-        left: i % 2 === 0 ? "4%" : "88%",
-      }}
-      size={window.innerWidth < 768 ? 70 : 140}
-    />
-  )
-)}
+      <FontLoader />
 
+      {/* ===== BACKGROUND ICONS ===== */}
+      {[BookOpen, Mic, Leaf, GraduationCap, Apple, ShieldCheck].map(
+        (Icon, i) => (
+          <Icon
+            key={i}
+            className="absolute text-[#6B4FA3]/15"
+            style={{
+              top: `${10 + i * 12}%`,
+              left: i % 2 === 0 ? "4%" : "88%",
+            }}
+            size={window.innerWidth < 768 ? 70 : 140}
+          />
+        ),
+      )}
 
       {/* ===== HEADER ===== */}
       <div className="text-center max-w-4xl mx-auto mb-24">
@@ -234,11 +245,11 @@ const Highlights = () => {
 
           <text
             fill="#2E1A47"
-            fontSize="35"
+            fontSize="33"
             fontFamily="Instrument Serif, serif"
             textAnchor="middle">
             <textPath href="#circleText" startOffset="50%">
-              Learn • 🕮 • Play • Grow • Discover • Together •
+                Learn • Play • Grow • Discover • Shine • Together •
             </textPath>
           </text>
         </svg>
@@ -263,7 +274,10 @@ const Highlights = () => {
                 className="w-40 h-40 rounded-full bg-gradient-to-b from-[#F3ECFB] to-white
                 border border-[#6B4FA3]/30 shadow-xl flex flex-col items-center justify-center
                 text-center cursor-pointer transition-transform duration-300 hover:scale-110"
-                style={{ fontFamily: "Comic Sans MS, cursive" }}>
+                style={{
+                  fontFamily: "'Comic Neue', 'Nunito', sans-serif",
+                  fontStyle: "normal",
+                }}>
                 <Icon size={40} className="text-[#6B4FA3]" />
                 <p className="mt-2 text-base font-bold text-[#2E1A47] px-3">
                   {item.title}
@@ -287,11 +301,11 @@ const Highlights = () => {
             </defs>
             <text
               fill="#2E1A47"
-              fontSize="35"
+              fontSize="33"
               fontFamily="Instrument Serif, serif"
               textAnchor="middle">
               <textPath href="#circleTextMobile" startOffset="50%">
-                Learn • 🕮 • Play • Grow • Discover • Together •
+                Learn • Play • Grow • Discover • Shine • Together •
               </textPath>
             </text>
           </svg>
@@ -322,7 +336,10 @@ const Highlights = () => {
                 border border-[#6B4FA3]/25 shadow-lg flex flex-col items-center justify-center
                 text-center cursor-pointer transition-transform duration-300
                 active:scale-95 hover:scale-105"
-                      style={{ fontFamily: "Comic Sans MS, cursive" }}>
+                      style={{
+                        fontFamily: "'Comic Neue', 'Nunito', sans-serif",
+                        fontStyle: "normal",
+                      }}>
                       <Icon size={36} className="text-[#6B4FA3]" />
                       <p className="mt-2 text-[18px] font-bold text-[#2E1A47] px-3">
                         {item.title}
@@ -419,7 +436,10 @@ const Highlights = () => {
 
             <div
               className="space-y-4 text-[#3A216A] text-xl"
-              style={{ fontFamily: "Comic Sans MS, cursive" }}
+              style={{
+                fontFamily: "'Comic Neue', 'Nunito', sans-serif",
+                fontStyle: "normal",
+              }}
               dangerouslySetInnerHTML={{
                 __html: highlights[active].text
                   .map((p) => `<p>${applyBold(p)}</p>`)
