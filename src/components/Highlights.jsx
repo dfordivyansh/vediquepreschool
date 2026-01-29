@@ -271,7 +271,7 @@ const Highlights = () => {
                   setActive(i);
                   setOpen(true);
                 }}
-                className="w-40 h-40 rounded-full bg-gradient-to-b from-[#F3ECFB] to-white
+                className="w-42 h-42 rounded-full bg-gradient-to-b from-[#F3ECFB] to-white
                 border border-[#6B4FA3]/30 shadow-xl flex flex-col items-center justify-center
                 text-center cursor-pointer transition-transform duration-300 hover:scale-110"
                 style={{
@@ -279,7 +279,7 @@ const Highlights = () => {
                   fontStyle: "normal",
                 }}>
                 <Icon size={40} className="text-[#6B4FA3]" />
-                <p className="mt-2 text-base font-bold text-[#2E1A47] px-3">
+                <p className="mt-2 text-xl font-bold text-[#2E1A47] px-3">
                   {item.title}
                 </p>
               </div>
@@ -341,7 +341,7 @@ const Highlights = () => {
                         fontStyle: "normal",
                       }}>
                       <Icon size={36} className="text-[#6B4FA3]" />
-                      <p className="mt-2 text-[18px] font-bold text-[#2E1A47] px-3">
+                      <p className="mt-2 text-[19px] font-bold text-[#2E1A47] px-3">
                         {item.title}
                       </p>
                     </div>

@@ -17,11 +17,18 @@ import Contact from "../components/Contact";
 
 /* ===== FONT ===== */
 const FontLoader = () => (
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&display=swap"
-  />
+  <>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Nunito:wght@400;600&display=swap"
+    />
+  </>
 );
+
 
 const categories = ["All Images", "Classroom", "Events", "Activities"];
 const ITEMS_PER_PAGE = 12;
@@ -68,9 +75,7 @@ const FullGallery = () => {
   useEffect(() => {
     if (!heroImages.length) return;
     const interval = setInterval(() => {
-      setHeroIndex((prev) =>
-        prev === heroImages.length - 1 ? 0 : prev + 1
-      );
+      setHeroIndex((prev) => (prev === heroImages.length - 1 ? 0 : prev + 1));
     }, 4000);
     return () => clearInterval(interval);
   }, [heroImages.length]);
@@ -86,7 +91,7 @@ const FullGallery = () => {
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentImages = filteredImages.slice(
     startIndex,
-    startIndex + ITEMS_PER_PAGE
+    startIndex + ITEMS_PER_PAGE,
   );
 
   useEffect(() => {
@@ -121,8 +126,7 @@ const FullGallery = () => {
           onClick={() => navigate("/")}
           className="absolute top-6 left-6 z-20 bg-white/90 backdrop-blur-md
           px-6 py-2 rounded-full font-semibold text-[#2E1A47]
-          shadow-lg hover:scale-105 transition cursor-pointer"
-        >
+          shadow-lg hover:scale-105 transition cursor-pointer">
           ← Back to Home
         </button>
 
@@ -133,8 +137,10 @@ const FullGallery = () => {
             </h1>
             <p
               className="text-white/90 text-2xl"
-              style={{ fontFamily: "'Comic Sans MS', cursive" }}
-            >
+              style={{
+                fontFamily: "'Comic Neue', 'Nunito', sans-serif",
+                fontStyle: "normal",
+              }}>
               Capturing moments of <b>learning, joy & growth</b>
             </p>
           </div>
@@ -142,129 +148,121 @@ const FullGallery = () => {
       </section>
 
       {/* ===== IMAGE GALLERY ===== */}
-<section
-  className="relative py-16 px-4 sm:px-8 overflow-hidden"
-  style={{
-    background:
-      "radial-gradient(circle at top left, #EFE6FF 0%, #F7F2FF 45%, #FFFFFF 75%)",
-  }}
->
-  {/* 🖼 IMAGE BACKGROUND ICONS */}
-  {[ImageIcon, Camera, Images].map((Icon, i) => (
-    <Icon
-      key={i}
-      className="absolute text-[#6B4FA3]/15"
-      size={120}
-      style={{
-        top: `${15 + i * 30}%`,
-        left: i % 2 === 0 ? "4%" : "92%",
-      }}
-    />
-  ))}
-
-  <div className="max-w-7xl mx-auto relative z-10">
-    {/* FILTERS */}
-    <div className="flex flex-wrap justify-center gap-4 mb-14">
-      {categories.map((cat) => (
-        <button
-          key={cat}
-          onClick={() => setActiveCategory(cat)}
-          className={`px-6 py-2 rounded-full font-semibold transition cursor-pointer ${
-            activeCategory === cat
-              ? "bg-[#6B4FA3] text-white"
-              : "bg-white border border-[#6B4FA3]/30 text-[#6B4FA3]"
-          }`}
-        >
-          {cat}
-        </button>
-      ))}
-    </div>
-
-    {/* GRID */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {currentImages.map((img, index) => (
-        <div
-          key={index}
-          onClick={() => setLightboxIndex(index)}
-          className="cursor-pointer overflow-hidden rounded-[26px]
-          bg-white shadow-lg hover:shadow-[#6B4FA3]/40 transition"
-        >
-          <img
-            src={img.src}
-            alt="Gallery"
-            className="w-full h-60 object-cover hover:scale-105 transition"
-          />
-        </div>
-      ))}
-    </div>
-
-    {/* PAGINATION */}
-    {totalPages > 1 && (
-      <div className="flex justify-center gap-3 mt-14">
-        {Array.from({ length: totalPages }).map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrentPage(i + 1)}
-            className={`w-10 h-10 rounded-full font-bold cursor-pointer ${
-              currentPage === i + 1
-                ? "bg-[#6B4FA3] text-white"
-                : "bg-white border border-[#6B4FA3]/30 text-[#6B4FA3]"
-            }`}
-          >
-            {i + 1}
-          </button>
-        ))}
-      </div>
-    )}
-  </div>
-</section>
-
-
-{videos.length > 0 && (
-  <section
-    className="relative py-20 px-4 sm:px-8 overflow-hidden"
-    style={{
-      background:
-        "radial-gradient(circle at center, #E9DCFF 0%, #F7F2FF 55%, #FFFFFF 100%)",
-    }}
-  >
-    {/* 🎥 VIDEO BACKGROUND ICONS */}
-    {[Video, Film, PlayCircle].map((Icon, i) => (
-      <Icon
-        key={i}
-        className="absolute text-[#6B4FA3]/15"
-        size={130}
+      <section
+        className="relative py-16 px-4 sm:px-8 overflow-hidden"
         style={{
-          top: `${20 + i * 25}%`,
-          left: i % 2 === 0 ? "6%" : "90%",
-        }}
-      />
-    ))}
-
-    <div className="max-w-7xl mx-auto relative z-10">
-      <h2 className="text-4xl font-extrabold text-center text-[#4B3C78] mb-12">
-        School Videos
-      </h2>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        {videos.map((video, i) => (
-          <div
+          background:
+            "radial-gradient(circle at top left, #EFE6FF 0%, #F7F2FF 45%, #FFFFFF 75%)",
+        }}>
+        {/* 🖼 IMAGE BACKGROUND ICONS */}
+        {[ImageIcon, Camera, Images].map((Icon, i) => (
+          <Icon
             key={i}
-            className="rounded-[26px] overflow-hidden shadow-xl bg-white"
-          >
-            <video
-              src={video.src}
-              controls
-              muted
-              className="w-full h-64 object-cover"
-            />
-          </div>
+            className="absolute text-[#6B4FA3]/15"
+            size={120}
+            style={{
+              top: `${15 + i * 30}%`,
+              left: i % 2 === 0 ? "4%" : "92%",
+            }}
+          />
         ))}
-      </div>
-    </div>
-  </section>
-)}
 
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* FILTERS */}
+          <div className="flex flex-wrap justify-center gap-4 mb-14">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-6 py-2 rounded-full font-semibold transition cursor-pointer ${
+                  activeCategory === cat
+                    ? "bg-[#6B4FA3] text-white"
+                    : "bg-white border border-[#6B4FA3]/30 text-[#6B4FA3]"
+                }`}>
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* GRID */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {currentImages.map((img, index) => (
+              <div
+                key={index}
+                onClick={() => setLightboxIndex(index)}
+                className="cursor-pointer overflow-hidden rounded-[26px]
+          bg-white shadow-lg hover:shadow-[#6B4FA3]/40 transition">
+                <img
+                  src={img.src}
+                  alt="Gallery"
+                  className="w-full h-60 object-cover hover:scale-105 transition"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* PAGINATION */}
+          {totalPages > 1 && (
+            <div className="flex justify-center gap-3 mt-14">
+              {Array.from({ length: totalPages }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentPage(i + 1)}
+                  className={`w-10 h-10 rounded-full font-bold cursor-pointer ${
+                    currentPage === i + 1
+                      ? "bg-[#6B4FA3] text-white"
+                      : "bg-white border border-[#6B4FA3]/30 text-[#6B4FA3]"
+                  }`}>
+                  {i + 1}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {videos.length > 0 && (
+        <section
+          className="relative py-20 px-4 sm:px-8 overflow-hidden"
+          style={{
+            background:
+              "radial-gradient(circle at center, #E9DCFF 0%, #F7F2FF 55%, #FFFFFF 100%)",
+          }}>
+          {/* 🎥 VIDEO BACKGROUND ICONS */}
+          {[Video, Film, PlayCircle].map((Icon, i) => (
+            <Icon
+              key={i}
+              className="absolute text-[#6B4FA3]/15"
+              size={130}
+              style={{
+                top: `${20 + i * 25}%`,
+                left: i % 2 === 0 ? "6%" : "90%",
+              }}
+            />
+          ))}
+
+          <div className="max-w-7xl mx-auto relative z-10">
+            <h2 className="text-4xl font-extrabold text-center text-[#4B3C78] mb-12">
+              School Videos
+            </h2>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+              {videos.map((video, i) => (
+                <div
+                  key={i}
+                  className="rounded-[26px] overflow-hidden shadow-xl bg-white">
+                  <video
+                    src={video.src}
+                    controls
+                    muted
+                    className="w-full h-64 object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <Contact />
       <Footer />
@@ -274,8 +272,7 @@ const FullGallery = () => {
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center">
           <button
             onClick={() => setLightboxIndex(null)}
-            className="absolute top-6 right-6 text-white cursor-pointer"
-          >
+            className="absolute top-6 right-6 text-white cursor-pointer">
             <X size={34} />
           </button>
 
@@ -283,11 +280,10 @@ const FullGallery = () => {
             onClick={() =>
               setLightboxIndex(
                 (lightboxIndex - 1 + currentImages.length) %
-                  currentImages.length
+                  currentImages.length,
               )
             }
-            className="absolute left-6 text-white cursor-pointer"
-          >
+            className="absolute left-6 text-white cursor-pointer">
             <ChevronLeft size={44} />
           </button>
 
@@ -302,12 +298,9 @@ const FullGallery = () => {
 
           <button
             onClick={() =>
-              setLightboxIndex(
-                (lightboxIndex + 1) % currentImages.length
-              )
+              setLightboxIndex((lightboxIndex + 1) % currentImages.length)
             }
-            className="absolute right-6 text-white cursor-pointer"
-          >
+            className="absolute right-6 text-white cursor-pointer">
             <ChevronRight size={44} />
           </button>
         </div>

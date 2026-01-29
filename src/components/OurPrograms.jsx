@@ -172,7 +172,7 @@ const OurPrograms = () => {
             </h2>
 
             <p
-              className="text-[#3A216A] max-w-3xl mx-auto text-base sm:text-lg"
+              className="text-[#3A216A] max-w-3xl mx-auto text-xl sm:text-2xl"
               style={{
                 fontFamily: "'Comic Neue', 'Nunito', sans-serif",
                 fontStyle: "normal",
@@ -197,21 +197,21 @@ const OurPrograms = () => {
                 hover:shadow-xl hover:-translate-y-1
                 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-[18px] font-bold text-[#2E1A47] mb-2">
+                  <h3 className="text-[22px] font-bold text-[#2E1A47] mb-2">
                     {program.title}
                   </h3>
 
                   <p
-                    className="text-[#6B4FA3] font-bold text-[16px]"
+                    className="text-[#6B4FA3] font-extrabold text-[20px]"
                     style={{
                       fontFamily: "'Comic Neue', 'Nunito', sans-serif",
                       fontStyle: "normal",
                     }}>
-                    Age Group: {program.age}
+                    <b>Age Group:</b> {program.age}
                   </p>
                 </div>
 
-                <div className="explore-btn mt-6 text-[#6B4FA3] text-lg font-bold">
+                <div className="explore-btn mt-6 text-[#6B4FA3] text-xl font-bold">
                   Explore
                   <ArrowRight size={16} />
                 </div>

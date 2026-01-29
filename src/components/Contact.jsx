@@ -3,10 +3,16 @@ import { Mail, Phone, MessageCircle, Smartphone } from "lucide-react";
 
 /* ===== FONT ===== */
 const FontLoader = () => (
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&display=swap"
-  />
+  <>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Nunito:wght@400;600&display=swap"
+    />
+  </>
 );
 
 const programs = [
@@ -37,7 +43,7 @@ const Contact = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => entry.isIntersecting && setVisible(true),
-      { threshold: 0.25 }
+      { threshold: 0.25 },
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
@@ -70,7 +76,7 @@ DOB: ${formData.dob}
 Programs: ${formData.programs.join(", ")}
 
 Message:
-${formData.message}`
+${formData.message}`,
     )}`;
 
     window.location.href = mailtoLink;
@@ -88,8 +94,7 @@ ${formData.message}`
           background:
             "radial-gradient(circle at top left, #EFE6FF 0%, #F4EEFF 40%, #FFFFFF 75%)",
           fontFamily: "Inter, sans-serif",
-        }}
-      >
+        }}>
         {/* ===== BACKGROUND ICONS ===== */}
         {[Mail, Phone, MessageCircle, Smartphone].map((Icon, i) => (
           <Icon
@@ -104,13 +109,11 @@ ${formData.message}`
         ))}
 
         <div className="max-w-6xl mx-auto relative z-10">
-
           {/* ===== HEADER ===== */}
           <div
             className={`text-center mb-14 transition-all duration-700 ${
               visible ? "opacity-100" : "opacity-0 translate-y-6"
-            }`}
-          >
+            }`}>
             <span className="inline-block px-6 py-2 rounded-full bg-white border border-[#6B4FA3]/40 text-base font-bold text-[#6B4FA3] mb-4">
               Contact Us
             </span>
@@ -120,23 +123,24 @@ ${formData.message}`
               <br />
               <span
                 className="italic font-light text-[#6B4FA3] text-2xl sm:text-3xl md:text-4xl"
-                style={{ fontFamily: "Instrument Serif, serif" }}
-              >
+                style={{ fontFamily: "Instrument Serif, serif" }}>
                 We’re Here to Help You
               </span>
             </h2>
 
-                        <p
-              className="text-[#3A216A] max-w-3xl mx-auto text-base sm:text-lg"
-              style={{ fontFamily: "'Comic Sans MS', cursive" }}
-            >
-              Have a question or want to know more about <b>Vedique</b>? We’d love to hear from you.
+            <p
+              className="text-[#3A216A] max-w-3xl mx-auto text-xl sm:text-2xl"
+              style={{
+                fontFamily: "'Comic Neue', 'Nunito', sans-serif",
+                fontStyle: "normal",
+              }}>
+              Have a question or want to know more about <b>Vedique</b>? We’d
+              love to hear from you.
             </p>
           </div>
 
           {/* ===== FORM + MAP GRID ===== */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
-
             {/* ===== FORM ===== */}
             <form
               onSubmit={handleSubmit}
@@ -144,8 +148,7 @@ ${formData.message}`
               style={{
                 background:
                   "radial-gradient(circle at top right, #F3ECFB 0%, #FFF6FF 55%, #FFFFFF 100%)",
-              }}
-            >
+              }}>
               <input
                 name="parentName"
                 placeholder="Parent Name *"
@@ -198,7 +201,10 @@ ${formData.message}`
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[#6B4FA3]">
                   {programs.map((p) => (
                     <label key={p} className="flex items-center gap-2">
-                      <input type="checkbox" onChange={() => handleCheckbox(p)} />
+                      <input
+                        type="checkbox"
+                        onChange={() => handleCheckbox(p)}
+                      />
                       {p}
                     </label>
                   ))}
@@ -219,8 +225,7 @@ ${formData.message}`
                 style={{
                   background:
                     "linear-gradient(180deg, #6B4FA3 0%, #8E6FD1 100%)",
-                }}
-              >
+                }}>
                 Submit Enquiry
               </button>
             </form>
