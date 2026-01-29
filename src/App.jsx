@@ -11,6 +11,7 @@ import UKGPage from "./pages/UKGPage";
 import ParentToddlerPage from "./pages/ParentToddlerPage";
 import DaycarePage from "./pages/DaycarePage";
 import EnrichmentProgramsPage from "./pages/EnrichmentProgramsPage";
+import EnquiryPage from './pages/EnquiryPage';
 
 /* ===== LOADER ===== */
 const Loader = () => (
@@ -173,6 +174,8 @@ const App = () => {
             path="/programs/enrichment"
             element={<EnrichmentProgramsPage />}
           />
+          <Route path="/enquiry" element={<EnquiryPage />} />
+
         </Routes>
       </Router>
     </>

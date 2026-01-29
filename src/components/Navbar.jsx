@@ -136,7 +136,7 @@ export default function Navbar() {
           </a>
 
           <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfbPNn-JeJn3qJRY5bMVg7luMmDG_ztUE-qcGxy6sJyLRjwOg/viewform"
+            href="/enquiry"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:block">
@@ -176,13 +176,13 @@ export default function Navbar() {
 
             {/* ✅ MOBILE ENQUIRY BUTTON */}
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSfbPNn-JeJn3qJRY5bMVg7luMmDG_ztUE-qcGxy6sJyLRjwOg/viewform"
+              href="/enquiry"
               target="_blank"
               rel="noopener noreferrer"
               className="block mt-6"
               onClick={() => setOpen(false)}>
               <button className="w-full bg-[#4B3C78] text-white py-4 text-lg font-semibold rounded-xl shadow-md hover:shadow-lg transition">
-                Enquiry Now
+                Enquiry
               </button>
             </a>
           </div>
