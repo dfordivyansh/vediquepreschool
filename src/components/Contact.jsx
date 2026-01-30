@@ -28,6 +28,15 @@ const programs = [
 const Contact = () => {
   const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
+  const enrichmentOptions = [
+    "Phonics",
+    "Vedic Mathematics",
+    "Abacus / IQ Booster",
+    "SpellBee",
+    "Soft Skills",
+    "Handwriting Improvement",
+    "Other",
+  ];
 
   const [formData, setFormData] = useState({
     parentName: "",
@@ -36,6 +45,7 @@ const Contact = () => {
     childName: "",
     dob: "",
     programs: [],
+    enrichment: "",
     message: "",
   });
 
@@ -74,6 +84,7 @@ Email: ${formData.email}
 Child Name: ${formData.childName}
 DOB: ${formData.dob}
 Programs: ${formData.programs.join(", ")}
+Enrichment Program: ${formData.enrichment || "N/A"}
 
 Message:
 ${formData.message}`,
@@ -89,7 +100,7 @@ ${formData.message}`,
       <section
         ref={sectionRef}
         id="contact"
-        className="relative px-4 py-20 overflow-hidden"
+        className="relative px-4 py-10 sm:py-14 overflow-hidden"
         style={{
           background:
             "radial-gradient(circle at top left, #EFE6FF 0%, #F4EEFF 40%, #FFFFFF 75%)",
@@ -114,23 +125,23 @@ ${formData.message}`,
             className={`text-center mb-14 transition-all duration-700 ${
               visible ? "opacity-100" : "opacity-0 translate-y-6"
             }`}>
-                        <p
+            <p
               className="inline-block mb-6 px-6 py-2 rounded-full
-                          text-xl font-bold border border-[#E38342]
-                          text-[#E38342] bg-gradient-to-b from-[#3493C5]/50 to-white
+                          text-3xl font-bold border border-[#E38342]
+                          text-[#2E1A47] bg-gradient-to-b from-[#3493C5]/50 to-white
 
  shadow-sm">
               Contact Us
             </p>
 
-            <h2 className="text-4xl md:text-5xl font-extrabold text-[#2E1A47]">
+            <h2
+              style={{
+                fontFamily: "'Chewy', cursive",
+                fontStyle: "normal",
+              }}
+              className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#b62474]">
               Let’s Start a Conversation
               <br />
-              <span
-                className="italic font-light text-[#E38342] text-2xl sm:text-3xl md:text-4xl"
-                style={{ fontFamily: "Instrument Serif, serif" }}>
-                We’re Here to Help You
-              </span>
             </h2>
 
             <p
@@ -205,13 +216,37 @@ ${formData.message}`,
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[#6B4FA3]">
                   {programs.map((p) => (
-                    <label key={p} className="flex items-center gap-2">
-                      <input
-                        type="checkbox"
-                        onChange={() => handleCheckbox(p)}
-                      />
-                      {p}
-                    </label>
+                    <div key={p} className="space-y-2">
+                      <label className="flex items-center gap-2">
+                        <input
+                          type="checkbox"
+                          checked={formData.programs.includes(p)}
+                          onChange={() => handleCheckbox(p)}
+                        />
+                        {p}
+                      </label>
+
+                      {/* ✅ Enrichment dropdown */}
+                      {p === "Enrichment Programs" &&
+                        formData.programs.includes("Enrichment Programs") && (
+                          <select
+                            value={formData.enrichment}
+                            onChange={(e) =>
+                              setFormData({
+                                ...formData,
+                                enrichment: e.target.value,
+                              })
+                            }
+                            className="input mt-2">
+                            <option value="">Select Enrichment Program</option>
+                            {enrichmentOptions.map((opt) => (
+                              <option key={opt} value={opt}>
+                                {opt}
+                              </option>
+                            ))}
+                          </select>
+                        )}
+                    </div>
                   ))}
                 </div>
               </div>

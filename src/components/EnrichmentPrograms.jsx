@@ -52,8 +52,8 @@ export default function EnrichmentPrograms() {
       Icon: Users,
       title: "Open to All",
       text:
-        "Available to Vedique students as well as children from other schools within the age range of 4–13 years.",
-      terms: ["Vedique students", "other schools", "4–13 years"],
+        "Available to Vedique students as well as children from other schools within the age range of more than 4 years.",
+      terms: ["Vedique students", "other schools", "more than 4 years"],
     },
     {
       Icon: GraduationCap,
@@ -165,8 +165,12 @@ export default function EnrichmentPrograms() {
         {/* ===== CONTENT ===== */}
         <div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-extrabold text-[#E38342] mb-5">
+<h2  style={{
+                  fontFamily: "'Chewy', cursive",
+                  fontStyle: "normal",
+                }} className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#b62474]">
               Learning Beyond the Classroom
+              <br />
             </h2>
             <p className="text-gray-700 max-w-3xl mx-auto text-xl leading-relaxed">
               Vedique offers specialised after-school programs that help children
@@ -212,8 +216,11 @@ export default function EnrichmentPrograms() {
                 "radial-gradient(circle at center, #E9DCFF 0%, #F7F2FF 55%, #FFFFFF 100%)",
             }}
           >
-            <h3 className="text-3xl font-extrabold text-[#4B3C78] text-center mb-10">
-              Courses Offered
+            <h3 style={{
+                  fontFamily: "'Chewy', cursive",
+                  fontStyle: "normal",
+                }} className="text-3xl font-extrabold text-[#b62474] text-center mb-10">
+              Courses Offered by our Partners
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center text-xl">

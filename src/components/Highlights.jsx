@@ -188,7 +188,7 @@ const Highlights = () => {
 
   return (
     <section
-      className="relative px-4 py-18 overflow-hidden"
+      className="relative px-4 py-10 sm:py-18 overflow-hidden"
       style={{
         background:
           "radial-gradient(circle at top left, #E7DBFA 0%, #F1E6FF 45%, #FAF7FE 80%)",
@@ -211,31 +211,31 @@ const Highlights = () => {
       )}
 
       {/* ===== HEADER ===== */}
-      <div className="text-center max-w-4xl mx-auto mb-24">
-            <p
-              className="inline-block mb-6 px-6 py-2 rounded-full
-                          text-xl font-bold border border-[#E38342]
-                          text-[#E38342] bg-gradient-to-b from-[#3493C5]/50 to-white
+      <div className="text-center max-w-5xl mx-auto mb-24">
+        <p
+          className="inline-block mb-6 px-6 py-2 rounded-full
+                          text-3xl font-bold border border-[#E38342]
+                          text-[#2E1A47] bg-gradient-to-b from-[#3493C5]/50 to-white
 
  shadow-sm">
-              Highlights
-            </p>
-        <h2 className="text-4xl md:text-5xl font-extrabold text-[#2E1A47]">
-          Thoughtfully Designed for
+          Highlights
+        </p>
+        <h2
+          style={{
+            fontFamily: "'Chewy', cursive",
+            fontStyle: "normal",
+          }}
+          className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#b62474]">
+          Thoughtfully Designed For Happy & Confident Childhoods
           <br />
-          <span
-            className="italic font-light text-2xl sm:text-3xl md:text-4xl text-[#E38342]"
-            style={{ fontFamily: "Instrument Serif, serif" }}>
-            Happy, Confident Childhoods
-          </span>
         </h2>
       </div>
 
       {/* ===== DESKTOP CIRCLE ===== */}
-      <div className="hidden lg:flex relative justify-center items-center h-[800px]">
+      <div className="hidden lg:flex relative justify-center items-center h-[550px]">
         <svg
           viewBox="0 0 240 240"
-          className="absolute w-92 h-92 animate-spin-slow">
+          className="absolute w-72 h-72 animate-spin-slow">
           <defs>
             <path
               id="circleText"
@@ -254,14 +254,15 @@ const Highlights = () => {
             fontFamily="Instrument Serif, serif"
             textAnchor="middle">
             <textPath href="#circleText" startOffset="50%">
-                Learn • Play • Grow • Discover • Shine • Together •
+              Learn • Play • Grow • Discover • Shine • Together •
             </textPath>
           </text>
         </svg>
 
         {highlights.map((item, i) => {
-          const angle = (360 / highlights.length) * i;
-          const r = 330;
+          const angle = (360 / highlights.length) * i - 90; // start from top
+          const r = 260; // smaller circle
+
           const x = Math.cos((angle * Math.PI) / 180) * r;
           const y = Math.sin((angle * Math.PI) / 180) * r;
           const Icon = item.icon;
@@ -276,15 +277,17 @@ const Highlights = () => {
                   setActive(i);
                   setOpen(true);
                 }}
-                className="w-42 h-42 rounded-full bg-gradient-to-b from-[#F3ECFB] to-white
-                border border-[#6B4FA3]/30 shadow-xl flex flex-col items-center justify-center
-                text-center cursor-pointer transition-transform duration-300 hover:scale-110"
+                className="w-36 h-36 rounded-full bg-gradient-to-b from-[#F3ECFB] to-white
+  border border-[#6B4FA3]/30 shadow-xl flex flex-col items-center justify-center
+  text-center cursor-pointer
+  circle-animate"
                 style={{
+                  animationDelay: `${i * 0.5}s`,
                   fontFamily: "'Comic Neue', 'Nunito', sans-serif",
                   fontStyle: "normal",
                 }}>
-                <Icon size={40} className="text-[#6B4FA3]" />
-                <p className="mt-2 text-xl font-bold text-[#2E1A47] px-3">
+                <Icon size={30} className="text-[#6B4FA3]" />
+                <p className="mt-2 text-[18px] font-bold text-[#2E1A47] px-3">
                   {item.title}
                 </p>
               </div>
@@ -295,26 +298,6 @@ const Highlights = () => {
 
       {/* ===== MOBILE LAYOUT (ROTATING SVG + 2-2 PATTERN) ===== */}
       <div className="lg:hidden w-full flex flex-col items-center gap-10">
-        {/* 🔵 ROTATING SVG (TOP) */}
-        <div className="flex justify-center w-full pointer-events-none">
-          <svg viewBox="0 0 240 240" className="w-56 h-56 animate-spin-slow">
-            <defs>
-              <path
-                id="circleTextMobile"
-                d="M120,120 m-90,0 a90,90 0 1,1 180,0 a90,90 0 1,1 -180,0"
-              />
-            </defs>
-            <text
-              fill="#2E1A47"
-              fontSize="33"
-              fontFamily="Instrument Serif, serif"
-              textAnchor="middle">
-              <textPath href="#circleTextMobile" startOffset="50%">
-                Learn • Play • Grow • Discover • Shine • Together •
-              </textPath>
-            </text>
-          </svg>
-        </div>
 
         {/* 🔵 HIGHLIGHTS : STRICT 2-2 ROWS */}
         {(() => {
@@ -340,13 +323,13 @@ const Highlights = () => {
                       className="w-40 h-40 rounded-full bg-gradient-to-b from-[#F3ECFB] to-white
                 border border-[#6B4FA3]/25 shadow-lg flex flex-col items-center justify-center
                 text-center cursor-pointer transition-transform duration-300
-                active:scale-95 hover:scale-105"
+                active:scale-95 hover:scale-105 circle-animate"
                       style={{
                         fontFamily: "'Comic Neue', 'Nunito', sans-serif",
                         fontStyle: "normal",
                       }}>
                       <Icon size={36} className="text-[#6B4FA3]" />
-                      <p className="mt-2 text-[19px] font-bold text-[#2E1A47] px-3">
+                      <p className="mt-2 text-[18px] font-bold text-[#2E1A47] px-3">
                         {item.title}
                       </p>
                     </div>
@@ -458,6 +441,20 @@ const Highlights = () => {
       <style>{`
         .animate-spin-slow { animation: spin 20s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
+
+        @keyframes pulseZoom {
+  0%, 100% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.15);
+  }
+}
+
+.circle-animate {
+  animation: pulseZoom 6s ease-in-out infinite;
+}
+
       `}</style>
     </section>
   );

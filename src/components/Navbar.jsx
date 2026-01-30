@@ -18,25 +18,11 @@ export default function Navbar() {
   const NAV_HEIGHT = 96;
 
   /* ===== IMMEDIATE + SLOW SMOOTH SCROLL ===== */
-  const smoothScrollTo = (targetY, duration = 1700) => {
-    const startY = window.scrollY;
-    const distance = targetY - startY;
-    let startTime = null;
-
-    // ✅ Instant start, slow finish (NO GAP)
-    const easeOut = (t) => 1 - Math.pow(1 - t, 3);
-
-    const animate = (time) => {
-      if (!startTime) startTime = time;
-      const elapsed = time - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-
-      window.scrollTo(0, startY + distance * easeOut(progress));
-
-      if (progress < 1) requestAnimationFrame(animate);
-    };
-
-    requestAnimationFrame(animate); // 🚀 starts immediately
+  const smoothScrollTo = (targetY) => {
+    window.scrollTo({
+      top: targetY,
+      behavior: "smooth",
+    });
   };
 
   /* ===== SCROLL SHADOW ===== */
@@ -54,7 +40,7 @@ export default function Navbar() {
 
   /* ===== HANDLERS ===== */
   const scrollToTop = () => {
-    smoothScrollTo(0, 1500);
+    window.scrollTo({ top: 0, behavior: "smooth" });
     setActive("Home");
     setOpen(false);
   };
@@ -65,7 +51,7 @@ export default function Navbar() {
 
     const y = el.getBoundingClientRect().top + window.pageYOffset - NAV_HEIGHT;
 
-    smoothScrollTo(y, 1800); // slower but instant
+    smoothScrollTo(y);
     setActive(label);
     setOpen(false);
   };
@@ -78,16 +64,18 @@ export default function Navbar() {
   ];
 
   const goToEnquiry = () => {
-    navigate("/enquiry");
-    window.scrollTo({ top: 0, behavior: "instant" });
+    navigate("/enquiry", { replace: false });
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "auto" });
+    });
   };
 
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-gradient-to-b from-[#F3ECFB] to-[#F8F4FD] shadow-lg"
-          : "bg-transparent"
+          ? "bg-gradient-to-b from-[#F3ECFB] to-[#FEFEF6] shadow-lg"
+          : "bg-gradient-to-b from-[#F3ECFB] to-[#FEFEF6] shadow-lg"
       }`}>
       {/* HEADER */}
       <div className="max-w-screen-xl mx-auto px-4 py-4 h-[96px] flex items-center justify-between">
@@ -111,7 +99,7 @@ export default function Navbar() {
             src="/assets/logo.png"
             alt="Vedique Logo"
             onClick={scrollToTop}
-            className="h-16 md:h-20 cursor-pointer hover:scale-105 transition"
+            className="h-14 md:h-20 cursor-pointer hover:scale-105 transition"
           />
         </div>
 
@@ -137,10 +125,10 @@ export default function Navbar() {
           <a href="tel:+919030802211">
             <button
               className="flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 rounded-full bg-gradient-to-br from-[#3493C5] to-white
- border border-[#E38342] text-[#4B3C78] shadow-sm hover:shadow-md transition">
+ border border-[#E38342] text-[#2E1A47] shadow-sm hover:shadow-md transition">
               <FaPhoneAlt className="animate-phone text-sm md:text-lg" />
               <span className="text-sm md:text-xl font-semibold cursor-pointer">
-                90308 02211
+                +91-9030802211
               </span>
             </button>
           </a>
@@ -212,6 +200,7 @@ export default function Navbar() {
         .bg-menu {
           background: radial-gradient(circle at top, #f3ecfb, #ffffff);
         }
+          
       `}</style>
     </nav>
   );

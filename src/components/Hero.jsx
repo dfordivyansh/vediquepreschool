@@ -60,23 +60,16 @@ html, body {
   }
 }
 
-/* ===== FLOATING ICONS (IMPROVED) ===== */
+/* ===== FLOATING ICONS ===== */
 .floating-icon {
   position: absolute;
   font-size: 92px;
   fill: none;
-  stroke: #9B8BCB; /* matches hero gradient */
-  stroke-width: 26px; /* solid thick stroke */
+  stroke: #9B8BCB;
+  stroke-width: 26px;
   opacity: 0.35;
   animation: floatIcon 8s ease-in-out infinite alternate;
   z-index: 1;
-}
-
-@media (max-width: 640px) {
-  .floating-icon {
-    font-size: 64px;
-    opacity: 0.28;
-  }
 }
 
 @keyframes floatIcon {
@@ -84,61 +77,38 @@ html, body {
   to { transform: translateY(-14px); }
 }
 
-/* ===== MOBILE MARQUEE (DESKTOP-LIKE) ===== */
-.mobile-admission-strip {
-  display: none;
+/* ===== ADMISSION STRIP (DESKTOP + MOBILE SAME) ===== */
+.admission-strip {
+  width: 100%;
+  max-width: 520px;
+  margin: 22px auto;
+  padding: 14px 0;
+  border-radius: 999px;
+  background: linear-gradient(to bottom, #FFE082, #FFC107);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+  overflow: hidden;
 }
 
-@media (max-width: 640px) {
-  .mobile-admission-strip {
-    display: block;
-    width: 100%;
-    margin-bottom: 26px;
-    padding: 8px 0;
-    border-radius: 999px;
-    background: linear-gradient(135deg,#ff9f1c,#ffb703,#ffd166);
-    box-shadow: 0 12px 30px rgba(255,159,28,0.45);
-    overflow: hidden;
-  }
-
-  .mobile-marquee-track {
-    display: flex;
-    width: max-content;
-    animation: marqueeMobile 18s linear infinite;
-  }
-
-  .mobile-admission-text {
-    white-space: nowrap;
-    padding-right: 80px;
-    font-family: 'Inter', 'SF Pro', sans-serif;
-    font-weight: 900;
-    font-size: 22px;
-    letter-spacing: 2px;
-    color: #3b1d00;
-    text-transform: uppercase;
-  }
-}
-
-@keyframes marqueeMobile {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-/* ===== HEADING ===== */
-.hero-heading {
-  font-family: 'SF Pro', 'Inter', sans-serif;
+.admission-text {
+  font-family: 'Baloo 2', 'Comic Neue', cursive;
   font-weight: 900;
-  font-size: 94px;
-  line-height: 102px;
-  color: #2E1A47;
-  margin-bottom: 20px;
+  font-size: 30px;
+  color: #B22222;
+  text-align: center;
+  letter-spacing: 2px;
+  animation: leftRight 3.5s ease-in-out infinite;
 }
 
 @media (max-width: 640px) {
-  .hero-heading {
-    font-size: 60px;
-    line-height: 66px;
+  .admission-text {
+    font-size: 22px;
   }
+}
+
+@keyframes leftRight {
+  0% { transform: translateX(-18px); }
+  50% { transform: translateX(18px); }
+  100% { transform: translateX(-18px); }
 }
 
 /* ===== TAGLINE ===== */
@@ -149,7 +119,7 @@ html, body {
 }
 
 .hero-tagline {
-  font-family: 'Instrument Serif', serif;
+font-family: 'Chewy', cursive;
   font-weight: 900;
   font-size: 38px;
   color: #E38342;
@@ -157,7 +127,6 @@ html, body {
   opacity: 0;
   animation: taglineFade 3.5s ease-in-out forwards;
 }
-
 @media (max-width: 640px) {
   .hero-tagline {
     font-size: 28px;
@@ -177,7 +146,7 @@ html, body {
   font-weight: 600;
   color: #3A216A;
   line-height: 1.9;
-  font-family: 'Comic Neue', 'Quicksand', 'Nunito', sans-serif;
+  font-family: 'Comic Neue', 'Nunito', sans-serif;
   margin-bottom: 22px;
 }
 
@@ -185,16 +154,6 @@ html, body {
   .hero-description {
     font-size: 19px;
   }
-}
-
-.highlight-orange {
-  color: #E38342;
-  font-weight: 700;
-}
-
-.highlight-orange-dark {
-  color: #FF9F1C;
-  font-weight: 700;
 }
 
 /* ===== IMAGE ===== */
@@ -211,63 +170,36 @@ html, body {
   border-radius: 32px;
 }
 
-/* ===== DESKTOP MARQUEE ===== */
-.admission-strip {
-  width: 100%;
-  max-width: 620px;
-  margin: 28px auto 18px;
-  padding: 10px 0;
-  border-radius: 999px;
-  background: linear-gradient(135deg,#ff9f1c,#ffb703,#ffd166);
-  box-shadow: 0 12px 30px rgba(255,159,28,0.45);
-  overflow: hidden;
-}
+/* ===== CTA ===== */
+.hero-cta {
+  margin-top: 20px;
+    margin-left: 9rem;
 
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marqueeDesktop 20s linear infinite;
-}
-
-.admission-text {
-  white-space: nowrap;
-  padding-right: 80px;
-  font-family: 'Inter', 'SF Pro', sans-serif;
-  font-weight: 900;
-  font-size: 24px;
-  letter-spacing: 2px;
-  color: #3b1d00;
-  text-transform: uppercase;
-}
-
-@keyframes marqueeDesktop {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
 }
 
 @media (max-width: 640px) {
-  .hero-image-container .admission-strip {
-    display: none;
-  }
-}
-
-/* ===== CTA ===== */
 .hero-cta {
-  margin-top: 24px;
+  margin-left: 0;
+}
 }
 
 .hero-cta button {
-  padding: 18px 52px;
-  font-size: 20px;
+  padding: 15px 30px;
+  font-size: 28px;
   border-radius: 24px;
   font-weight: 700;
-  background: linear-gradient(to bottom, #FFE082, #FFC107);
-  color: #2E1A47;
+  background: linear-gradient(
+    to bottom,
+    #E38342,
+    #FFC107
+  );
+  color: #ffff;
   border: none;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 .hero-cta button:hover {
   transform: scale(1.05);
@@ -299,7 +231,7 @@ const Hero = ({ setActive, setOpen }) => {
   useEffect(() => {
     const t = setInterval(
       () => setIndex((p) => (p + 1) % taglines.length),
-      3500,
+      3500
     );
     return () => clearInterval(t);
   }, []);
@@ -314,10 +246,8 @@ const Hero = ({ setActive, setOpen }) => {
   };
 
   const marqueeText = `ADMISSION OPEN ${currentYear}-${String(
-    currentYear + 1,
-  ).slice(
-    -2,
-  )} • PLAYGROUP • NURSERY • LKG • UKG • PARENT TODDLER • DAYCARE • ENRICHMENT`;
+    currentYear + 1
+  ).slice(-2)}`;
 
   const floatingIcons = useMemo(
     () =>
@@ -329,7 +259,7 @@ const Hero = ({ setActive, setOpen }) => {
           animationDelay: `${i * 0.7}s`,
         },
       })),
-    [],
+    []
   );
 
   return (
@@ -342,16 +272,8 @@ const Hero = ({ setActive, setOpen }) => {
         ))}
 
         <div className="hero-content">
-          {/* MOBILE MARQUEE */}
-          <div className="mobile-admission-strip">
-            <div className="mobile-marquee-track">
-              <span className="mobile-admission-text">{marqueeText}</span>
-              <span className="mobile-admission-text">{marqueeText}</span>
-            </div>
-          </div>
-
           <div>
-            <h1 className="hero-heading">Vedique</h1>
+            
 
             <div className="hero-tagline-wrapper">
               <div key={index} className="hero-tagline">
@@ -360,36 +282,36 @@ const Hero = ({ setActive, setOpen }) => {
             </div>
 
             <p className="hero-description">
-              <b className="text-amber-900">Vedique</b> is born from the union
-              of two powerful ideas—<b className="text-amber-900">‘Vedic’</b>{" "}
-              and <b className="text-amber-900">‘Unique’</b> - symbolising
-              wisdom imparted in a distinctive and meaningful way.
+              <b className="text-[#b62474]">Vedique</b> is born from the union of
+              two powerful ideas—<b className="text-[#b62474]">‘Vedic’</b> and{" "}
+              <b className="text-[#b62474]">‘Unique’</b> - symbolising wisdom
+              imparted in a distinctive and meaningful way.
             </p>
 
             <p className="hero-description">
               Choosing a pre-school for your little one is about so much more
               than alphabets, numbers, songs, and colours. It’s about laying the
               very first foundation of{" "}
-              <b className="text-amber-900">lifelong learning</b> and shaping a{" "}
-              <b className="text-amber-900">confident, compassionate</b> human
-              being.
+              <b className="text-[#b62474]">lifelong learning</b> and shaping a{" "}
+              <b className="text-[#b62474]">
+                confident, compassionate
+              </b>{" "}
+              human being.
             </p>
 
             <p className="hero-description">
               That foundation—your child’s stepping stone into the world—must be{" "}
-              <b className="text-amber-900">strong, nurturing, and inspiring</b>
-              .
+              <b className="text-[#b62474]">
+                strong, nurturing, and inspiring
+              </b>.
             </p>
           </div>
 
           <div className="hero-image-container">
+            {/* ADMISSION STRIP */}
             <div className="admission-strip">
-              <div className="marquee-track">
-                <span className="admission-text">{marqueeText}</span>
-                <span className="admission-text">{marqueeText}</span>
-              </div>
+              <div className="admission-text">{marqueeText}</div>
             </div>
-
             <img src="/assets/hero.jpeg" alt="Hero" className="hero-image" />
 
             <div className="hero-cta">

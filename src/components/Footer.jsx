@@ -41,7 +41,7 @@ const Footer = () => {
         className={`bg-gradient-to-t from-[#1B0F2D] via-[#2A1950] to-[#3A2470]
         text-white footer-reveal ${visible ? "show" : ""}`}
       >
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-16">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-10">
 
           {/* ================= MAIN GRID ================= */}
           <div className="grid grid-cols-1 gap-14 lg:grid-cols-4">
@@ -51,15 +51,11 @@ const Footer = () => {
               <img
                 src="/assets/logo.png"
                 alt="Vedique Preschool Logo"
-                className="h-16 sm:h-20 lg:h-24 mx-auto lg:mx-0"
+                className="h-20 sm:h-24 lg:h-26 mx-auto lg:mx-0"
                 style={{ filter: "brightness(0) invert(1)" }}
               />
 
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-wide">
-                Vedique Preschool
-              </h2>
-
-              <p className="text-white/85 leading-relaxed max-w-lg mx-auto lg:mx-0 text-base sm:text-lg">
+              <p className="text-white/85 leading-relaxed max-w-lg mx-auto lg:mx-0 text-xl">
                 A mindful learning space where children grow with confidence,
                 compassion, creativity, and strong values — prepared for life,
                 not just school.
@@ -68,11 +64,11 @@ const Footer = () => {
 
             {/* ================= LOCATION ================= */}
             <div className="space-y-4 text-center lg:text-left">
-              <h3 className="text-lg sm:text-xl font-semibold text-[#D6C7F2]">
+              <h3 className="text-xl sm:text-2xl font-semibold text-[#D6C7F2]">
                 Our Location
               </h3>
 
-              <p className="text-base sm:text-lg text-white/85 leading-relaxed">
+              <p className="text-[18px] text-white/85 leading-relaxed">
                 VEDIQUE PRESCHOOL <br />
                 Plot 52, Gandham Sri Nilayam <br />
                 Prashant Nagar Colony <br />
@@ -86,21 +82,21 @@ const Footer = () => {
             <div className="space-y-6 text-center lg:text-left">
 
               <div>
-                <h3 className="text-lg sm:text-xl font-semibold text-[#D6C7F2] mb-1">
+                <h3 className="text-xl sm:text-2xl font-semibold text-[#D6C7F2] mb-1">
                   Call Us
                 </h3>
-                <p className="text-white/85 text-base sm:text-lg font-medium">
+                <p className="text-white/85 text-xl sm:text-2xl font-medium">
                   +91 90308 02211
                 </p>
               </div>
 
               <div>
-                <h3 className="text-lg sm:text-xl font-semibold text-[#D6C7F2] mb-1">
+                <h3 className="text-xl sm:text-2xl font-semibold text-[#D6C7F2] mb-1">
                   Email Us
                 </h3>
                 <a
                   href="mailto:vediquepreschool@gmail.com"
-                  className="text-white/85 hover:text-white transition text-base sm:text-lg font-medium"
+                  className="text-white/85 hover:text-white transition text-xl sm:text-2xl font-medium"
                 >
                   vediquepreschool@gmail.com
                 </a>
@@ -108,7 +104,7 @@ const Footer = () => {
 
               {/* ================= SOCIAL ================= */}
               <div>
-                <h3 className="text-lg sm:text-xl font-semibold text-[#D6C7F2] mb-4">
+                <h3 className="text-xl sm:text-2xl font-semibold text-[#D6C7F2] mb-4">
                   Follow Us
                 </h3>
 
@@ -135,7 +131,7 @@ const Footer = () => {
           <hr className="my-12 h-px border-0 bg-white/25" />
 
           {/* ================= COPYRIGHT ================= */}
-          <div className="text-center text-sm sm:text-base text-white/75 font-medium">
+          <div className="text-center text-xl text-white/75 font-medium">
             © {new Date().getFullYear()} Vedique Preschool. All Rights Reserved.
           </div>
 

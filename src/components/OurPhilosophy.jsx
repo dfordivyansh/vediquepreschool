@@ -35,7 +35,7 @@ const OurPhilosophy = () => {
           observer.disconnect();
         }
       },
-      { threshold: 0.25 },
+      { threshold: 0.25 }
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
@@ -44,26 +44,24 @@ const OurPhilosophy = () => {
 
   const bgIcons = [
     { Icon: Sparkles, top: "6%", left: "6%" },
-    { Icon: Star, top: "16%", right: "10%" },
-    { Icon: Flower, top: "30%", left: "14%" },
-    { Icon: HeartHandshake, top: "42%", right: "18%" },
-
-    { Icon: Brain, bottom: "28%", left: "10%" },
-    { Icon: Leaf, bottom: "22%", right: "14%" },
-    { Icon: Users, bottom: "12%", left: "20%" },
-    { Icon: Sparkles, bottom: "8%", right: "6%" },
+    { Icon: Star, top: "14%", right: "10%" },
+    { Icon: Flower, top: "28%", left: "14%" },
+    { Icon: HeartHandshake, top: "40%", right: "18%" },
+    { Icon: Brain, bottom: "26%", left: "10%" },
+    { Icon: Leaf, bottom: "20%", right: "14%" },
+    { Icon: Users, bottom: "10%", left: "20%" },
+    { Icon: Sparkles, bottom: "6%", right: "6%" },
   ];
 
   return (
     <>
       <FontLoader />
 
-      {/* ===== Styles ===== */}
       <style>{`
         .reveal {
           opacity: 0;
-          transform: translateY(32px);
-          transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+          transform: translateY(24px);
+          transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .reveal.show {
           opacity: 1;
@@ -73,10 +71,10 @@ const OurPhilosophy = () => {
         .glow-wrap::before {
           content: "";
           position: absolute;
-          inset: -24px;
+          inset: -20px;
           background: radial-gradient(
             circle,
-            rgba(132,106,191,0.35),
+            rgba(132,106,191,0.3),
             transparent 65%
           );
           animation: glowPulse 3.5s ease-in-out infinite;
@@ -84,11 +82,10 @@ const OurPhilosophy = () => {
         }
 
         @keyframes glowPulse {
-          0%, 100% { opacity: 0.45; transform: scale(0.96); }
-          50% { opacity: 0.8; transform: scale(1.05); }
+          0%, 100% { opacity: 0.4; transform: scale(0.96); }
+          50% { opacity: 0.75; transform: scale(1.04); }
         }
 
-        /* Background icons */
         .bg-icon {
           position: absolute;
           color: rgba(107,79,163,0.22);
@@ -99,20 +96,19 @@ const OurPhilosophy = () => {
 
         @keyframes floatIcon {
           0% { transform: translateY(0); }
-          50% { transform: translateY(-14px); }
-          100% { transform: translateY(10px); }
+          50% { transform: translateY(-12px); }
+          100% { transform: translateY(8px); }
         }
 
-        /* ===== HIGHLIGHT CAROUSEL ===== */
         .carousel-mask {
           width: 100%;
           overflow: hidden;
-          margin-top: 3rem;
+          margin-top: 2rem;
         }
 
         .carousel-track {
           display: flex;
-          gap: 16px;
+          gap: 14px;
           width: max-content;
           animation: marquee 22s linear infinite;
         }
@@ -120,12 +116,6 @@ const OurPhilosophy = () => {
         @keyframes marquee {
           from { transform: translateX(0); }
           to { transform: translateX(-50%); }
-        }
-
-        @media (max-width: 640px) {
-          .carousel-track {
-            animation-duration: 18s;
-          }
         }
       `}</style>
 
@@ -136,94 +126,73 @@ const OurPhilosophy = () => {
         style={{
           background:
             "radial-gradient(circle at top left, #E7DBFA 0%, #F3ECFB 35%, #FAF7FE 60%, #FFFFFF 100%)",
-          paddingTop: "5rem",
-          paddingBottom: "5.5rem",
-          fontFamily: "Inter, sans-serif",
+          paddingTop: "3rem",
+          paddingBottom: "4.2rem",
           overflow: "hidden",
-        }}>
+        }}
+      >
         {bgIcons.map(({ Icon, ...pos }, i) => (
           <Icon
             key={i}
-            size={72}
+            size={70}
             className="bg-icon"
-            style={{
-              ...pos,
-              animationDelay: `${i * 0.6}s`,
-            }}
+            style={{ ...pos, animationDelay: `${i * 0.6}s` }}
           />
         ))}
 
         <div className="max-w-6xl mx-auto relative z-10">
-          {/* ===== Header ===== */}
-          <div className={`text-center mb-20 reveal ${visible ? "show" : ""}`}>
-            <p
-              className="inline-block mb-6 px-6 py-2 rounded-full
-                          text-xl font-bold border border-[#E38342]
-                          text-[#E38342] bg-gradient-to-b from-[#3493C5]/50 to-white
-
- shadow-sm">
+          {/* Header */}
+          <div className={`text-center mb-14 reveal ${visible ? "show" : ""}`}>
+            <p className="inline-block mb-4 px-6 py-2 rounded-full text-3xl font-bold border border-[#E38342] text-[#2E1A47] bg-gradient-to-b from-[#3493C5]/50 to-white shadow-sm">
               Our Philosophy
             </p>
 
             <h2
-              className="text-[#2E1A47]
-                           text-3xl sm:text-4xl md:text-5xl
-                           font-extrabold leading-tight">
-              Preparing Children
-              <br />
-              <span
-                className="block mt-3
-                           text-2xl sm:text-3xl md:text-4xl
-                           font-light italic text-[#E38342]"
-                style={{ fontFamily: "'Instrument Serif', serif" }}>
-                For Life, Not Just School
-              </span>
+              className="text-[#b62474] text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight"
+              style={{ fontFamily: "'Chewy', cursive" }}
+            >
+              Preparing Children For Life, Not Just School
             </h2>
           </div>
 
-          {/* ===== TEXT + IMAGE GRID ===== */}
-          <div className="grid lg:grid-cols-2 gap-14 items-center">
+          {/* Content */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className={`reveal ${visible ? "show" : ""}`}>
               <p
-                className="text-[#3A216A] text-xl sm:text-2xl
-                           leading-relaxed mb-10"
-                style={{
-                  fontFamily: "'Comic Neue', 'Nunito', sans-serif",
-                  fontStyle: "normal",
-                }}>
-                At <b>Vedique</b>, we believe that <b>healthy habits</b> and
-                <b> emotional intelligence</b> should be cultivated from the
-                earliest years. Our thoughtfully designed experiential learning
-                curriculum draws the best from <b>Waldorf</b> and
-                <b> Montessori philosophies</b>, blending structure with
-                creativity.
+                className="text-[#3A216A] text-xl font-bold sm:text-2xl leading-relaxed mb-6"
+                style={{ fontFamily: "'Comic Neue', 'Nunito', sans-serif" }}
+              >
+                At <b className="text-[#b62474]">Vedique</b>, we believe that{" "}
+                <b className="text-[#b62474]">healthy habits</b> and{" "}
+                <b className="text-[#b62474]">emotional intelligence</b> should be
+                nurtured from the earliest years.
                 <br />
+                Our curriculum draws inspiration from{" "}
+                <b className="text-[#b62474]">Waldorf</b> and{" "}
+                <b className="text-[#b62474]">Montessori philosophies</b>,
+                blending structure with creativity.
                 <br />
-                Beyond academics, we focus on <b>holistic development</b>
-                —helping children learn <b>table manners</b>, <b>civic sense</b>
-                ,<b> healthy eating habits</b>, and the joy of meaningful
-                <b> social interaction</b>.
+                We emphasize{" "}
+                <b className="text-[#b62474]">holistic development</b>—from table
+                manners and civic sense to healthy eating and meaningful{" "}
+                <b className="text-[#b62474]">social interaction</b>.
                 <br />
-                <br />
-                <span className="font-bold text-[#2E1A47]">
-                  Because at Vedique, we don’t just prepare children for
-                  school—we prepare them for life.
+                <span className="font-bold text-[#b62474]">
+                  At Vedique, we prepare children not just for school—but for life.
                 </span>
               </p>
             </div>
 
-            <div
-              className={`relative glow-wrap reveal ${visible ? "show" : ""}`}>
+            <div className={`relative glow-wrap reveal ${visible ? "show" : ""}`}>
               <img
                 src="/assets/philosophy.png"
                 alt="Vedique Philosophy"
-                className="relative z-10 rounded-3xl shadow-xl
-                           w-full object-cover"
+                className="relative z-10 rounded-3xl shadow-xl w-full object-cover"
               />
             </div>
           </div>
 
-          {/* ===== SEPARATE HIGHLIGHT ROW ===== */}
+          {/* Highlights */}
           <div className={`carousel-mask reveal ${visible ? "show" : ""}`}>
             <div className="carousel-track">
               {[
@@ -238,18 +207,10 @@ const OurPhilosophy = () => {
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="flex items-center justify-center gap-3
-             w-[280px] shrink-0
-             px-6 py-3 rounded-full
-             bg-gradient-to-b from-white via-[#E38342]/70 to-white
- border border-[#E38342]/25
-             text-xl text-[#2E1A47]
-             shadow-sm"
-                  style={{
-                    fontFamily: "'Comic Neue', 'Nunito', sans-serif",
-                    fontStyle: "normal",
-                  }}>
-                  <item.icon size={25} className="text-[#2E1A47]" />
+                  className="flex items-center gap-3 w-[260px] shrink-0 px-5 py-3 rounded-full bg-gradient-to-b from-white via-[#E38342]/70 to-white border border-[#E38342]/25 text-lg text-[#2E1A47] shadow-sm"
+                  style={{ fontFamily: "'Comic Neue', 'Nunito', sans-serif" }}
+                >
+                  <item.icon size={22} />
                   <span className="font-bold whitespace-nowrap">
                     {item.label}
                   </span>

@@ -29,9 +29,7 @@ const Loader = () => (
         className="loader-logo"
       />
 
-      <p className="loader-text">
-        Wisdom, Uniquely Nurtured
-      </p>
+     
 
       <style>{`
         .loader-wrapper {
@@ -47,7 +45,7 @@ const Loader = () => (
 
         /* ===== LOGO ===== */
         .loader-logo {
-          width: 140px;
+          width: 180px;
           opacity: 0;
           animation: logoReveal 1.8s ease-out forwards;
         }
@@ -67,21 +65,7 @@ const Loader = () => (
           }
         }
 
-        /* ===== TEXT ===== */
-        .loader-text {
-          margin-top: 26px;
-          font-size: 26px;
-          letter-spacing: 0.6px;
-          color: #4B3C78;
-          font-family: "Instrument Serif", serif;
-          opacity: 0;
-          transform: translateY(8px);
-          animation:
-            textAppear 1.6s ease-out forwards,
-            textGlow 3.8s ease-in-out infinite;
-          animation-delay: 0.9s, 2.6s;
-          text-align: center;
-        }
+  
 
         /* Appear animation */
         @keyframes textAppear {

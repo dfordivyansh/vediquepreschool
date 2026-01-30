@@ -77,7 +77,7 @@ const Gallery = () => {
       <section
         ref={sectionRef}
         id="gallery"
-        className="relative py-14 px-4 sm:px-8 overflow-hidden"
+        className="relative py-10 sm:py-14 px-4 sm:px-8 overflow-hidden"
         style={{
           background:
             "radial-gradient(circle at top left, #EFE6FF 0%, #F7F2FF 45%, #FFFFFF 75%)",
@@ -101,21 +101,19 @@ const Gallery = () => {
             className={`text-center mb-14 transition-all duration-700 ${visible ? "opacity-100" : "opacity-0 translate-y-6"}`}>
             <p
               className="inline-block mb-6 px-6 py-2 rounded-full
-                          text-xl font-bold border border-[#E38342]
-                          text-[#E38342] bg-gradient-to-b from-[#3493C5]/50 to-white
+                          text-3xl font-bold border border-[#E38342]
+                          text-[#2E1A47] bg-gradient-to-b from-[#3493C5]/50 to-white
 
  shadow-sm">
               Our Gallery
             </p>
 
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-[#2E1A47] mb-3">
-              Moments at Vedique School
+            <h2  style={{
+                  fontFamily: "'Chewy', cursive",
+                  fontStyle: "normal",
+                }} className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#b62474] mb-3">
+              Moments at Vedique School Where Learning Comes Alive
               <br />
-              <span
-                className="font-light italic text-[#E38342] text-2xl sm:text-3xl md:text-4xl"
-                style={{ fontFamily: "Instrument Serif, serif" }}>
-                Where Learning Comes Alive
-              </span>
             </h2>
           </div>
 
