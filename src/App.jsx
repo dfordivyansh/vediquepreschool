@@ -24,7 +24,7 @@ const Loader = () => (
 
     <div className="loader-wrapper">
       <img
-        src="/assets/logo.png"
+        src="/assets/flower.png"
         alt="Vedique Preschool"
         className="loader-logo"
       />

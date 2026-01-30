@@ -78,7 +78,7 @@ export default function Navbar() {
           : "bg-gradient-to-b from-[#F3ECFB] to-[#FEFEF6] shadow-lg"
       }`}>
       {/* HEADER */}
-      <div className="max-w-screen-xl mx-auto px-4 py-4 h-[96px] flex items-center justify-between">
+      <div className="max-w-screen-xl mx-auto py-4 h-[96px] flex items-center justify-between">
         {/* LEFT */}
         <div className="flex items-center gap-4">
           <button

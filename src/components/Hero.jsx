@@ -122,7 +122,7 @@ html, body {
 font-family: 'Chewy', system-ui, sans-serif;
   font-weight: 300;
   font-size: 38px;
-  color: #E38342;
+  color: #FEFEF6;
   font-style: italic;
   opacity: 0;
   animation: taglineFade 3.5s ease-in-out forwards;
@@ -264,7 +264,7 @@ const Hero = ({ setActive, setOpen }) => {
     <>
       <style>{styleSheet}</style>
 
-      <section className="hero-banner mt-10">
+      <section className="hero-banner">
         {floatingIcons.map(({ Icon, style }, i) => (
           <Icon key={i} className="floating-icon" style={style} />
         ))}
@@ -301,10 +301,23 @@ const Hero = ({ setActive, setOpen }) => {
           </div>
 
           <div className="hero-image-container">
-            {/* ADMISSION STRIP */}
-            <div className="admission-strip">
-              <div className="admission-text">{marqueeText}</div>
-            </div>
+{/* PLAY SCHOOL IMAGE */}
+<img
+  src="/assets/playschool.png"
+  alt="Playschool"
+  className="
+    mx-auto mb-4
+    h-16 sm:h-20
+    object-contain
+    drop-shadow-md
+  "
+/>
+
+{/* ADMISSION STRIP */}
+<div className="admission-strip">
+  <div className="admission-text">{marqueeText}</div>
+</div>
+
             <img
               src="/assets/hero.jpeg"
               alt="Hero"

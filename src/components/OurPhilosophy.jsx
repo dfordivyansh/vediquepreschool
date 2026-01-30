@@ -60,7 +60,7 @@ const OurPhilosophy = () => {
       <style>{`
         .reveal {
           opacity: 0;
-          transform: translateY(24px);
+          transform: translateY(20px);
           transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .reveal.show {
@@ -184,10 +184,14 @@ const OurPhilosophy = () => {
             <div
               className={`relative glow-wrap reveal ${visible ? "show" : ""}`}>
               <img
-                src="/assets/philosophy.png"
+                src="/assets/flower.png"
                 alt="Vedique Philosophy"
-                className="relative z-10 rounded-3xl shadow-xl w-full hover:rotate-1 transition duration-300
-rounded-[58px_18px_58px_18px] object-cover"
+                className="
+    relative z-10
+    w-[75%] mx-auto
+    hover:rotate-1 transition duration-300
+    object-contain
+  "
               />
             </div>
           </div>

@@ -258,7 +258,18 @@ const Highlights = () => {
             </textPath>
           </text>
         </svg>
-
+        {/* 🌸 CENTER FLOWER IMAGE */}
+        <img
+          src="/assets/flower.png"
+          alt="Flower"
+          className="
+      absolute
+      w-28 h-28
+      object-contain
+      pointer-events-none
+      drop-shadow-lg
+    "
+        />
         {highlights.map((item, i) => {
           const angle = (360 / highlights.length) * i - 90; // start from top
           const r = 260; // smaller circle
@@ -298,7 +309,6 @@ const Highlights = () => {
 
       {/* ===== MOBILE LAYOUT (ROTATING SVG + 2-2 PATTERN) ===== */}
       <div className="lg:hidden w-full flex flex-col items-center gap-10">
-
         {/* 🔵 HIGHLIGHTS : STRICT 2-2 ROWS */}
         {(() => {
           const rows = [];
@@ -412,17 +422,16 @@ const Highlights = () => {
               background:
                 "radial-gradient(circle at center, #FFFFFF 0%, #EFE4FF 55%, #DAC7F7 100%)",
             }}>
-{/* BACKGROUND ICON */}
-{React.createElement(highlights[active].icon, {
-  size: 220,
-  strokeWidth: 1.2,
-  className: `
+            {/* BACKGROUND ICON */}
+            {React.createElement(highlights[active].icon, {
+              size: 220,
+              strokeWidth: 1.2,
+              className: `
     absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
     text-[#6B4FA3]/15
     pointer-events-none
   `,
-})}
-
+            })}
 
             <h3 className="text-3xl font-bold text-center text-[#2E1A47] mb-6">
               {highlights[active].title}

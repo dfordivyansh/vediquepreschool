@@ -23,13 +23,13 @@ const FontLoader = () => (
   </>
 );
 
-/* ===== UTILITY: HIGHLIGHT IMPORTANT TERMS ===== */
+/* ===== UTILITY ===== */
 const highlightTerms = (text, terms) => {
   let result = text;
   terms.forEach((word) => {
     result = result.replace(
       new RegExp(`(${word})`, "gi"),
-      `<span class="font-bold text-[#4B3C78]">$1</span>`
+      `<span class="font-bold text-[#b62474]">$1</span>`
     );
   });
   return result;
@@ -57,14 +57,14 @@ export default function ParentToddler() {
       Icon: Puzzle,
       title: "Sensory Play",
       text:
-        "Engaging sensory activities that stimulate curiosity, exploration, and early cognitive development.",
+        "Engaging sensory activities stimulate curiosity, exploration, and early cognitive development.",
       terms: ["sensory", "curiosity", "exploration", "cognitive development"],
     },
     {
       Icon: Music,
       title: "Music & Movement",
       text:
-        "Fun-filled music, movement, and rhythm activities that support coordination, expression, and joy.",
+        "Music, movement, and rhythm activities support coordination, expression, and joyful learning.",
       terms: ["music", "movement", "coordination", "expression"],
     },
     {
@@ -78,7 +78,7 @@ export default function ParentToddler() {
       Icon: Home,
       title: "Safe & Nurturing Space",
       text:
-        "A warm, secure environment that eases separation anxiety and helps children feel confident and cared for.",
+        "A warm, secure environment that eases separation anxiety and builds confidence and trust.",
       terms: ["safe", "secure", "separation anxiety", "confidence"],
     },
   ];
@@ -99,97 +99,98 @@ export default function ParentToddler() {
         {[HeartHandshake, Baby, Puzzle, Home].map((Icon, i) => (
           <Icon
             key={i}
-            className="
-              absolute text-[#6B5FA7]/10
+            className="absolute text-[#6B5FA7]/10
               w-[72px] h-[72px]
               sm:w-[96px] sm:h-[96px]
               md:w-[120px] md:h-[120px]
-              lg:w-[140px] lg:h-[140px]
-            "
+              lg:w-[140px] lg:h-[140px]"
             style={{
-              top: `${12 + i * 20}%`,
+              top: `${10 + i * 20}%`,
               left: i % 2 === 0 ? "4%" : "88%",
             }}
           />
         ))}
 
         {/* ===== HERO ===== */}
-        <section className="relative h-[70vh] w-full overflow-hidden">
-          <img
-            src="/assets/bannerpro.png"
-            alt="Parent Toddler Banner"
-            className="absolute inset-0 w-full h-full object-cover scale-105"
-          />
-          <div className="absolute inset-0 bg-black/40" />
-
+        <section className="relative h-[40vh] sm:h-[45vh] w-full">
           <button
             onClick={() => navigate("/")}
-            className="absolute top-6 left-6 z-20 bg-white/90 backdrop-blur-md
-            px-6 py-2 rounded-full font-semibold text-[#2E1A47]
-            shadow-lg hover:scale-105 transition cursor-pointer"
+            className="absolute top-4 left-4 z-20 bg-white/90 backdrop-blur-md
+            px-5 py-2 rounded-full font-semibold text-[#2E1A47]
+            shadow-lg hover:scale-105 transition"
           >
             ← Back to Home
           </button>
 
-          <div className="absolute inset-0 flex items-center justify-center text-center z-10">
-            <div className="text-white px-6">
-              <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight mb-4">
+          <div className="absolute inset-0 flex items-center justify-center text-center">
+            {/* 🌸 WATERMARK */}
+            <img
+              src="/assets/flower.png"
+              alt="Flower watermark"
+              className="absolute w-[200px] sm:w-[260px] opacity-15 animate-flower-zoom pointer-events-none"
+            />
+
+            {/* TEXT */}
+            <div className="relative px-4">
+              <h1
+                className="font-extrabold tracking-tight
+                text-[42px] sm:text-[56px] md:text-[64px]
+                text-[#b62474]"
+                style={{ fontFamily: "'Chewy', system-ui, sans-serif" }}
+              >
                 Parent–Toddler Program
               </h1>
 
               <p
-                className="italic text-3xl md:text-4xl text-white/90 mb-3"
+                className="mt-2
+                text-[18px] sm:text-[22px] md:text-[26px]
+                text-[#2E1A47] font-semibold"
                 style={{ fontFamily: "'Instrument Serif', serif" }}
               >
                 Age Criteria: 1.5 – 3 Years
-              </p>
-
-              <p className="text-white/90 text-2xl">
-                A gentle beginning with <b>love, trust & togetherness</b>
               </p>
             </div>
           </div>
         </section>
 
         {/* ===== CONTENT ===== */}
-        <div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
-          <div className="text-center mb-16">
-<h2  style={{
-                  fontFamily: "'Chewy', system-ui, sans-serif",
-                  fontStyle: "normal",
-                }} className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#b62474]">
+        <div className="max-w-7xl mx-auto px-6 py-4 sm:py-6 relative z-10">
+          <div className="text-center mb-12">
+            <h2
+              className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#b62474]"
+              style={{ fontFamily: "'Chewy', system-ui, sans-serif" }}
+            >
               A Gentle First Step into Learning
-              <br />
             </h2>
-            <p className="text-gray-700 max-w-3xl mx-auto text-xl leading-relaxed">
-              This unique program by Vedique helps tiny tots transition gently
-              from the comfort of their parents’ arms into a nurturing learning
-              space—while strengthening the parent–child bond through joyful,
+
+            <p className="text-gray-700 max-w-3xl mx-auto text-lg sm:text-xl mt-3">
+              This unique program helps tiny tots transition gently from the
+              comfort of their parents’ arms into a nurturing learning space —
+              while strengthening the parent–child bond through joyful,
               shared experiences.
             </p>
           </div>
 
-          {/* ===== FEATURE GRID ===== */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          {/* ===== FEATURES ===== */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {features.map(({ Icon, title, text, terms }) => (
               <div
                 key={title}
-                className="group rounded-[32px] p-8 text-center shadow-xl
-                transition-all duration-500 hover:-translate-y-3
-                hover:shadow-[#6B5FA7]/40"
+                className="group rounded-[28px] p-7 text-center shadow-xl
+                transition-all duration-500 hover:-translate-y-2 hover:shadow-[#6B5FA7]/40"
                 style={{
                   background:
                     "radial-gradient(circle at center, #E9DCFF 0%, #F7F2FF 55%, #FFFFFF 100%)",
                 }}
               >
-                <Icon className="w-14 h-14 mx-auto text-[#6B5FA7] mb-5 group-hover:scale-110 transition" />
+                <Icon className="w-12 h-12 mx-auto text-[#6B5FA7] mb-4 group-hover:scale-110 transition" />
 
-                <h3 className="text-2xl font-extrabold mb-3 text-[#2E1A47]">
+                <h3 className="text-xl font-extrabold mb-2 text-[#2E1A47]">
                   {title}
                 </h3>
 
                 <p
-                  className="text-gray-700 text-lg leading-relaxed"
+                  className="text-gray-700 text-base sm:text-lg leading-relaxed"
                   dangerouslySetInnerHTML={{
                     __html: highlightTerms(text, terms),
                   }}
@@ -197,28 +198,17 @@ export default function ParentToddler() {
               </div>
             ))}
           </div>
-
-          {/* ===== CLOSING NOTE ===== */}
-          <div className="mt-20 text-center max-w-4xl mx-auto text-gray-700 text-xl leading-relaxed">
-            <p className="font-semibold">
-              This shared journey builds emotional security and confidence—
-              allowing children to step into the world of learning with joy,
-              trust, and a strong foundation alongside their parents.
-            </p>
-          </div>
         </div>
 
-        {/* ===== SOFT VIBRATION ===== */}
+        {/* ===== FLOWER ANIMATION ===== */}
         <style>{`
-          @keyframes softVibrate {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-2px); }
-            50% { transform: translateX(2px); }
-            75% { transform: translateX(-2px); }
-            100% { transform: translateX(0); }
+          @keyframes flowerZoom {
+            0% { transform: scale(0.96); }
+            50% { transform: scale(1.06); }
+            100% { transform: scale(0.96); }
           }
-          .animate-soft-vibrate {
-            animation: softVibrate 0.25s ease-in-out;
+          .animate-flower-zoom {
+            animation: flowerZoom 6s ease-in-out infinite;
           }
         `}</style>
       </div>
