@@ -209,7 +209,6 @@ font-family: 'Chewy', system-ui, sans-serif;
 const taglines = [
   "Wisdom, Uniquely Nurtured",
   "Little Steps to Big Wisdom",
-  "A Premium Preschool & Daycare",
 ];
 
 const icons = [
