@@ -113,7 +113,7 @@ const OurPrograms = () => {
 
             <h2
               className="text-[#b62474] text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight mb-3"
-              style={{ fontFamily: "'Chewy', cursive" }}
+              style={{ fontFamily: "'Chewy', system-ui, sans-serif" }}
             >
               Learning Pathways For Every Stage of Growth
             </h2>

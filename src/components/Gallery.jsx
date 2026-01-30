@@ -109,7 +109,7 @@ const Gallery = () => {
             </p>
 
             <h2  style={{
-                  fontFamily: "'Chewy', cursive",
+                  fontFamily: "'Chewy', system-ui, sans-serif",
                   fontStyle: "normal",
                 }} className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#b62474] mb-3">
               Moments at Vedique School Where Learning Comes Alive

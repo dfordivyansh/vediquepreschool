@@ -119,7 +119,7 @@ html, body {
 }
 
 .hero-tagline {
-font-family: 'Chewy', cursive;
+font-family: 'Chewy', system-ui, sans-serif;
   font-weight: 900;
   font-size: 38px;
   color: #E38342;

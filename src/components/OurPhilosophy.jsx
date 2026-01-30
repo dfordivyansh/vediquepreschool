@@ -148,7 +148,7 @@ const OurPhilosophy = () => {
 
             <h2
               className="text-[#b62474] text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight"
-              style={{ fontFamily: "'Chewy', cursive" }}>
+              style={{ fontFamily: "'Chewy', system-ui, sans-serif" }}>
               Preparing Children For Life, Not Just School
             </h2>
           </div>
