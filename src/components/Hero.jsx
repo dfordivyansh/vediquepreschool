@@ -279,7 +279,7 @@ const Hero = ({ setActive, setOpen }) => {
 
             <p className="hero-description">
               <b className="text-[#b62474]">Vedique</b> is born from the union
-              of two powerful ideas—<b className="text-[#b62474]">‘Vedic’</b>{" "}
+              of two powerful ideas, <b className="text-[#b62474]">‘Vedic’</b>{" "}
               and <b className="text-[#b62474]">‘Unique’</b> - symbolising
               wisdom imparted in a distinctive and meaningful way.
             </p>
@@ -294,7 +294,7 @@ const Hero = ({ setActive, setOpen }) => {
             </p>
 
             <p className="hero-description">
-              That foundation—your child’s stepping stone into the world—must be{" "}
+              That foundation your child’s stepping stone into the world must be{" "}
               <b className="text-[#b62474]">strong, nurturing, and inspiring</b>
               .
             </p>
