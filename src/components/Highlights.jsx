@@ -412,11 +412,17 @@ const Highlights = () => {
               background:
                 "radial-gradient(circle at center, #FFFFFF 0%, #EFE4FF 55%, #DAC7F7 100%)",
             }}>
-            {/* BIG ICON */}
-            {React.createElement(highlights[active].icon, {
-              size: 76,
-              className: "mx-auto text-[#6B4FA3] mb-4",
-            })}
+{/* BACKGROUND ICON */}
+{React.createElement(highlights[active].icon, {
+  size: 220,
+  strokeWidth: 1.2,
+  className: `
+    absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+    text-[#6B4FA3]/15
+    pointer-events-none
+  `,
+})}
+
 
             <h3 className="text-3xl font-bold text-center text-[#2E1A47] mb-6">
               {highlights[active].title}

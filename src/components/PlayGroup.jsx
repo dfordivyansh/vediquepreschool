@@ -165,7 +165,7 @@ export default function PlayGroup() {
               <div
                 key={title}
                 className="group rounded-[32px] p-8 text-center shadow-xl
-                transition-all duration-500 hover:-translate-y-3 hover:shadow-[#6B5FA7]/40 cursor-pointer"
+                transition-all duration-500 hover:-translate-y-3 hover:shadow-[#6B5FA7]/40"
                 style={{
                   background:
                     "radial-gradient(circle at center, #E9DCFF 0%, #F7F2FF 55%, #FFFFFF 100%)",
