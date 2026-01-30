@@ -48,12 +48,20 @@ const Footer = () => {
 
             {/* ================= BRAND ================= */}
             <div className="space-y-6 text-center lg:text-left lg:col-span-2">
-              <img
-                src="/assets/logo.png"
-                alt="Vedique Preschool Logo"
-                className="h-20 sm:h-24 lg:h-26 mx-auto lg:mx-0"
-                style={{ filter: "brightness(0) invert(1)" }}
-              />
+<img
+  src="/assets/logo-footer.png"
+  alt="Vedique Preschool Logo"
+  className="
+    h-20 sm:h-24 lg:h-26
+    mx-auto lg:mx-0
+    rounded-[28px_8px_28px_8px]
+    hover:rotate-1 transition duration-300
+    shadow-lg
+    bg-white
+    p-2
+  "
+/>
+
 
               <p className="text-white/85 leading-relaxed max-w-lg mx-auto lg:mx-0 text-xl">
                 A mindful learning space where children grow with confidence,

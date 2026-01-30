@@ -167,7 +167,6 @@ font-family: 'Chewy', cursive;
 
 .hero-image {
   width: 100%;
-  border-radius: 32px;
 }
 
 /* ===== CTA ===== */
@@ -231,7 +230,7 @@ const Hero = ({ setActive, setOpen }) => {
   useEffect(() => {
     const t = setInterval(
       () => setIndex((p) => (p + 1) % taglines.length),
-      3500
+      3500,
     );
     return () => clearInterval(t);
   }, []);
@@ -246,7 +245,7 @@ const Hero = ({ setActive, setOpen }) => {
   };
 
   const marqueeText = `ADMISSION OPEN ${currentYear}-${String(
-    currentYear + 1
+    currentYear + 1,
   ).slice(-2)}`;
 
   const floatingIcons = useMemo(
@@ -259,7 +258,7 @@ const Hero = ({ setActive, setOpen }) => {
           animationDelay: `${i * 0.7}s`,
         },
       })),
-    []
+    [],
   );
 
   return (
@@ -273,8 +272,6 @@ const Hero = ({ setActive, setOpen }) => {
 
         <div className="hero-content">
           <div>
-            
-
             <div className="hero-tagline-wrapper">
               <div key={index} className="hero-tagline">
                 {taglines[index]}
@@ -282,10 +279,10 @@ const Hero = ({ setActive, setOpen }) => {
             </div>
 
             <p className="hero-description">
-              <b className="text-[#b62474]">Vedique</b> is born from the union of
-              two powerful ideas—<b className="text-[#b62474]">‘Vedic’</b> and{" "}
-              <b className="text-[#b62474]">‘Unique’</b> - symbolising wisdom
-              imparted in a distinctive and meaningful way.
+              <b className="text-[#b62474]">Vedique</b> is born from the union
+              of two powerful ideas—<b className="text-[#b62474]">‘Vedic’</b>{" "}
+              and <b className="text-[#b62474]">‘Unique’</b> - symbolising
+              wisdom imparted in a distinctive and meaningful way.
             </p>
 
             <p className="hero-description">
@@ -293,17 +290,14 @@ const Hero = ({ setActive, setOpen }) => {
               than alphabets, numbers, songs, and colours. It’s about laying the
               very first foundation of{" "}
               <b className="text-[#b62474]">lifelong learning</b> and shaping a{" "}
-              <b className="text-[#b62474]">
-                confident, compassionate
-              </b>{" "}
-              human being.
+              <b className="text-[#b62474]">confident, compassionate</b> human
+              being.
             </p>
 
             <p className="hero-description">
               That foundation—your child’s stepping stone into the world—must be{" "}
-              <b className="text-[#b62474]">
-                strong, nurturing, and inspiring
-              </b>.
+              <b className="text-[#b62474]">strong, nurturing, and inspiring</b>
+              .
             </p>
           </div>
 
@@ -312,7 +306,13 @@ const Hero = ({ setActive, setOpen }) => {
             <div className="admission-strip">
               <div className="admission-text">{marqueeText}</div>
             </div>
-            <img src="/assets/hero.jpeg" alt="Hero" className="hero-image" />
+            <img
+              src="/assets/hero.jpeg"
+              alt="Hero"
+              className="hero-image   hover:rotate-1 transition duration-300
+  rounded-[58px_18px_58px_18px]
+"
+            />
 
             <div className="hero-cta">
               <button onClick={() => scrollToSection("contact", "Contact")}>

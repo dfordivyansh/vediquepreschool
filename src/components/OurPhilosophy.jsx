@@ -35,7 +35,7 @@ const OurPhilosophy = () => {
           observer.disconnect();
         }
       },
-      { threshold: 0.25 }
+      { threshold: 0.25 },
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
@@ -129,8 +129,7 @@ const OurPhilosophy = () => {
           paddingTop: "3rem",
           paddingBottom: "4.2rem",
           overflow: "hidden",
-        }}
-      >
+        }}>
         {bgIcons.map(({ Icon, ...pos }, i) => (
           <Icon
             key={i}
@@ -149,8 +148,7 @@ const OurPhilosophy = () => {
 
             <h2
               className="text-[#b62474] text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight"
-              style={{ fontFamily: "'Chewy', cursive" }}
-            >
+              style={{ fontFamily: "'Chewy', cursive" }}>
               Preparing Children For Life, Not Just School
             </h2>
           </div>
@@ -160,12 +158,11 @@ const OurPhilosophy = () => {
             <div className={`reveal ${visible ? "show" : ""}`}>
               <p
                 className="text-[#3A216A] text-xl font-bold sm:text-2xl leading-relaxed mb-6"
-                style={{ fontFamily: "'Comic Neue', 'Nunito', sans-serif" }}
-              >
+                style={{ fontFamily: "'Comic Neue', 'Nunito', sans-serif" }}>
                 At <b className="text-[#b62474]">Vedique</b>, we believe that{" "}
                 <b className="text-[#b62474]">healthy habits</b> and{" "}
-                <b className="text-[#b62474]">emotional intelligence</b> should be
-                nurtured from the earliest years.
+                <b className="text-[#b62474]">emotional intelligence</b> should
+                be nurtured from the earliest years.
                 <br />
                 Our curriculum draws inspiration from{" "}
                 <b className="text-[#b62474]">Waldorf</b> and{" "}
@@ -173,21 +170,24 @@ const OurPhilosophy = () => {
                 blending structure with creativity.
                 <br />
                 We emphasize{" "}
-                <b className="text-[#b62474]">holistic development</b>—from table
-                manners and civic sense to healthy eating and meaningful{" "}
+                <b className="text-[#b62474]">holistic development</b>—from
+                table manners and civic sense to healthy eating and meaningful{" "}
                 <b className="text-[#b62474]">social interaction</b>.
                 <br />
                 <span className="font-bold text-[#b62474]">
-                  At Vedique, we prepare children not just for school—but for life.
+                  At Vedique, we prepare children not just for school—but for
+                  life.
                 </span>
               </p>
             </div>
 
-            <div className={`relative glow-wrap reveal ${visible ? "show" : ""}`}>
+            <div
+              className={`relative glow-wrap reveal ${visible ? "show" : ""}`}>
               <img
                 src="/assets/philosophy.png"
                 alt="Vedique Philosophy"
-                className="relative z-10 rounded-3xl shadow-xl w-full object-cover"
+                className="relative z-10 rounded-3xl shadow-xl w-full hover:rotate-1 transition duration-300
+rounded-[58px_18px_58px_18px] object-cover"
               />
             </div>
           </div>
@@ -208,8 +208,7 @@ const OurPhilosophy = () => {
                 <div
                   key={i}
                   className="flex items-center gap-3 w-[260px] shrink-0 px-5 py-3 rounded-full bg-gradient-to-b from-white via-[#E38342]/70 to-white border border-[#E38342]/25 text-lg text-[#2E1A47] shadow-sm"
-                  style={{ fontFamily: "'Comic Neue', 'Nunito', sans-serif" }}
-                >
+                  style={{ fontFamily: "'Comic Neue', 'Nunito', sans-serif" }}>
                   <item.icon size={22} />
                   <span className="font-bold whitespace-nowrap">
                     {item.label}
