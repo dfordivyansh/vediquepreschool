@@ -78,7 +78,7 @@ export default function Navbar() {
           : "bg-gradient-to-b from-[#F3ECFB] to-[#FEFEF6] shadow-lg"
       }`}>
       {/* HEADER */}
-      <div className="max-w-screen-xl mx-auto px-4 py-4 h-[96px] flex items-center justify-between">
+      <div className="max-w-screen-xl mx-auto px-4 py-4 h-[120px] flex items-center justify-between">
         {/* LEFT */}
         <div className="flex items-center gap-4">
           <button
@@ -99,7 +99,7 @@ export default function Navbar() {
             src="/assets/logo.png"
             alt="Vedique Logo"
             onClick={scrollToTop}
-            className="h-14 md:h-20 cursor-pointer hover:scale-105 transition"
+            className="h-24 md:h-28 cursor-pointer hover:scale-105 transition"
           />
         </div>
 

@@ -120,7 +120,7 @@ html, body {
 
 .hero-tagline {
 font-family: 'Chewy', system-ui, sans-serif;
-  font-weight: 900;
+  font-weight: 300;
   font-size: 38px;
   color: #E38342;
   font-style: italic;
@@ -264,7 +264,7 @@ const Hero = ({ setActive, setOpen }) => {
     <>
       <style>{styleSheet}</style>
 
-      <section className="hero-banner">
+      <section className="hero-banner mt-10">
         {floatingIcons.map(({ Icon, style }, i) => (
           <Icon key={i} className="floating-icon" style={style} />
         ))}

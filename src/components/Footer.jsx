@@ -52,7 +52,7 @@ const Footer = () => {
   src="/assets/logo-footer.png"
   alt="Vedique Preschool Logo"
   className="
-    h-20 sm:h-24 lg:h-26
+    h-24 sm:h-28 lg:h-30
     mx-auto lg:mx-0
     rounded-[28px_8px_28px_8px]
     hover:rotate-1 transition duration-300
@@ -78,7 +78,7 @@ const Footer = () => {
 
               <p className="text-[18px] text-white/85 leading-relaxed">
                 VEDIQUE PRESCHOOL <br />
-                Plot 52, Gandham Sri Nilayam <br />
+                Door: 2-52,<br />
                 Prashant Nagar Colony <br />
                 Behind Sai Veda Hospital <br />
                 Bandlaguda Jagir <br />
@@ -136,7 +136,7 @@ const Footer = () => {
           </div>
 
           {/* ================= DIVIDER ================= */}
-          <hr className="my-12 h-px border-0 bg-white/25" />
+          <hr className="my-2 h-px border-0 bg-white/25" />
 
           {/* ================= COPYRIGHT ================= */}
           <div className="text-center text-xl text-white/75 font-medium">
