@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Mail, Phone, MessageCircle, Smartphone } from "lucide-react";
 
 /* ===== FONT ===== */
@@ -98,22 +98,20 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* ===== FORM ===== */}
             <form
-              action="https://formsubmit.co/dfordivyansh3@gmail.com"
+              action="https://formsubmit.co/vediquepreschool@gmail.com"
               method="POST"
               className="rounded-[26px] p-6 sm:p-8 shadow-xl border border-[#6B4FA3]/20 space-y-4"
               style={{
                 background:
                   "radial-gradient(circle at top right, #F3ECFB 0%, #FFF6FF 55%, #FFFFFF 100%)",
               }}>
-              {/* ✅ REQUIRED HIDDEN FIELDS */}
+              {/* ===== REQUIRED FORM SUBMIT FIELDS ===== */}
               <input
                 type="hidden"
                 name="_subject"
                 value="Vedique Preschool – Admission Enquiry"
               />
               <input type="hidden" name="_captcha" value="false" />
-
-              {/* ✅ FIXED THANK YOU URL */}
               <input
                 type="hidden"
                 name="_next"
