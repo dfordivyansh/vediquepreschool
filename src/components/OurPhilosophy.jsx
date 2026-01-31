@@ -196,31 +196,43 @@ const OurPhilosophy = () => {
             </div>
           </div>
 
-          {/* Highlights */}
-          <div className={`carousel-mask reveal ${visible ? "show" : ""}`}>
-            <div className="carousel-track">
-              {[
-                { icon: HeartHandshake, label: "Emotional Intelligence" },
-                { icon: Brain, label: "Experiential Learning" },
-                { icon: Leaf, label: "Holistic Growth" },
-                { icon: Users, label: "Social Confidence" },
-                { icon: HeartHandshake, label: "Emotional Intelligence" },
-                { icon: Brain, label: "Experiential Learning" },
-                { icon: Leaf, label: "Holistic Growth" },
-                { icon: Users, label: "Social Confidence" },
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-3 w-[260px] shrink-0 px-5 py-3 rounded-full bg-gradient-to-b from-white via-[#E38342]/70 to-white border border-[#E38342]/25 text-lg text-[#2E1A47] shadow-sm"
-                  style={{ fontFamily: "'Comic Neue', 'Nunito', sans-serif" }}>
-                  <item.icon size={22} />
-                  <span className="font-bold whitespace-nowrap">
-                    {item.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
+{/* Highlights */}
+<div className={`carousel-mask reveal ${visible ? "show" : ""}`}>
+  <div className="carousel-track">
+    {[
+      { icon: HeartHandshake, label: "Emotional Intelligence" },
+      { icon: Brain, label: "Experiential Learning" },
+      { icon: Leaf, label: "Holistic Growth" },
+      { icon: Users, label: "Social Confidence" },
+      { icon: HeartHandshake, label: "Emotional Intelligence" },
+      { icon: Brain, label: "Experiential Learning" },
+      { icon: Leaf, label: "Holistic Growth" },
+      { icon: Users, label: "Social Confidence" },
+    ].map((item, i) => (
+      <div
+        key={i}
+        className="
+          flex items-center justify-center gap-3
+          w-[260px] shrink-0
+          px-5 py-3
+          rounded-full
+          bg-gradient-to-b from-white via-[#E38342]/70 to-white
+          border border-[#E38342]/25
+          text-lg text-[#2E1A47]
+          shadow-sm
+          text-center
+        "
+        style={{ fontFamily: "'Comic Neue', 'Nunito', sans-serif" }}
+      >
+        <item.icon size={22} />
+        <span className="font-bold whitespace-nowrap">
+          {item.label}
+        </span>
+      </div>
+    ))}
+  </div>
+</div>
+
         </div>
       </section>
     </>
