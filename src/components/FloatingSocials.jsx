@@ -27,13 +27,15 @@ const FloatingSocials = () => {
       </div>
 
       <style>{`
+        /* ================= DESKTOP (DEFAULT) ================= */
         .floating-socials {
           position: fixed;
-          top: 90px; /* 👈 adjust based on navbar height */
-          left: 20px;
+          top: 50%;
+          left: 18px;
+          transform: translateY(-50%);
           display: flex;
-          flex-direction: row; /* ROW layout */
-          gap: 12px;
+          flex-direction: column; /* vertical */
+          gap: 14px;
           z-index: 999;
         }
 
@@ -76,11 +78,15 @@ const FloatingSocials = () => {
           100% { transform: scale(1); }
         }
 
-        /* Mobile fine-tuning */
+        /* ================= MOBILE ================= */
         @media (max-width: 640px) {
           .floating-socials {
-            top: 78px;
-            left: 14px;
+            top: 86px;           /* just below navbar */
+            right: 14px;
+            left: auto;
+            transform: none;
+            flex-direction: row; /* horizontal */
+            gap: 10px;
           }
 
           .social-btn {
