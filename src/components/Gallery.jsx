@@ -108,10 +108,12 @@ const Gallery = () => {
               Our Gallery
             </p>
 
-            <h2  style={{
-                  fontFamily: "'Chewy', system-ui, sans-serif",
-                  fontStyle: "normal",
-                }} className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#b62474] mb-3">
+            <h2
+              style={{
+                fontFamily: "'Chewy', system-ui, sans-serif",
+                fontStyle: "normal",
+              }}
+              className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#b62474] mb-3">
               Moments at Vedique School Where Learning Comes Alive
               <br />
             </h2>
@@ -166,7 +168,9 @@ const Gallery = () => {
                   navigate("/gallery");
                 }, 100);
               }}
-              className="px-8 py-3 rounded-[18px] font-semibold text-xl text-white shadow-lg cursor-pointer"
+              className="px-8 py-3 rounded-[18px] font-semibold text-xl text-white shadow-lg cursor-pointer     hover:shadow-xl
+    hover:scale-[1.05]
+    transition-all duration-300"
               style={{
                 background: "linear-gradient(180deg, #6B4FA3 0%, #8E6FD1 100%)",
               }}>

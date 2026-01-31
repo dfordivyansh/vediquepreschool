@@ -122,7 +122,7 @@ html, body {
 font-family: 'Chewy', system-ui, sans-serif;
   font-weight: 300;
   font-size: 38px;
-  color: #FEFEF6;
+  color: #b62474;
   font-style: italic;
   opacity: 0;
   animation: taglineFade 3.5s ease-in-out forwards;

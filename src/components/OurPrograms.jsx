@@ -21,7 +21,7 @@ const programs = [
   { title: "Nursery", age: "3 – 4 years", link: "/programs/nursery" },
   { title: "Lower Kindergarten (LKG)", age: "4 – 5 years", link: "/programs/lkg" },
   { title: "Upper Kindergarten (UKG)", age: "5 – 6 years", link: "/programs/ukg" },
-  { title: "Parent–Toddler Program", age: "1.5 – 3 years", link: "/programs/parent-toddler" },
+  { title: "Parent Toddler Program", age: "1.5 – 3 years", link: "/programs/parent-toddler" },
   { title: "Daycare", age: "1.5 – 8 years", link: "/programs/daycare" },
   { title: "Enrichment Programs", age: "4+ years", link: "/programs/enrichment" },
 ];
@@ -123,15 +123,17 @@ const OurPrograms = () => {
               style={{ fontFamily: "'Comic Neue', 'Nunito', sans-serif" }}
             >
               Thoughtfully designed programs that support each child’s emotional,
-              social, and cognitive development — <b>step by step.</b>
+              social, and cognitive development <b>step by step.</b>
             </p>
           </div>
 
           {/* Programs Grid */}
-          <div
-            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5
-            gap-5 fade-soft ${visible ? "show" : ""}`}
-          >
+<div
+  className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5
+  gap-5 fade-soft ${visible ? "show" : ""}`}
+  style={{ justifyContent: "center" }}
+>
+
             {programs.map((program, index) => (
               <a
                 key={index}

@@ -63,11 +63,12 @@ export default function Navbar() {
     { label: "Contact", icon: <FaEnvelope />, id: "contact" },
   ];
 
-  const goToEnquiry = () => {
-    navigate("/enquiry", { replace: false });
-    requestAnimationFrame(() => {
-      window.scrollTo({ top: 0, behavior: "auto" });
-    });
+  const openEnquiryForm = () => {
+    window.open(
+      "https://forms.gle/umoHgBoJEvYZhhP67",
+      "_blank",
+      "noopener,noreferrer",
+    );
   };
 
   return (
@@ -99,7 +100,7 @@ export default function Navbar() {
             src="/assets/logo-hero.png"
             alt="Vedique Logo"
             onClick={scrollToTop}
-            className="h-14 md:h-20 cursor-pointer hover:scale-105 transition"
+            className="h-13 md:h-20 cursor-pointer hover:scale-105 transition"
           />
         </div>
 
@@ -134,7 +135,7 @@ export default function Navbar() {
           </a>
 
           <button
-            onClick={goToEnquiry}
+            onClick={openEnquiryForm}
             className="hidden md:block bg-[#E38342] text-white px-6 py-3 text-xl font-semibold rounded-lg shadow-sm hover:shadow-md transition cursor-pointer">
             Enquiry
           </button>
@@ -171,7 +172,7 @@ export default function Navbar() {
             {/* ✅ MOBILE ENQUIRY BUTTON */}
             <button
               onClick={() => {
-                goToEnquiry();
+                openEnquiryForm();
                 setOpen(false);
               }}
               className="w-full bg-[#E38342] text-white py-4 text-xl font-semibold rounded-xl shadow-md hover:shadow-lg transition mt-6">

@@ -170,12 +170,12 @@ const OurPhilosophy = () => {
                 blending structure with creativity.
                 <br />
                 We emphasize{" "}
-                <b className="text-[#b62474]">holistic development</b>—from
+                <b className="text-[#b62474]">holistic development</b> from
                 table manners and civic sense to healthy eating and meaningful{" "}
                 <b className="text-[#b62474]">social interaction</b>.
                 <br />
                 <span className="font-bold text-[#b62474]">
-                  At Vedique, we prepare children not just for school—but for
+                  At Vedique, we prepare children not just for school but for
                   life.
                 </span>
               </p>

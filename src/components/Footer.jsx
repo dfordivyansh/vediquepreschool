@@ -60,25 +60,43 @@ const Footer = () => {
               />
               <p className="text-white/85 leading-relaxed max-w-lg mx-auto lg:mx-0 text-xl">
                 A mindful learning space where children grow with confidence,
-                compassion, creativity, and strong values — prepared for life,
+                compassion, creativity, and strong values prepared for life,
                 not just school.
               </p>
+              <a
+                href="https://forms.gle/PuQGkHb1gTK2YFoB6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+    inline-flex items-center justify-center
+    mt-6 px-7 py-3
+    text-xl font-semibold
+                  rounded-[28px_8px_28px_8px]
+    bg-gradient-to-r from-[#C6B6F3] to-[#9E87E8]
+    text-[#1B0F2D]
+    shadow-lg
+    hover:shadow-xl
+    hover:scale-[1.05]
+    transition-all duration-300
+  ">
+                Careers at Vedique
+              </a>
             </div>
 
             {/* ================= LOCATION ================= */}
-            <div className="space-y-4 py-0 sm:py-10 text-center lg:text-left">
+            <div className="space-y-6 py-0 sm:py-10 text-center lg:text-left">
               <h3 className="text-xl sm:text-2xl font-semibold text-[#D6C7F2]">
                 Our Location
               </h3>
 
               <p className="text-[18px] text-white/85 leading-relaxed">
                 VEDIQUE PRESCHOOL <br />
-                Door: 2-52,
+                Door: 2-52 ,
                 <br />
                 Prashant Nagar Colony <br />
                 Behind Sai Veda Hospital <br />
                 Bandlaguda Jagir <br />
-                Hyderabad, Telangana – 500086
+                Hyderabad , Telangana – 500086
               </p>
             </div>
 
@@ -88,8 +106,8 @@ const Footer = () => {
                 <h3 className="text-xl sm:text-2xl font-semibold text-[#D6C7F2] mb-1">
                   Call Us
                 </h3>
-                <p className="text-white/85 text-xl sm:text-2xl font-medium">
-                  +91 90308 02211
+                <p className="text-white/85 text-lg sm:text-xl font-medium">
+                  +91-90308 02211
                 </p>
               </div>
 
@@ -99,7 +117,7 @@ const Footer = () => {
                 </h3>
                 <a
                   href="mailto:vediquepreschool@gmail.com"
-                  className="text-white/85 hover:text-white transition text-xl sm:text-2xl font-medium">
+                  className="text-white/85 hover:text-white transition text-lg sm:text-xl font-medium">
                   vediquepreschool@gmail.com
                 </a>
               </div>
@@ -125,7 +143,7 @@ const Footer = () => {
 
                   {/* Instagram */}
                   <a
-                    href="https://www.instagram.com/vediquepreschool?igsh=MXd4eWRtczB2eTJzcw=="
+                    href="https://www.instagram.com/vediquepreschool"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Vedique Preschool on Instagram"

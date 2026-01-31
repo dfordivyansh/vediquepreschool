@@ -11,7 +11,8 @@ import UKGPage from "./pages/UKGPage";
 import ParentToddlerPage from "./pages/ParentToddlerPage";
 import DaycarePage from "./pages/DaycarePage";
 import EnrichmentProgramsPage from "./pages/EnrichmentProgramsPage";
-import EnquiryPage from './pages/EnquiryPage';
+import FloatingSocials from "./components/FloatingSocials";
+import ThankYou from "./pages/ThankYou";
 
 /* ===== LOADER ===== */
 const Loader = () => (
@@ -28,8 +29,6 @@ const Loader = () => (
         alt="Vedique Preschool"
         className="loader-logo"
       />
-
-     
 
       <style>{`
         .loader-wrapper {
@@ -105,7 +104,6 @@ const Loader = () => (
   </>
 );
 
-
 const App = () => {
   const [loading, setLoading] = useState(true);
 
@@ -142,6 +140,8 @@ const App = () => {
       `}</style>
 
       <Router>
+        <FloatingSocials />
+
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/gallery" element={<FullGallery />} />
@@ -158,8 +158,7 @@ const App = () => {
             path="/programs/enrichment"
             element={<EnrichmentProgramsPage />}
           />
-          <Route path="/enquiry" element={<EnquiryPage />} />
-
+          <Route path="/thank-you" element={<ThankYou />} />
         </Routes>
       </Router>
     </>

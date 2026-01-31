@@ -117,7 +117,7 @@ export default function LKG() {
             onClick={() => navigate("/")}
             className="absolute top-4 left-4 z-20 bg-white/90 backdrop-blur-md
             px-5 py-2 rounded-full font-semibold text-[#2E1A47]
-            shadow-lg hover:scale-105 transition"
+            shadow-lg hover:scale-105 transition cursor-pointer"
           >
             ← Back to Home
           </button>
@@ -182,7 +182,7 @@ export default function LKG() {
                     "radial-gradient(circle at center, #E9DCFF 0%, #F7F2FF 55%, #FFFFFF 100%)",
                 }}
               >
-                <Icon className="w-12 h-12 mx-auto text-[#6B5FA7] mb-4 group-hover:scale-110 transition" />
+                <Icon className="w-12 h-12 mx-auto text-[#cd5698] mb-4 group-hover:scale-110 transition" />
 
                 <h3 className="text-xl font-extrabold mb-2 text-[#2E1A47]">
                   {title}

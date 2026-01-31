@@ -25,29 +25,19 @@ const programs = [
   "Enrichment Programs",
 ];
 
+const enrichmentOptions = [
+  "Phonics",
+  "Vedic Mathematics",
+  "Abacus / IQ Booster",
+  "SpellBee",
+  "Soft Skills",
+  "Handwriting Improvement",
+  "Other",
+];
+
 const Contact = () => {
   const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
-  const enrichmentOptions = [
-    "Phonics",
-    "Vedic Mathematics",
-    "Abacus / IQ Booster",
-    "SpellBee",
-    "Soft Skills",
-    "Handwriting Improvement",
-    "Other",
-  ];
-
-  const [formData, setFormData] = useState({
-    parentName: "",
-    phone: "",
-    email: "",
-    childName: "",
-    dob: "",
-    programs: [],
-    enrichment: "",
-    message: "",
-  });
 
   /* ===== Intersection Observer ===== */
   useEffect(() => {
@@ -55,43 +45,9 @@ const Contact = () => {
       ([entry]) => entry.isIntersecting && setVisible(true),
       { threshold: 0.25 },
     );
-
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleCheckbox = (program) => {
-    setFormData((prev) => ({
-      ...prev,
-      programs: prev.programs.includes(program)
-        ? prev.programs.filter((p) => p !== program)
-        : [...prev.programs, program],
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const mailtoLink = `mailto:vediquepreschool@gmail.com?subject=Admission Enquiry&body=${encodeURIComponent(
-      `Parent Name: ${formData.parentName}
-Phone: ${formData.phone}
-Email: ${formData.email}
-Child Name: ${formData.childName}
-DOB: ${formData.dob}
-Programs: ${formData.programs.join(", ")}
-Enrichment Program: ${formData.enrichment || "N/A"}
-
-Message:
-${formData.message}`,
-    )}`;
-
-    window.location.href = mailtoLink;
-  };
 
   return (
     <>
@@ -100,11 +56,10 @@ ${formData.message}`,
       <section
         ref={sectionRef}
         id="contact"
-        className="relative px-4 py-10 sm:py-14 overflow-hidden"
+        className="relative px-4 py-10 sm:py-12 overflow-hidden"
         style={{
           background:
             "radial-gradient(circle at top left, #EFE6FF 0%, #F4EEFF 40%, #FFFFFF 75%)",
-          fontFamily: "Inter, sans-serif",
         }}>
         {/* ===== BACKGROUND ICONS ===== */}
         {[Mail, Phone, MessageCircle, Smartphone].map((Icon, i) => (
@@ -122,146 +77,116 @@ ${formData.message}`,
         <div className="max-w-6xl mx-auto relative z-10">
           {/* ===== HEADER ===== */}
           <div
-            className={`text-center mb-14 transition-all duration-700 ${
+            className={`text-center mb-10 transition-all duration-700 ${
               visible ? "opacity-100" : "opacity-0 translate-y-6"
             }`}>
-            <p
-              className="inline-block mb-6 px-6 py-2 rounded-full
-                          text-3xl font-bold border border-[#E38342]
-                          text-[#2E1A47] bg-gradient-to-b from-[#3493C5]/50 to-white
-
- shadow-sm">
+            <p className="inline-block mb-4 px-6 py-2 rounded-full text-3xl font-bold border border-[#E38342] text-[#2E1A47] bg-gradient-to-b from-[#3493C5]/50 to-white shadow-sm">
               Contact Us
             </p>
 
-            <h2
-              style={{
-                fontFamily: "'Chewy', system-ui, sans-serif",
-                fontStyle: "normal",
-              }}
-              className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#b62474]">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#b62474]">
               Let’s Start a Conversation
-              <br />
             </h2>
 
-            <p
-              className="text-[#3A216A] max-w-3xl mx-auto text-xl sm:text-2xl"
-              style={{
-                fontFamily: "'Comic Neue', 'Nunito', sans-serif",
-                fontStyle: "normal",
-              }}>
+            <p className="text-[#3A216A] max-w-3xl mx-auto text-xl sm:text-2xl font-['Comic_Neue']">
               Have a question or want to know more about <b>Vedique</b>? We’d
               love to hear from you.
             </p>
           </div>
 
-          {/* ===== FORM + MAP GRID ===== */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
+          {/* ===== FORM + MAP ===== */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* ===== FORM ===== */}
             <form
-              onSubmit={handleSubmit}
-              className="rounded-[28px] p-6 sm:p-10 shadow-xl border border-[#6B4FA3]/20 space-y-6"
+              action="https://formsubmit.co/dfordivyansh3@gmail.com"
+              method="POST"
+              className="rounded-[26px] p-6 sm:p-8 shadow-xl border border-[#6B4FA3]/20 space-y-4"
               style={{
                 background:
                   "radial-gradient(circle at top right, #F3ECFB 0%, #FFF6FF 55%, #FFFFFF 100%)",
               }}>
+              {/* ✅ REQUIRED HIDDEN FIELDS */}
               <input
-                name="parentName"
-                placeholder="Parent Name *"
-                required
-                onChange={handleChange}
-                className="input"
+                type="hidden"
+                name="_subject"
+                value="Vedique Preschool – Admission Enquiry"
+              />
+              <input type="hidden" name="_captcha" value="false" />
+
+              {/* ✅ FIXED THANK YOU URL */}
+              <input
+                type="hidden"
+                name="_next"
+                value="https://vediquepreschool.vercel.app/thank-you"
               />
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input
-                  name="phone"
-                  placeholder="Phone Number *"
-                  required
-                  onChange={handleChange}
-                  className="input"
-                />
-                <input
-                  name="email"
-                  type="email"
-                  placeholder="Email *"
-                  required
-                  onChange={handleChange}
-                  className="input"
-                />
+              {/* Parent Name */}
+              <div>
+                <label className="label">Parent Name *</label>
+                <input name="Parent Name" required className="input" />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input
-                  name="childName"
-                  placeholder="Child’s Name *"
-                  required
-                  onChange={handleChange}
-                  className="input"
-                />
-                <input
-                  name="dob"
-                  type="date"
-                  required
-                  onChange={handleChange}
-                  className="input"
-                />
+              {/* Phone + Email */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="label">Phone Number *</label>
+                  <input name="Phone Number" required className="input" />
+                </div>
+                <div>
+                  <label className="label">Email Address *</label>
+                  <input name="Email" type="email" required className="input" />
+                </div>
+              </div>
+
+              {/* Child Name + DOB */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="label">Child’s Name *</label>
+                  <input name="Child Name" required className="input" />
+                </div>
+                <div>
+                  <label className="label">Child’s Date of Birth *</label>
+                  <input name="DOB" type="date" required className="input" />
+                </div>
               </div>
 
               {/* Programs */}
               <div>
-                <p className="font-bold text-[#6B4FA3] mb-3">
-                  Select the program(s) you are interested in : *
-                </p>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[#6B4FA3]">
+                <p className="label mb-1">Programs Interested In *</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[#6B4FA3]">
                   {programs.map((p) => (
-                    <div key={p} className="space-y-2">
-                      <label className="flex items-center gap-2">
-                        <input
-                          type="checkbox"
-                          checked={formData.programs.includes(p)}
-                          onChange={() => handleCheckbox(p)}
-                        />
-                        {p}
-                      </label>
-
-                      {/* ✅ Enrichment dropdown */}
-                      {p === "Enrichment Programs" &&
-                        formData.programs.includes("Enrichment Programs") && (
-                          <select
-                            value={formData.enrichment}
-                            onChange={(e) =>
-                              setFormData({
-                                ...formData,
-                                enrichment: e.target.value,
-                              })
-                            }
-                            className="input mt-2">
-                            <option value="">Select Enrichment Program</option>
-                            {enrichmentOptions.map((opt) => (
-                              <option key={opt} value={opt}>
-                                {opt}
-                              </option>
-                            ))}
-                          </select>
-                        )}
-                    </div>
+                    <label key={p} className="flex items-center gap-2 text-sm">
+                      <input type="checkbox" name="Programs[]" value={p} />
+                      {p}
+                    </label>
                   ))}
                 </div>
               </div>
 
-              <textarea
-                name="message"
-                rows="4"
-                placeholder="Type your Message..."
-                onChange={handleChange}
-                className="input"
-              />
+              {/* Enrichment */}
+              <div>
+                <label className="label">
+                  Enrichment Program (if applicable)
+                </label>
+                <select name="Enrichment Program" className="input">
+                  <option value="">Not Applicable</option>
+                  {enrichmentOptions.map((opt) => (
+                    <option key={opt} value={opt}>
+                      {opt}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Message */}
+              <div>
+                <label className="label">Message (Optional)</label>
+                <textarea name="Message" rows="3" className="input" />
+              </div>
 
               <button
                 type="submit"
-                className="w-full text-white cursor-pointer font-semibold px-6 py-3 rounded-[18px] shadow-lg hover:scale-[1.02] transition"
+                className="w-full text-white font-semibold px-6 py-3 rounded-[16px] shadow-lg hover:scale-[1.02] transition cursor-pointer"
                 style={{
                   background:
                     "linear-gradient(180deg, #6B4FA3 0%, #8E6FD1 100%)",
@@ -271,7 +196,7 @@ ${formData.message}`,
             </form>
 
             {/* ===== MAP ===== */}
-            <div className="rounded-[28px] overflow-hidden shadow-xl border border-[#6B4FA3]/20">
+            <div className="rounded-[26px] overflow-hidden shadow-xl border border-[#6B4FA3]/20">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1782.6454998627307!2d78.387039326845!3d17.354262937676026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb97af033e7301%3A0x3cf62a14c9a024d6!2sAikyam%20Preschool!5e0!3m2!1sen!2sin!4v1767630304411!5m2!1sen!2sin"
                 width="100%"
@@ -287,14 +212,21 @@ ${formData.message}`,
 
         {/* ===== INPUT STYLES ===== */}
         <style>{`
+          .label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: 600;
+            color: #6B4FA3;
+            font-size: 14px;
+          }
           .input {
             width: 100%;
-            padding: 14px 16px;
-            border-radius: 14px;
+            padding: 12px 14px;
+            border-radius: 12px;
             border: 1px solid #6B4FA340;
-            outline: none;
-            font-size: 16px;
+            font-size: 15px;
             background: #FFFFFF;
+            outline: none;
           }
           .input:focus {
             border-color: #6B4FA3;
