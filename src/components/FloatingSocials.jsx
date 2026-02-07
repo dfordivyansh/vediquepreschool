@@ -10,18 +10,34 @@ const FloatingSocials = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Facebook"
-          className="social-btn facebook"
-        >
+          className="social-btn facebook">
           <Facebook size={20} />
         </a>
 
         <a
           href="https://www.instagram.com/vediquepreschool"
+          onClick={(e) => {
+            const isMobile = /Android|iPhone|iPad|iPod/i.test(
+              navigator.userAgent,
+            );
+
+            if (isMobile) {
+              e.preventDefault();
+              // Try to open directly in Instagram app
+              window.location.href =
+                "instagram://user?username=vediquepreschool";
+
+              // Fallback to web after 1 second (if app not installed)
+              setTimeout(() => {
+                window.location.href =
+                  "https://www.instagram.com/vediquepreschool";
+              }, 1000);
+            }
+          }}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Instagram"
-          className="social-btn instagram"
-        >
+          className="social-btn instagram">
           <Instagram size={20} />
         </a>
       </div>

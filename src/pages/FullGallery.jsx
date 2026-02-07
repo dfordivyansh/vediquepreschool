@@ -29,7 +29,6 @@ const FontLoader = () => (
   </>
 );
 
-
 const categories = ["All Images", "Classroom", "Events", "Activities"];
 const ITEMS_PER_PAGE = 12;
 
@@ -45,6 +44,23 @@ const detectCategory = (src = "") => {
 /* ===== VIDEO DETECTION ===== */
 const isVideo = (src = "") => src.toLowerCase().includes("video");
 
+/* ===== CHECK IF MEDIA EXISTS ===== */
+const checkMediaExists = (src) => {
+  return new Promise((resolve) => {
+    if (src.toLowerCase().endsWith(".mp4")) {
+      const video = document.createElement("video");
+      video.src = src;
+      video.onloadeddata = () => resolve(true);
+      video.onerror = () => resolve(false);
+    } else {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => resolve(true);
+      img.onerror = () => resolve(false);
+    }
+  });
+};
+
 const FullGallery = () => {
   const navigate = useNavigate();
 
@@ -54,19 +70,38 @@ const FullGallery = () => {
   const [zoomed, setZoomed] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
-  /* ===== SPLIT IMAGES & VIDEOS ===== */
-  const images = Array.isArray(galleryData)
-    ? galleryData
-        .filter((item) => !isVideo(item.src))
-        .map((img) => ({
-          ...img,
-          category: detectCategory(img.src),
-        }))
-    : [];
+  const [validMedia, setValidMedia] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const videos = Array.isArray(galleryData)
-    ? galleryData.filter((item) => isVideo(item.src))
-    : [];
+  /* ===== LOAD ONLY EXISTING MEDIA ===== */
+useEffect(() => {
+  const loadMedia = async () => {
+    if (!Array.isArray(galleryData)) return;
+
+    const checks = await Promise.all(
+      galleryData.map(async (item) => {
+        const exists = await checkMediaExists(item.src);
+        return exists ? item : null;
+      })
+    );
+
+    setValidMedia(checks.filter(Boolean));
+    setLoading(false);
+  };
+
+  loadMedia();
+}, []);
+
+
+  /* ===== SPLIT IMAGES & VIDEOS ===== */
+  const images = validMedia
+    .filter((item) => !isVideo(item.src))
+    .map((img) => ({
+      ...img,
+      category: detectCategory(img.src),
+    }));
+
+  const videos = validMedia.filter((item) => isVideo(item.src));
 
   /* ===== HERO IMAGES ===== */
   const heroImages = images.slice(0, 5);
@@ -91,7 +126,7 @@ const FullGallery = () => {
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentImages = filteredImages.slice(
     startIndex,
-    startIndex + ITEMS_PER_PAGE,
+    startIndex + ITEMS_PER_PAGE
   );
 
   useEffect(() => {
@@ -101,6 +136,14 @@ const FullGallery = () => {
   useEffect(() => {
     setZoomed(false);
   }, [lightboxIndex]);
+
+  if (loading) {
+    return (
+      <div className="min-h-[60vh] flex items-center justify-center text-xl font-semibold text-[#6B4FA3]">
+        Loading gallery...
+      </div>
+    );
+  }
 
   return (
     <>
@@ -126,7 +169,8 @@ const FullGallery = () => {
           onClick={() => navigate("/")}
           className="absolute top-6 left-6 z-20 bg-white/90 backdrop-blur-md
           px-6 py-2 rounded-full font-semibold text-[#2E1A47]
-          shadow-lg hover:scale-105 transition cursor-pointer">
+          shadow-lg hover:scale-105 transition cursor-pointer"
+        >
           ← Back to Home
         </button>
 
@@ -140,7 +184,8 @@ const FullGallery = () => {
               style={{
                 fontFamily: "'Comic Neue', 'Nunito', sans-serif",
                 fontStyle: "normal",
-              }}>
+              }}
+            >
               Capturing moments of <b>learning, joy & growth</b>
             </p>
           </div>
@@ -153,8 +198,8 @@ const FullGallery = () => {
         style={{
           background:
             "radial-gradient(circle at top left, #EFE6FF 0%, #F7F2FF 45%, #FFFFFF 75%)",
-        }}>
-        {/* 🖼 IMAGE BACKGROUND ICONS */}
+        }}
+      >
         {[ImageIcon, Camera, Images].map((Icon, i) => (
           <Icon
             key={i}
@@ -178,7 +223,8 @@ const FullGallery = () => {
                   activeCategory === cat
                     ? "bg-[#6B4FA3] text-white"
                     : "bg-white border border-[#6B4FA3]/30 text-[#6B4FA3]"
-                }`}>
+                }`}
+              >
                 {cat}
               </button>
             ))}
@@ -191,7 +237,8 @@ const FullGallery = () => {
                 key={index}
                 onClick={() => setLightboxIndex(index)}
                 className="cursor-pointer overflow-hidden rounded-[26px]
-          bg-white shadow-lg hover:shadow-[#6B4FA3]/40 transition">
+                bg-white shadow-lg hover:shadow-[#6B4FA3]/40 transition"
+              >
                 <img
                   src={img.src}
                   alt="Gallery"
@@ -212,7 +259,8 @@ const FullGallery = () => {
                     currentPage === i + 1
                       ? "bg-[#6B4FA3] text-white"
                       : "bg-white border border-[#6B4FA3]/30 text-[#6B4FA3]"
-                  }`}>
+                  }`}
+                >
                   {i + 1}
                 </button>
               ))}
@@ -221,14 +269,15 @@ const FullGallery = () => {
         </div>
       </section>
 
+      {/* ===== VIDEOS ===== */}
       {videos.length > 0 && (
         <section
           className="relative py-20 px-4 sm:px-8 overflow-hidden"
           style={{
             background:
               "radial-gradient(circle at center, #E9DCFF 0%, #F7F2FF 55%, #FFFFFF 100%)",
-          }}>
-          {/* 🎥 VIDEO BACKGROUND ICONS */}
+          }}
+        >
           {[Video, Film, PlayCircle].map((Icon, i) => (
             <Icon
               key={i}
@@ -250,7 +299,8 @@ const FullGallery = () => {
               {videos.map((video, i) => (
                 <div
                   key={i}
-                  className="rounded-[26px] overflow-hidden shadow-xl bg-white">
+                  className="rounded-[26px] overflow-hidden shadow-xl bg-white"
+                >
                   <video
                     src={video.src}
                     controls
@@ -272,7 +322,8 @@ const FullGallery = () => {
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center">
           <button
             onClick={() => setLightboxIndex(null)}
-            className="absolute top-6 right-6 text-white cursor-pointer">
+            className="absolute top-6 right-6 text-white cursor-pointer"
+          >
             <X size={34} />
           </button>
 
@@ -280,10 +331,11 @@ const FullGallery = () => {
             onClick={() =>
               setLightboxIndex(
                 (lightboxIndex - 1 + currentImages.length) %
-                  currentImages.length,
+                  currentImages.length
               )
             }
-            className="absolute left-6 text-white cursor-pointer">
+            className="absolute left-6 text-white cursor-pointer"
+          >
             <ChevronLeft size={44} />
           </button>
 
@@ -300,7 +352,8 @@ const FullGallery = () => {
             onClick={() =>
               setLightboxIndex((lightboxIndex + 1) % currentImages.length)
             }
-            className="absolute right-6 text-white cursor-pointer">
+            className="absolute right-6 text-white cursor-pointer"
+          >
             <ChevronRight size={44} />
           </button>
         </div>

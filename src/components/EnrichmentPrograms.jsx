@@ -146,7 +146,7 @@ export default function EnrichmentPrograms() {
               <h1
                 className="font-extrabold tracking-tight
                 text-[40px] sm:text-[54px] md:text-[64px]
-                text-[#b62474]"
+                text-[#6B4FA3]"
                 style={{ fontFamily: "'Chewy', system-ui, sans-serif" }}
               >
                 Enrichment Programs

@@ -9,16 +9,16 @@ const generateMedia = (prefix, count, category, ext) => {
 
 const galleryData = [
   /* ===== CLASSROOM IMAGES ===== */
-  ...generateMedia("class", 8, "Classroom", "jpg"),
+  ...generateMedia("class", 100, "Classroom", "jpg"),
 
   /* ===== EVENT IMAGES ===== */
-  ...generateMedia("event", 7, "Events", "jpeg"),
+  ...generateMedia("event", 100, "Events", "jpeg"),
 
   /* ===== ACTIVITY IMAGES ===== */
-  ...generateMedia("activity", 4, "Activities", "jpg"),
+  ...generateMedia("activity", 100, "Activities", "jpg"),
 
   /* ===== VIDEOS ===== */
-  ...generateMedia("video", 5, "Video", "mp4"),
+  ...generateMedia("video", 50, "Video", "mp4"),
 ];
 
 export default galleryData;

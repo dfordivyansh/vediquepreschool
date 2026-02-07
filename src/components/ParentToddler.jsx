@@ -135,7 +135,7 @@ export default function ParentToddler() {
               <h1
                 className="font-extrabold tracking-tight
                 text-[42px] sm:text-[56px] md:text-[64px]
-                text-[#b62474]"
+                text-[#6B4FA3]"
                 style={{ fontFamily: "'Chewy', system-ui, sans-serif" }}
               >
                 Parent–Toddler Program

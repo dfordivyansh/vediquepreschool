@@ -135,7 +135,7 @@ export default function UKG() {
               <h1
                 className="font-extrabold tracking-tight
                 text-[40px] sm:text-[54px] md:text-[62px]
-                text-[#b62474]"
+                text-[#6B4FA3]"
                 style={{ fontFamily: "'Chewy', system-ui, sans-serif" }}
               >
                 Upper Kindergarten (UKG)

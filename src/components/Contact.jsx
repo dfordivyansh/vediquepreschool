@@ -42,7 +42,7 @@ const Contact = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => entry.isIntersecting && setVisible(true),
-      { threshold: 0.25 }
+      { threshold: 0.25 },
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -59,8 +59,7 @@ const Contact = () => {
         style={{
           background:
             "radial-gradient(circle at top left, #EFE6FF 0%, #F4EEFF 40%, #FFFFFF 75%)",
-        }}
-      >
+        }}>
         {/* ===== BACKGROUND ICONS ===== */}
         {[Mail, Phone, MessageCircle, Smartphone].map((Icon, i) => (
           <Icon
@@ -79,8 +78,7 @@ const Contact = () => {
           <div
             className={`text-center mb-10 transition-all duration-700 ${
               visible ? "opacity-100" : "opacity-0 translate-y-6"
-            }`}
-          >
+            }`}>
             <p className="inline-block mb-4 px-6 py-2 rounded-full text-3xl font-bold border border-[#E38342] text-[#2E1A47] bg-gradient-to-b from-[#3493C5]/50 to-white shadow-sm">
               Contact Us
             </p>
@@ -90,8 +88,8 @@ const Contact = () => {
             </h2>
 
             <p className="text-[#3A216A] max-w-3xl mx-auto text-xl sm:text-2xl font-['Comic_Neue']">
-              Have a question or want to know more about <b>Vedique</b>? We’d love
-              to hear from you.
+              Have a question or want to know more about <b>Vedique</b>? We’d
+              love to hear from you.
             </p>
           </div>
 
@@ -105,8 +103,7 @@ const Contact = () => {
               style={{
                 background:
                   "radial-gradient(circle at top right, #F3ECFB 0%, #FFF6FF 55%, #FFFFFF 100%)",
-              }}
-            >
+              }}>
               {/* ===== FORCES NEW CONFIRMATION ===== */}
               <input
                 type="hidden"
@@ -118,7 +115,7 @@ const Contact = () => {
               <input
                 type="hidden"
                 name="_next"
-                value="https://vediquepreschool.vercel.app/thank-you"
+                value="https://vediquepreschool.com/thank-you"
               />
 
               {/* Guardian Name */}
@@ -131,7 +128,11 @@ const Contact = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="label">Contact Number *</label>
-                  <input name="Primary Contact Number" required className="input" />
+                  <input
+                    name="Primary Contact Number"
+                    required
+                    className="input"
+                  />
                 </div>
                 <div>
                   <label className="label">Reply Email *</label>
@@ -152,7 +153,12 @@ const Contact = () => {
                 </div>
                 <div>
                   <label className="label">Student Date of Birth *</label>
-                  <input name="Student DOB" type="date" required className="input" />
+                  <input
+                    name="Student DOB"
+                    type="date"
+                    required
+                    className="input"
+                  />
                 </div>
               </div>
 
@@ -189,11 +195,7 @@ const Contact = () => {
               {/* Notes */}
               <div>
                 <label className="label">Additional Notes (Optional)</label>
-                <textarea
-                  name="Additional Notes"
-                  rows="3"
-                  className="input"
-                />
+                <textarea name="Additional Notes" rows="3" className="input" />
               </div>
 
               <button
@@ -202,23 +204,43 @@ const Contact = () => {
                 style={{
                   background:
                     "linear-gradient(180deg, #6B4FA3 0%, #8E6FD1 100%)",
-                }}
-              >
+                }}>
                 Submit Enquiry
               </button>
             </form>
 
-            {/* ===== MAP ===== */}
-            <div className="rounded-[26px] overflow-hidden shadow-xl border border-[#6B4FA3]/20">
-             <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1782.6454998627307!2d78.387039326845!3d17.354262937676026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb97af033e7301%3A0x3cf62a14c9a024d6!2sAikyam%20Preschool!5e0!3m2!1sen!2sin!4v1767630304411!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0, minHeight: "420px" }}
-                allowFullScreen
-                loading="lazy"
-                title="Vedique Preschool Location"
-              />
+            {/* ===== RIGHT SIDE: QR + MAP (TWO BOXES, FULL HEIGHT) ===== */}
+            <div className="flex flex-col gap-6 h-full">
+              {/* ===== TOP BOX: QR ===== */}
+              <div className="flex-1 rounded-[26px] overflow-hidden shadow-xl border border-[#6B4FA3]/20 bg-white flex items-center justify-center relative">
+                <img
+                  src="/assets/QR.jpg"
+                  alt="Vedique Preschool QR"
+                  className="max-h-[85%] max-w-[85%] object-contain"
+                />
+
+                <a
+                  href="https://share.google/I3BnMOGbggQ2yUu95"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-4 right-4 bg-[#6B4FA3] text-white font-semibold
+      px-5 py-2 rounded-full shadow-lg hover:scale-105 transition">
+                  Visit us on Google
+                </a>
+              </div>
+
+              {/* ===== BOTTOM BOX: MAP ===== */}
+              <div className="flex-1 rounded-[26px] overflow-hidden shadow-xl border border-[#6B4FA3]/20 bg-white">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3800.147708195709!2d78.38511771585038!3d17.35437177783057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb97af033e7301%3A0x81252c7e889448cf!2sVedique%20Preschool!5e0!3m2!1sen!2sin!4v1707361234567!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  title="Vedique Preschool Location"
+                />
+              </div>
             </div>
           </div>
         </div>

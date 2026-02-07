@@ -60,8 +60,8 @@ const Footer = () => {
               />
               <p className="text-white/85 leading-relaxed max-w-lg mx-auto lg:mx-0 text-xl">
                 A mindful learning space where children grow with confidence,
-                compassion, creativity, and strong values prepared for life,
-                not just school.
+                compassion, creativity, and strong values prepared for life, not
+                just school.
               </p>
               <a
                 href="https://forms.gle/PuQGkHb1gTK2YFoB6"
@@ -118,7 +118,7 @@ const Footer = () => {
                 <a
                   href="mailto:vediquepreschool@gmail.com"
                   className="text-white/85 hover:text-white transition text-lg sm:text-xl font-medium">
-                  vediquepreschool@gmail.com
+                  info@vediquepreschool.com
                 </a>
               </div>
 
@@ -144,12 +144,29 @@ const Footer = () => {
                   {/* Instagram */}
                   <a
                     href="https://www.instagram.com/vediquepreschool"
-                    target="_blank"
-                    rel="noopener noreferrer"
                     aria-label="Vedique Preschool on Instagram"
                     className="w-12 h-12 flex items-center justify-center rounded-xl
-    bg-white/10 border border-white/20
-    hover:bg-white/20 transition">
+  bg-white/10 border border-white/20
+  hover:bg-white/20 transition"
+                    onClick={(e) => {
+                      const isMobile = /Android|iPhone|iPad|iPod/i.test(
+                        navigator.userAgent,
+                      );
+
+                      if (isMobile) {
+                        e.preventDefault();
+
+                        // Try to open Instagram app directly
+                        window.location.href =
+                          "instagram://user?username=vediquepreschool";
+
+                        // Fallback to web if app not installed
+                        setTimeout(() => {
+                          window.location.href =
+                            "https://www.instagram.com/vediquepreschool";
+                        }, 1000);
+                      }
+                    }}>
                     <Instagram className="w-6 h-6 text-white" />
                   </a>
                 </div>
