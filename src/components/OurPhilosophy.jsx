@@ -184,7 +184,7 @@ const OurPhilosophy = () => {
             <div
               className={`relative glow-wrap reveal ${visible ? "show" : ""}`}>
               <img
-                src="/assets/flower.png"
+                src="/assets/flower.webp"
                 alt="Vedique Philosophy"
                 className="
     relative z-10

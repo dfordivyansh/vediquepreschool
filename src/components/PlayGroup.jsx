@@ -119,7 +119,7 @@ export default function PlayGroup() {
           <div className="absolute inset-0 flex items-center justify-center text-center">
             {/* 🌸 WATERMARK */}
             <img
-              src="/assets/flower.png"
+              src="/assets/flower.webp"
               alt="Flower watermark"
               className="absolute w-[200px] sm:w-[260px] opacity-15 animate-flower-zoom pointer-events-none"
             />

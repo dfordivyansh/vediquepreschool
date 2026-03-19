@@ -260,7 +260,7 @@ const Highlights = () => {
         </svg>
         {/* 🌸 CENTER FLOWER IMAGE */}
         <img
-          src="/assets/flower.png"
+          src="/assets/flower.webp"
           alt="Flower"
           className="
       absolute

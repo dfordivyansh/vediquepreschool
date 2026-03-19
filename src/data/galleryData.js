@@ -9,13 +9,13 @@ const generateMedia = (prefix, count, category, ext) => {
 
 const galleryData = [
   /* ===== CLASSROOM IMAGES ===== */
-  ...generateMedia("class", 100, "Classroom", "jpg"),
+  ...generateMedia("class", 100, "Classroom", "webp"),
 
   /* ===== EVENT IMAGES ===== */
-  ...generateMedia("event", 100, "Events", "jpeg"),
+  ...generateMedia("event", 100, "Events", "webp"),
 
   /* ===== ACTIVITY IMAGES ===== */
-  ...generateMedia("activity", 100, "Activities", "jpg"),
+  ...generateMedia("activity", 100, "Activities", "webp"),
 
   /* ===== VIDEOS ===== */
   ...generateMedia("video", 50, "Video", "mp4"),

@@ -64,11 +64,8 @@ export default function Navbar() {
   ];
 
   const openEnquiryForm = () => {
-    window.open(
-      "https://forms.gle/umoHgBoJEvYZhhP67",
-      "_blank",
-      "noopener,noreferrer",
-    );
+  navigate("/enquiry");
+  setOpen(false);
   };
 
   return (
@@ -97,7 +94,7 @@ export default function Navbar() {
           </button>
 
           <img
-            src="/assets/logo-hero.png"
+            src="/assets/logo-hero.webp"
             alt="Vedique Logo"
             onClick={scrollToTop}
             className="h-13 md:h-20 cursor-pointer hover:scale-105 transition"

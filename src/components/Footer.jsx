@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Facebook, Instagram } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const footerRef = useRef(null);
+  const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
 
   /* ===== Scroll Animation ===== */
@@ -14,7 +16,7 @@ const Footer = () => {
           observer.disconnect();
         }
       },
-      { threshold: 0.2 },
+      { threshold: 0.2 }
     );
 
     if (footerRef.current) observer.observe(footerRef.current);
@@ -30,6 +32,7 @@ const Footer = () => {
           transform: translateY(40px);
           transition: opacity 0.9s ease, transform 0.9s ease;
         }
+
         .footer-reveal.show {
           opacity: 1;
           transform: translateY(0);
@@ -39,15 +42,19 @@ const Footer = () => {
       <footer
         ref={footerRef}
         className={`bg-gradient-to-t from-[#1B0F2D] via-[#2A1950] to-[#3A2470]
-        text-white footer-reveal ${visible ? "show" : ""}`}>
+        text-white footer-reveal ${visible ? "show" : ""}`}
+      >
         <div className="max-w-7xl mx-auto px-5 sm:px-8 py-1">
+
           {/* ================= MAIN GRID ================= */}
           <div className="grid grid-cols-1 gap-14 lg:grid-cols-4">
+
             {/* ================= BRAND ================= */}
             <div className="space-y-6 py-5 sm:py-10 text-center lg:text-left lg:col-span-2">
+
               <img
-                src="/assets/logo-footer.png"
-                alt="Vedique Preschool Logo"
+                src="/assets/logo-footer.webp"
+                alt="Vedique Preschool Hyderabad Logo"
                 className="
                   h-24 sm:h-28 lg:h-30
                   mx-auto lg:mx-0
@@ -58,54 +65,61 @@ const Footer = () => {
                   p-2
                 "
               />
+
               <p className="text-white/85 leading-relaxed max-w-lg mx-auto lg:mx-0 text-xl">
                 A mindful learning space where children grow with confidence,
-                compassion, creativity, and strong values prepared for life, not
-                just school.
+                compassion, creativity, and strong values prepared for life,
+                not just school.
               </p>
-              <a
-                href="https://forms.gle/PuQGkHb1gTK2YFoB6"
-                target="_blank"
-                rel="noopener noreferrer"
+
+              {/* ===== Careers Button Redirect ===== */}
+              <button
+                onClick={() => navigate("/careers")}
                 className="
-    inline-flex items-center justify-center
-    mt-6 px-7 py-3
-    text-xl font-semibold
+                  inline-flex items-center justify-center
+                  mt-6 px-7 py-3
+                  text-xl font-semibold
                   rounded-[28px_8px_28px_8px]
-    bg-gradient-to-r from-[#C6B6F3] to-[#9E87E8]
-    text-[#1B0F2D]
-    shadow-lg
-    hover:shadow-xl
-    hover:scale-[1.05]
-    transition-all duration-300
-  ">
+                  bg-gradient-to-r from-[#C6B6F3] to-[#9E87E8]
+                  text-[#1B0F2D]
+                  shadow-lg
+                  hover:shadow-xl
+                  hover:scale-[1.05]
+                  transition-all duration-300
+                  cursor-pointer
+                "
+              >
                 Careers at Vedique
-              </a>
+              </button>
+
             </div>
 
             {/* ================= LOCATION ================= */}
             <div className="space-y-6 py-0 sm:py-10 text-center lg:text-left">
+
               <h3 className="text-xl sm:text-2xl font-semibold text-[#D6C7F2]">
                 Our Location
               </h3>
 
               <p className="text-[18px] text-white/85 leading-relaxed">
                 VEDIQUE PRESCHOOL <br />
-                Door: 2-52 ,
-                <br />
+                Door: 2-52 , <br />
                 Prashant Nagar Colony <br />
                 Behind Sai Veda Hospital <br />
                 Bandlaguda Jagir <br />
                 Hyderabad , Telangana – 500086
               </p>
+
             </div>
 
             {/* ================= CONTACT + SOCIAL ================= */}
             <div className="space-y-6 py-0 sm:py-10 text-center lg:text-left">
+
               <div>
                 <h3 className="text-xl sm:text-2xl font-semibold text-[#D6C7F2] mb-1">
                   Call Us
                 </h3>
+
                 <p className="text-white/85 text-lg sm:text-xl font-medium">
                   +91-90308 02211
                 </p>
@@ -115,9 +129,11 @@ const Footer = () => {
                 <h3 className="text-xl sm:text-2xl font-semibold text-[#D6C7F2] mb-1">
                   Email Us
                 </h3>
+
                 <a
-                  href="mailto:vediquepreschool@gmail.com"
-                  className="text-white/85 hover:text-white transition text-lg sm:text-xl font-medium">
+                  href="mailto:info@vediquepreschool.com"
+                  className="text-white/85 hover:text-white transition text-lg sm:text-xl font-medium"
+                >
                   info@vediquepreschool.com
                 </a>
               </div>
@@ -129,6 +145,7 @@ const Footer = () => {
                 </h3>
 
                 <div className="flex justify-center lg:justify-start gap-5">
+
                   {/* Facebook */}
                   <a
                     href="https://www.facebook.com/share/1D6BJgTVvz/"
@@ -136,41 +153,28 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     aria-label="Vedique Preschool on Facebook"
                     className="w-12 h-12 flex items-center justify-center rounded-xl
-    bg-white/10 border border-white/20
-    hover:bg-white/20 transition">
+                    bg-white/10 border border-white/20
+                    hover:bg-white/20 transition"
+                  >
                     <Facebook className="w-6 h-6 text-white" />
                   </a>
 
                   {/* Instagram */}
                   <a
                     href="https://www.instagram.com/vediquepreschool"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label="Vedique Preschool on Instagram"
                     className="w-12 h-12 flex items-center justify-center rounded-xl
-  bg-white/10 border border-white/20
-  hover:bg-white/20 transition"
-                    onClick={(e) => {
-                      const isMobile = /Android|iPhone|iPad|iPod/i.test(
-                        navigator.userAgent,
-                      );
-
-                      if (isMobile) {
-                        e.preventDefault();
-
-                        // Try to open Instagram app directly
-                        window.location.href =
-                          "instagram://user?username=vediquepreschool";
-
-                        // Fallback to web if app not installed
-                        setTimeout(() => {
-                          window.location.href =
-                            "https://www.instagram.com/vediquepreschool";
-                        }, 1000);
-                      }
-                    }}>
+                    bg-white/10 border border-white/20
+                    hover:bg-white/20 transition"
+                  >
                     <Instagram className="w-6 h-6 text-white" />
                   </a>
+
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -178,6 +182,7 @@ const Footer = () => {
           <div className="mt-6 sm:mt-8 text-center text-xl text-white/75 font-medium">
             © {new Date().getFullYear()} Vedique Preschool. All Rights Reserved.
           </div>
+
         </div>
       </footer>
     </>

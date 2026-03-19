@@ -13,6 +13,8 @@ import DaycarePage from "./pages/DaycarePage";
 import EnrichmentProgramsPage from "./pages/EnrichmentProgramsPage";
 import FloatingSocials from "./components/FloatingSocials";
 import ThankYou from "./pages/ThankYou";
+import Enquiry from './pages/Enquiry';
+import Careers from './pages/Careers';
 
 /* ===== LOADER ===== */
 const Loader = () => (
@@ -25,7 +27,7 @@ const Loader = () => (
 
     <div className="loader-wrapper">
       <img
-        src="/assets/flower.png"
+        src="/assets/flower.webp"
         alt="Vedique Preschool"
         className="loader-logo"
       />
@@ -159,6 +161,8 @@ const App = () => {
             element={<EnrichmentProgramsPage />}
           />
           <Route path="/thank-you" element={<ThankYou />} />
+          <Route path="/enquiry" element={<Enquiry />} />
+          <Route path="/careers" element={<Careers />} />
         </Routes>
       </Router>
     </>

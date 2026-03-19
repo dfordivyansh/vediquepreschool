@@ -303,7 +303,7 @@ const Hero = ({ setActive, setOpen }) => {
           <div className="hero-image-container">
 {/* PLAY SCHOOL IMAGE */}
 <img
-  src="/assets/playschool.png"
+  src="/assets/playschool.webp"
   alt="Playschool"
   className="
     mx-auto mb-4
@@ -319,7 +319,7 @@ const Hero = ({ setActive, setOpen }) => {
 </div>
 
             <img
-              src="/assets/hero.jpeg"
+              src="/assets/hero.webp"
               alt="Hero"
               className="hero-image   hover:rotate-1 transition duration-300
   rounded-[58px_18px_58px_18px]

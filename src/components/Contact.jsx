@@ -214,7 +214,7 @@ const Contact = () => {
               {/* ===== TOP BOX: QR ===== */}
               <div className="flex-1 rounded-[26px] overflow-hidden shadow-xl border border-[#6B4FA3]/20 bg-white flex items-center justify-center relative">
                 <img
-                  src="/assets/QR.jpg"
+                  src="/assets/QR.webp"
                   alt="Vedique Preschool QR"
                   className="max-h-[85%] max-w-[85%] object-contain"
                 />
