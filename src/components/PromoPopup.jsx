@@ -41,25 +41,25 @@ const PromoPopup = () => {
           />
 
           {/* Title */}
-          <h2 className="popup-title">Vedique Preschool</h2>
-          <p className="popup-subtitle">Little Steps to Big Wisdom</p>
+          <h2 className="popup-title">Vedique Summer Camp 2026</h2>
+          <p className="popup-subtitle">Fun • Learning • Creativity</p>
 
           {/* Offer */}
           <div className="popup-offer">
-            FREE DEMO CLASSES – 5 DAYS
+            SUMMER CAMP ENROLLMENTS OPEN NOW
           </div>
 
           {/* Date */}
           <p className="popup-start">
-            Starting from <b>23rd March 2026</b>
+            Starting from <b>20th April 2026</b>
           </p>
 
           {/* Features */}
           <div className="popup-features">
-            <div><FaBook /> IQ Booster Activities</div>
-            <div><FaSchool /> Safe & Secure Campus</div>
-            <div><FaPalette /> Fun Learning Environment</div>
-            <div><FaAppleAlt /> Daycare Available</div>
+            <div><FaBook /> Brain Boosting Activities</div>
+            <div><FaSchool /> Safe & Friendly Environment</div>
+            <div><FaPalette /> Art, Craft & Fun Games</div>
+            <div><FaAppleAlt /> Healthy Snacks & Daycare</div>
           </div>
 
           {/* CTA */}
@@ -67,7 +67,7 @@ const PromoPopup = () => {
             className="popup-btn"
             onClick={() => navigate("/enquiry")}
           >
-            Book Free Demo Now
+            Enroll In Summer Camp
           </button>
 
         </div>
