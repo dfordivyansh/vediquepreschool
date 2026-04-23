@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { useLocation } from "react-router-dom";
 
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
@@ -11,38 +12,43 @@ import OurPrograms from "../components/OurPrograms";
 import Highlights from "../components/Highlights";
 import PromoPopup from "../components/PromoPopup";
 import ReviewsSection from "../components/ReviewsSection";
+import FAQSection from "../components/FAQSection";
 
 const MainPage = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const id = location.state.scrollTo;
+
+      setTimeout(() => {
+        const el = document.getElementById(id);
+
+        if (el) {
+          const y =
+            el.getBoundingClientRect().top +
+            window.pageYOffset -
+            96;
+
+          window.scrollTo({
+            top: y,
+            behavior: "smooth",
+          });
+        }
+      }, 300);
+    }
+  }, [location]);
+
   return (
     <>
       <PromoPopup />
+
       <Helmet>
         <title>
           Vedique Preschool | Best Preschool in Bandlaguda Jagir Hyderabad
         </title>
-
-        <meta
-          name="description"
-          content="Vedique Preschool in Bandlaguda Jagir Hyderabad offers playgroup, nursery, LKG, UKG and daycare programs inspired by Montessori and Waldorf philosophies. Admissions open 2026-27."
-        />
-
-        <meta
-          name="keywords"
-          content="Vedique Preschool, preschool in Hyderabad, Bandlaguda Jagir preschool, best preschool Telangana, play school Hyderabad, nursery school Hyderabad, LKG UKG Hyderabad, daycare Hyderabad, Montessori preschool Hyderabad, Waldorf preschool Hyderabad"
-        />
-
-        <meta name="author" content="Vedique Preschool" />
-
-        <meta property="og:title" content="Vedique Preschool Hyderabad" />
-
-        <meta
-          property="og:description"
-          content="A mindful preschool in Bandlaguda Jagir Hyderabad where children grow with confidence, creativity and strong values."
-        />
-
-        <meta property="og:type" content="website" />
       </Helmet>
-      
+
       <Navbar />
       <Hero />
       <OurPhilosophy />
@@ -51,6 +57,7 @@ const MainPage = () => {
       <Gallery />
       <ReviewsSection />
       <Contact />
+      <FAQSection category="all" limit={8} />
       <Footer />
     </>
   );

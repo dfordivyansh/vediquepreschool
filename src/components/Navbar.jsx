@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   FaPhoneAlt,
   FaEnvelope,
-  FaHome,
+  FaBookOpen,
   FaSchool,
   FaImage,
 } from "react-icons/fa";
@@ -24,7 +23,7 @@ export default function Navbar() {
       behavior: "smooth",
     });
   };
-
+  const location = useLocation();
   /* ===== SCROLL SHADOW ===== */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -44,28 +43,35 @@ export default function Navbar() {
     setActive("Home");
     setOpen(false);
   };
-
   const scrollToSection = (id, label) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-
-    const y = el.getBoundingClientRect().top + window.pageYOffset - NAV_HEIGHT;
-
-    smoothScrollTo(y);
     setActive(label);
     setOpen(false);
+
+    // 🔥 अगर already home page पर है
+    if (location.pathname === "/") {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const y =
+        el.getBoundingClientRect().top + window.pageYOffset - NAV_HEIGHT;
+
+      smoothScrollTo(y);
+    } else {
+      // 🔥 पहले home page जाओ
+      navigate("/", { state: { scrollTo: id } });
+    }
   };
 
   const navItems = [
-    { label: "Home", icon: <FaHome />, action: scrollToTop },
     { label: "Programs", icon: <FaSchool />, id: "programs" },
     { label: "Gallery", icon: <FaImage />, id: "gallery" },
+    { label: "Articles", icon: <FaBookOpen />, route: "/articles" },
     { label: "Contact", icon: <FaEnvelope />, id: "contact" },
   ];
 
   const openEnquiryForm = () => {
-  navigate("/enquiry");
-  setOpen(false);
+    navigate("/enquiry");
+    setOpen(false);
   };
 
   return (
@@ -96,7 +102,15 @@ export default function Navbar() {
           <img
             src="/assets/logo-hero.webp"
             alt="Vedique Logo"
-            onClick={scrollToTop}
+            onClick={() => {
+              if (location.pathname === "/") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              } else {
+                navigate("/");
+              }
+              setActive("Home");
+              setOpen(false);
+            }}
             className="h-13 md:h-20 cursor-pointer hover:scale-105 transition"
           />
         </div>
@@ -106,9 +120,16 @@ export default function Navbar() {
           {navItems.map((item) => (
             <li key={item.label}>
               <button
-                onClick={() =>
-                  item.id ? scrollToSection(item.id, item.label) : item.action()
-                }
+                onClick={() => {
+                  if (item.route) {
+                    navigate(item.route);
+                    setOpen(false);
+                  } else if (item.id) {
+                    scrollToSection(item.id, item.label);
+                  } else {
+                    item.action();
+                  }
+                }}
                 className="flex items-center gap-2 relative group hover:text-[#4B3C78] cursor-pointer">
                 <span className="text-xl">{item.icon}</span>
                 {item.label}
@@ -146,11 +167,16 @@ export default function Navbar() {
             {navItems.map((item, index) => (
               <div key={item.label}>
                 <button
-                  onClick={() =>
-                    item.id
-                      ? scrollToSection(item.id, item.label)
-                      : item.action()
-                  }
+                  onClick={() => {
+                    if (item.route) {
+                      navigate(item.route);
+                      setOpen(false);
+                    } else if (item.id) {
+                      scrollToSection(item.id, item.label);
+                    } else {
+                      item.action();
+                    }
+                  }}
                   className={`flex items-center gap-3 w-full py-4 ${
                     active === item.label
                       ? "text-[#4B3C78] bg-white/70 rounded-lg px-3"

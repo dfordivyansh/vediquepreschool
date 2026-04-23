@@ -4,6 +4,8 @@ import { Helmet } from "react-helmet";
 import PlayGroup from "../components/PlayGroup";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+import SEOContent from "../components/SEOContent";
+import FAQSection from './../components/FAQSection';
 
 const PlaygroupPage = () => {
   return (
@@ -36,7 +38,10 @@ const PlaygroupPage = () => {
       </Helmet>
 
       <PlayGroup />
+      {/* 🔥 SEO CONTENT */}
+      <SEOContent slug="playgroup" />
       <Contact />
+      <FAQSection category="playgroup" />
       <Footer />
     </>
   );

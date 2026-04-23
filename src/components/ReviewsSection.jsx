@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaQuoteLeft, FaUserCircle } from "react-icons/fa";
 import { MessageCircle, Star, Users } from "lucide-react";
+import { collection, onSnapshot } from "firebase/firestore";
+import { db } from "../admin/firebase/config";
 
 /* ===== FONT LOADER ===== */
 const FontLoader = () => (
@@ -16,37 +18,24 @@ const FontLoader = () => (
   </>
 );
 
-const reviews = [
-  {
-    name: "Divyansh Srivastava",
-    text: "Vedique Preschool is an excellent place for early learning. The teachers are caring, the environment is safe and friendly, and the activities are fun and educational. Highly recommended for a great start to a child’s journey! 😊",
-  },
-  {
-    name: "Chandan Kumar",
-    text: "One of the best Premium Preschool in Bandlaguda Jagir, Hyderabad. They have lots of programs for the little kids, which no any other school provide. The school infrastructure is also very good. The teachers and staff are very experienced.",
-  },
-  {
-    name: "Osuru Mounika",
-    text: "Excellent place for kids to learn it is very fun learning and staff is very caring and teachers are very good, friendly environment and kids will love",
-  },
-  {
-    name: "Amit Prasher",
-    text: "Our son has truly thrived in his playgroup experience. The engaging and nurturing environment has fostered his social skills and curiosity wonderfully. We are so impressed with the dedicated educators who make learning feel like an adventure each day. The variety of activities offered stimulates his development in such a positive way. We are deeply grateful for the enriching foundation this school is providing for him.",
-  },
-  {
-    name: "Yash Sri",
-    text: "Vedique Preschool is truly a second home for kids ❤️ The teachers are incredibly caring, and the learning approach is fun, creative, and engaging. You can actually see the confidence and growth in your child every day. Highly recommended!",
-  },
-  {
-    name: "Roshini Nishad",
-    text: "Nice balance of learning and fun activities. Teachers handle kids with patience and care. Highly recommended preschool. 😊",
-  },
-];
-
 const MAX_LENGTH = 120;
 
 export default function ReviewsSection() {
   const [expanded, setExpanded] = useState({});
+  const [reviews, setReviews] = useState([]);
+
+  /* 🔥 FIREBASE REALTIME FETCH */
+  useEffect(() => {
+    const unsub = onSnapshot(collection(db, "reviews"), (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setReviews(data);
+    });
+
+    return () => unsub();
+  }, []);
 
   const toggleReadMore = (index) => {
     setExpanded((prev) => ({
@@ -54,6 +43,32 @@ export default function ReviewsSection() {
       [index]: !prev[index],
     }));
   };
+
+  const renderStars = (rating = 0) => {
+  return (
+    <div className="flex text-yellow-400 text-sm">
+      {Array.from({ length: 5 }).map((_, i) => {
+        const star = i + 1;
+
+        if (rating >= star) {
+          return <span key={i}>★</span>; // full
+        } else if (rating >= star - 0.5) {
+          return <span key={i} className="relative">
+            <span className="text-gray-300">★</span>
+            <span
+              className="absolute left-0 top-0 overflow-hidden text-yellow-400"
+              style={{ width: "50%" }}
+            >
+              ★
+            </span>
+          </span>; // half
+        } else {
+          return <span key={i} className="text-gray-300">★</span>; // empty
+        }
+      })}
+    </div>
+  );
+};
 
   return (
     <>
@@ -110,12 +125,12 @@ export default function ReviewsSection() {
                 {[...reviews, ...reviews].map((r, i) => {
                   const isExpanded = expanded[i];
                   const text =
-                    r.text.length > MAX_LENGTH && !isExpanded
+                    r.text?.length > MAX_LENGTH && !isExpanded
                       ? r.text.substring(0, MAX_LENGTH) + "..."
                       : r.text;
 
                   return (
-                    <div key={i} className="testimonial-card">
+                    <div key={r.id + i} className="testimonial-card">
 
                       <div className="google-badge">
                         <img
@@ -129,7 +144,7 @@ export default function ReviewsSection() {
 
                       <p className="text-[#444]">
                         {text}
-                        {r.text.length > MAX_LENGTH && (
+                        {r.text?.length > MAX_LENGTH && (
                           <span
                             onClick={() => toggleReadMore(i)}
                             className="ml-2 text-[#6B4FA3] font-semibold cursor-pointer"
@@ -143,7 +158,7 @@ export default function ReviewsSection() {
                         <FaUserCircle className="text-3xl text-[#6B4FA3]" />
                         <div>
                           <p className="font-bold text-[#6B4FA3]">{r.name}</p>
-                          <div className="text-yellow-400 text-sm">★★★★★</div>
+                          {renderStars(r.rating)}
                         </div>
                       </div>
 
@@ -172,7 +187,7 @@ export default function ReviewsSection() {
           </div>
         </div>
 
-        {/* STYLES */}
+        {/* STYLES (UNCHANGED) */}
         <style>{`
           .marquee-track {
             display: flex;

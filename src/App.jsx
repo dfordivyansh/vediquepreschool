@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 
 /* ===== PAGES ===== */
 import MainPage from "./pages/MainPage";
@@ -13,8 +18,12 @@ import DaycarePage from "./pages/DaycarePage";
 import EnrichmentProgramsPage from "./pages/EnrichmentProgramsPage";
 import FloatingSocials from "./components/FloatingSocials";
 import ThankYou from "./pages/ThankYou";
-import Enquiry from './pages/Enquiry';
-import Careers from './pages/Careers';
+import Enquiry from "./pages/Enquiry";
+import Careers from "./pages/Careers";
+import AdminRoutes from "./admin/AdminRoutes";
+import ArticlesPage from './pages/ArticlesPage';
+import SingleArticle from "./pages/SingleArticle";
+import ScrollToTop from "./components/ScrollToTop";
 
 /* ===== LOADER ===== */
 const Loader = () => (
@@ -106,6 +115,47 @@ const Loader = () => (
   </>
 );
 
+const AppRoutes = () => {
+  const location = useLocation();
+
+  // 👉 check admin route
+  const isAdmin = location.pathname.startsWith("/admin");
+
+  return (
+    <>
+      {/* ❌ Admin me hide */}
+      {!isAdmin && <FloatingSocials />}
+    <ScrollToTop />
+
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/gallery" element={<FullGallery />} />
+        <Route path="/programs/playgroup" element={<PlaygroupPage />} />
+        <Route path="/programs/nursery" element={<NurseryPage />} />
+        <Route path="/programs/lkg" element={<LKGPage />} />
+        <Route path="/programs/ukg" element={<UKGPage />} />
+        <Route
+          path="/programs/parent-toddler"
+          element={<ParentToddlerPage />}
+        />
+        <Route path="/programs/daycare" element={<DaycarePage />} />
+        <Route
+          path="/programs/enrichment"
+          element={<EnrichmentProgramsPage />}
+        />
+        <Route path="/thank-you" element={<ThankYou />} />
+        <Route path="/enquiry" element={<Enquiry />} />
+        <Route path="/careers" element={<Careers />} />
+        <Route path="/articles" element={<ArticlesPage />} />
+        <Route path="/article/:id" element={<SingleArticle />} />
+
+        {/* Admin */}
+        <Route path="/admin/*" element={<AdminRoutes />} />
+      </Routes>
+    </>
+  );
+};
+
 const App = () => {
   const [loading, setLoading] = useState(true);
 
@@ -142,28 +192,7 @@ const App = () => {
       `}</style>
 
       <Router>
-        <FloatingSocials />
-
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/gallery" element={<FullGallery />} />
-          <Route path="/programs/playgroup" element={<PlaygroupPage />} />
-          <Route path="/programs/nursery" element={<NurseryPage />} />
-          <Route path="/programs/lkg" element={<LKGPage />} />
-          <Route path="/programs/ukg" element={<UKGPage />} />
-          <Route
-            path="/programs/parent-toddler"
-            element={<ParentToddlerPage />}
-          />
-          <Route path="/programs/daycare" element={<DaycarePage />} />
-          <Route
-            path="/programs/enrichment"
-            element={<EnrichmentProgramsPage />}
-          />
-          <Route path="/thank-you" element={<ThankYou />} />
-          <Route path="/enquiry" element={<Enquiry />} />
-          <Route path="/careers" element={<Careers />} />
-        </Routes>
+        <AppRoutes />
       </Router>
     </>
   );

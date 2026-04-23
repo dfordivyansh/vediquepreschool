@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { db } from "../admin/firebase/config";
+import { doc, onSnapshot } from "firebase/firestore";
 import {
   FaBook,
   FaSchool,
@@ -7,16 +9,29 @@ import {
   FaAppleAlt,
 } from "react-icons/fa";
 
+const icons = [FaBook, FaSchool, FaPalette, FaAppleAlt];
+
 const PromoPopup = () => {
+  const [data, setData] = useState(null);
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const timer = setTimeout(() => setShow(true), 1200);
-    return () => clearTimeout(timer);
+    const unsub = onSnapshot(doc(db, "promo_popup", "current"), (snap) => {
+      if (snap.exists()) {
+        const d = snap.data();
+        setData(d);
+
+        if (d.enabled) {
+          setTimeout(() => setShow(true), 1200);
+        }
+      }
+    });
+
+    return () => unsub();
   }, []);
 
-  if (!show) return null;
+  if (!show || !data) return null;
 
   return (
     <>
@@ -25,49 +40,39 @@ const PromoPopup = () => {
       <div className="popup-overlay">
         <div className="popup-card">
 
-          {/* Glow Ring */}
           <div className="popup-glow"></div>
 
-          {/* Close */}
           <button className="popup-close" onClick={() => setShow(false)}>
             ✕
           </button>
 
-          {/* Logo */}
-          <img
-            src="/assets/logo.webp"
-            alt="Vedique Logo"
-            className="popup-logo"
-          />
+          <img src="/assets/logo.webp" className="popup-logo" />
 
-          {/* Title */}
-          <h2 className="popup-title">Vedique Summer Camp 2026</h2>
-          <p className="popup-subtitle">Fun • Learning • Creativity</p>
+          <h2 className="popup-title">{data.title}</h2>
+          <p className="popup-subtitle">{data.subtitle}</p>
 
-          {/* Offer */}
-          <div className="popup-offer">
-            SUMMER CAMP ENROLLMENTS OPEN NOW
-          </div>
+          <div className="popup-offer">{data.offer}</div>
 
-          {/* Date */}
           <p className="popup-start">
-            Starting from <b>20th April 2026</b>
+            <b>{data.startDate}</b>
           </p>
 
-          {/* Features */}
           <div className="popup-features">
-            <div><FaBook /> Brain Boosting Activities</div>
-            <div><FaSchool /> Safe & Friendly Environment</div>
-            <div><FaPalette /> Art, Craft & Fun Games</div>
-            <div><FaAppleAlt /> Healthy Snacks & Daycare</div>
+            {data.features?.map((f, i) => {
+              const Icon = icons[i % icons.length];
+              return (
+                <div key={i}>
+                  <Icon /> {f}
+                </div>
+              );
+            })}
           </div>
 
-          {/* CTA */}
           <button
             className="popup-btn"
-            onClick={() => navigate("/enquiry")}
+            onClick={() => navigate(data.redirect)}
           >
-            Enroll In Summer Camp
+            {data.buttonText}
           </button>
 
         </div>

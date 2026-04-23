@@ -4,6 +4,8 @@ import { Helmet } from "react-helmet";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import LKG from "../components/LKG";
+import SEOContent from "../components/SEOContent";
+import FAQSection from './../components/FAQSection';
 
 const LKGPage = () => {
   return (
@@ -36,7 +38,10 @@ const LKGPage = () => {
       </Helmet>
 
       <LKG />
+      {/* 🔥 SEO CONTENT */}
+      <SEOContent slug="lkg" />
       <Contact />
+      <FAQSection category="lkg" />
       <Footer />
     </>
   );

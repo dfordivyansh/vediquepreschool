@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Mail, Phone, MessageCircle, Smartphone } from "lucide-react";
+import { addDoc, collection, Timestamp } from "firebase/firestore";
+import { db } from "../admin/firebase/config";
 
 /* ===== FONT ===== */
 const FontLoader = () => (
@@ -37,16 +39,58 @@ const enrichmentOptions = [
 
 const Contact = () => {
   const sectionRef = useRef(null);
+  const formRef = useRef(null);
+
   const [visible, setVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => entry.isIntersecting && setVisible(true),
-      { threshold: 0.25 },
+      { threshold: 0.25 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
+
+  /* 🔥 SUBMIT HANDLER (FIRESTORE) */
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const form = formRef.current;
+    const formData = new FormData(form);
+
+    const data = {
+      guardian: formData.get("Guardian Full Name"),
+      phone: formData.get("Primary Contact Number"),
+      email: formData.get("Reply Email Address"),
+      student: formData.get("Student Name"),
+      dob: formData.get("Student DOB"),
+      programs: formData.getAll("Interested Programs[]"),
+      enrichment: formData.get("Preferred Enrichment Program"),
+      notes: formData.get("Additional Notes"),
+      createdAt: Timestamp.now(),
+    };
+
+    if (!data.guardian || !data.phone || !data.email) {
+      return alert("Please fill required fields");
+    }
+
+    setLoading(true);
+
+    try {
+      await addDoc(collection(db, "contacts"), data);
+
+      alert("Enquiry Submitted ✅");
+
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      alert("Error submitting form");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -59,7 +103,8 @@ const Contact = () => {
         style={{
           background:
             "radial-gradient(circle at top left, #EFE6FF 0%, #F4EEFF 40%, #FFFFFF 75%)",
-        }}>
+        }}
+      >
         {/* ===== BACKGROUND ICONS ===== */}
         {[Mail, Phone, MessageCircle, Smartphone].map((Icon, i) => (
           <Icon
@@ -78,7 +123,8 @@ const Contact = () => {
           <div
             className={`text-center mb-10 transition-all duration-700 ${
               visible ? "opacity-100" : "opacity-0 translate-y-6"
-            }`}>
+            }`}
+          >
             <p className="inline-block mb-4 px-6 py-2 rounded-full text-3xl font-bold border border-[#E38342] text-[#2E1A47] bg-gradient-to-b from-[#3493C5]/50 to-white shadow-sm">
               Contact Us
             </p>
@@ -95,57 +141,33 @@ const Contact = () => {
 
           {/* ===== FORM + MAP ===== */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* ===== FORM ===== */}
+            
+            {/* ===== FORM (UI SAME) ===== */}
             <form
-              action="https://formsubmit.co/vediquepreschool@gmail.com"
-              method="POST"
+              ref={formRef}
+              onSubmit={handleSubmit}
               className="rounded-[26px] p-6 sm:p-8 shadow-xl border border-[#6B4FA3]/20 space-y-4"
               style={{
                 background:
                   "radial-gradient(circle at top right, #F3ECFB 0%, #FFF6FF 55%, #FFFFFF 100%)",
-              }}>
-              {/* ===== FORCES NEW CONFIRMATION ===== */}
-              <input
-                type="hidden"
-                name="_subject"
-                value="Vedique Preschool – New Admission Enquiry"
-              />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="table" />
-              <input
-                type="hidden"
-                name="_next"
-                value="https://vediquepreschool.com/thank-you"
-              />
-
-              {/* Guardian Name */}
+              }}
+            >
               <div>
                 <label className="label">Guardian Full Name *</label>
                 <input name="Guardian Full Name" required className="input" />
               </div>
 
-              {/* Contact + Email */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="label">Contact Number *</label>
-                  <input
-                    name="Primary Contact Number"
-                    required
-                    className="input"
-                  />
+                  <input name="Primary Contact Number" required className="input" />
                 </div>
                 <div>
                   <label className="label">Reply Email *</label>
-                  <input
-                    name="Reply Email Address"
-                    type="email"
-                    required
-                    className="input"
-                  />
+                  <input name="Reply Email Address" type="email" required className="input" />
                 </div>
               </div>
 
-              {/* Student Details */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="label">Student Name *</label>
@@ -153,46 +175,32 @@ const Contact = () => {
                 </div>
                 <div>
                   <label className="label">Student Date of Birth *</label>
-                  <input
-                    name="Student DOB"
-                    type="date"
-                    required
-                    className="input"
-                  />
+                  <input name="Student DOB" type="date" required className="input" />
                 </div>
               </div>
 
-              {/* Programs */}
               <div>
                 <p className="label mb-1">Programs You’re Interested In *</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[#6B4FA3]">
                   {programs.map((p) => (
                     <label key={p} className="flex items-center gap-2 text-sm">
-                      <input
-                        type="checkbox"
-                        name="Interested Programs[]"
-                        value={p}
-                      />
+                      <input type="checkbox" name="Interested Programs[]" value={p} />
                       {p}
                     </label>
                   ))}
                 </div>
               </div>
 
-              {/* Enrichment */}
               <div>
                 <label className="label">Preferred Enrichment (Optional)</label>
                 <select name="Preferred Enrichment Program" className="input">
                   <option value="">Not Applicable</option>
                   {enrichmentOptions.map((opt) => (
-                    <option key={opt} value={opt}>
-                      {opt}
-                    </option>
+                    <option key={opt}>{opt}</option>
                   ))}
                 </select>
               </div>
 
-              {/* Notes */}
               <div>
                 <label className="label">Additional Notes (Optional)</label>
                 <textarea name="Additional Notes" rows="3" className="input" />
@@ -204,8 +212,9 @@ const Contact = () => {
                 style={{
                   background:
                     "linear-gradient(180deg, #6B4FA3 0%, #8E6FD1 100%)",
-                }}>
-                Submit Enquiry
+                }}
+              >
+                {loading ? "Submitting..." : "Submit Enquiry"}
               </button>
             </form>
 
@@ -242,6 +251,7 @@ const Contact = () => {
                 />
               </div>
             </div>
+
           </div>
         </div>
 

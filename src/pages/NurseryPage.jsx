@@ -4,6 +4,8 @@ import { Helmet } from "react-helmet";
 import Nursery from "../components/Nursery";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+import SEOContent from "../components/SEOContent";
+import FAQSection from './../components/FAQSection';
 
 const NurseryPage = () => {
   return (
@@ -36,7 +38,10 @@ const NurseryPage = () => {
       </Helmet>
 
       <Nursery />
+      {/* 🔥 SEO CONTENT */}
+      <SEOContent slug="nursery" />
       <Contact />
+      <FAQSection category="nursery" />
       <Footer />
     </>
   );
